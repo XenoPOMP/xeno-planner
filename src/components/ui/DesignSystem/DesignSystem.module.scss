@@ -3,4 +3,38 @@
          flex flex-col;
 
   gap: var(--p-level-1);
+
+  section.innerSection {
+    @apply flex flex-col;
+
+    gap: var(--p-level-2);
+
+    .subSection {
+      @apply flex flex-col;
+
+      gap: var(--p-level-3);
+
+      ul.list {
+        @apply flex flex-col;
+
+        gap: var(--p-level-5);
+      }
+    }
+  }
+
+  .p1 {
+    font-size: var(--p24);
+  }
+
+  .p2 {
+    font-size: var(--p20);
+  }
+
+  .p3 {
+    font-size: var(--p16);
+  }
+
+  .p4 {
+    font-size: var(--p14);
+  }
 }
