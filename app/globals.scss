@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: 20px;
+}
+
+body {
+  @apply bg-primary-bg text-primary-font;
+}
