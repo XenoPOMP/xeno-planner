@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DesignSystem from './DesignSystem';
 
 const meta = {
-  title: 'Design/System',
+  title: 'Design/Design System',
   component: DesignSystem,
   tags: ['autodoc'],
   parameters: {
