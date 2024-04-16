@@ -1,7 +1,3 @@
-@mixin cascadeSingleValue($assignName, $next) {
-  @include assignVariable($assignName, $next);
-}
-
 // Define map of variables that will be cascaded down on certain breakpoint
 @mixin cascadeDown($at, $values) {
   // Assign initial values
@@ -18,10 +14,10 @@
 
       // Overflow safe
       @if $nextIndex > $listLength {
-        @include cascadeSingleValue($name, nth(nth($values, $listLength), 2));
+        @include assignVariable($name, nth(nth($values, $listLength), 2));
       }
       @else {
-        @include cascadeSingleValue($name, nth(nth($values, index($values, $name $value) + 1), 2));
+        @include assignVariable($name, nth(nth($values, index($values, $name $value) + 1), 2));
       }
     }
   }
