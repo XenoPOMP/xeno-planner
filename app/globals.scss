@@ -8,6 +8,7 @@
   font-size: 20px;
 
   // Design system related variables
+  // Paddings
   @include cascadeDown($mobileBreakpoint, (
     --p1: 56px,
     --p2: 32px,
