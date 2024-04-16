@@ -17,11 +17,11 @@
 
   // Headings
   @include cascadeDown($mobileBreakpoint, (
-          --heading-1: 32px,
-          --heading-2: 24px,
-          --heading-3: 20px,
-          --heading-4: 16px,
-          --heading-5: 14px,
+    --heading-1: 32px,
+    --heading-2: 24px,
+    --heading-3: 20px,
+    --heading-4: 16px,
+    --heading-5: 14px,
   ));
 
   // Text
