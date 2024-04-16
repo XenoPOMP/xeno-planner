@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "src/styles/templates";
+
 :root {
   font-size: 20px;
+
+  // Design system related variables
+  @include cascadeDown($mobileBreakpoint, (
+    --p1: 56px,
+    --p2: 32px,
+    --p3: 24px,
+    --p4: 16px,
+    --p5: 8px,
+  ));
 }
 
 body {

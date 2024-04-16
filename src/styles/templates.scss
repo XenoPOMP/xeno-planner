@@ -8,6 +8,8 @@
 @import "mixins/full-bleed";
 @import "mixins/padding";
 @import "mixins/desktopHover";
+@import "mixins/cascade-down";
+@import "mixins/assign-variable";
 
 // Import templates
 @import "templates/contentlessOverlay";
