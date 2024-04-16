@@ -1,3 +1,6 @@
 .designSystem {
-  @apply bg-primary-bg text-primary-font;
+  @apply bg-primary-bg text-primary-font
+         flex flex-col;
+
+  gap: var(--p-level-1);
 }
