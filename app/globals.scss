@@ -5,17 +5,34 @@
 @import "src/styles/templates";
 
 :root {
-  font-size: 20px;
-
   // Design system related variables
   // Paddings
   @include cascadeDown($mobileBreakpoint, (
-    --p1: 56px,
-    --p2: 32px,
-    --p3: 24px,
-    --p4: 16px,
-    --p5: 8px,
+    --p-level-1: 56px,
+    --p-level-2: 32px,
+    --p-level-3: 24px,
+    --p-level-4: 16px,
+    --p-level-5: 8px,
   ));
+
+  // Headings
+  @include cascadeDown($mobileBreakpoint, (
+          --heading-1: 32px,
+          --heading-2: 24px,
+          --heading-3: 20px,
+          --heading-4: 16px,
+          --heading-5: 14px,
+  ));
+
+  // Text
+  @include cascadeDown($mobileBreakpoint, (
+    --p24: 24px,
+    --p20: 20px,
+    --p16: 16px,
+    --p14: 14px,
+  ));
+
+  font-size: var(--p20);
 }
 
 body {
