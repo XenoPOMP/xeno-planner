@@ -40,6 +40,8 @@ module.exports = {
     'at-rule-no-unknown': null,
     'scss/at-rule-no-unknown': null,
     'no-empty-source': null,
+    'scss/at-if-closing-brace-space-after': null,
+    'scss/at-if-closing-brace-newline-after': null,
   },
   defaultSeverity: 'warning',
   plugins: ['stylelint-scss'],
