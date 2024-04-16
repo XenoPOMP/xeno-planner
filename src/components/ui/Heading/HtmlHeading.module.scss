@@ -1,0 +1,25 @@
+.heading {
+  &:is(h1, h2, h3, h4, h5) {
+    @apply font-bold;
+  }
+
+  &:is(h1) {
+    font-size: var(--heading-1);
+  }
+
+  &:is(h2) {
+    font-size: var(--heading-2);
+  }
+
+  &:is(h3) {
+    font-size: var(--heading-3);
+  }
+
+  &:is(h4) {
+    font-size: var(--heading-4);
+  }
+
+  &:is(h5) {
+    font-size: var(--heading-5);
+  }
+}
