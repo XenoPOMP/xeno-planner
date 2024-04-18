@@ -25,4 +25,13 @@
   &.active {
     @apply bg-accent;
   }
+
+  @include endAtFixed($mobileBreakpoint) {
+    @apply flex-center;
+    @include paddingVertical(var(--p-level-4));
+
+    .linkText {
+      display: none;
+    }
+  }
 }

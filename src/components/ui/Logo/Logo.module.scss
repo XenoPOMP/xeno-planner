@@ -1,5 +1,8 @@
+@import "src/styles/templates";
+
 a.logo {
   position: relative;
+  overflow: hidden;
 
   &.sidebar {
     @apply flex items-center justify-start;
@@ -13,6 +16,12 @@ a.logo {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     line-height: normal;
+
+    @include endAtFixed($mobileBreakpoint) {
+      & > strong {
+        display: none;
+      }
+    }
   }
 
   .preid {

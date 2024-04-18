@@ -27,7 +27,7 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
   };
 
   return (
-    <li>
+    <li className={cn('w-full')}>
       <Link
         className={cn(
           styles.menuItem,
@@ -40,9 +40,14 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
         aria-disabled={ariaDisabled}
         {...props}
       >
-        {Icon && <Icon size={'1.33em'} />}
+        {Icon && (
+          <Icon
+            size={'1.33em'}
+            className={cn('flex-shrink-0')}
+          />
+        )}
 
-        {children}
+        <span className={cn(styles.linkText)}>{children}</span>
       </Link>
     </li>
   );
