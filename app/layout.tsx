@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { type ReactNode } from 'react';
 
-import CoreLayout from '@/src/components/layout/CoreLayout/CoreLayout';
 import Providers from '@/src/components/layout/Providers/Providers';
 import { MainFont } from '@/src/fonts';
 import { useEnv } from '@/src/hooks/use-env';
@@ -47,7 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang='ru'>
       <body className={MainFont.className}>
         <Providers>
-          <CoreLayout>{children}</CoreLayout>
+          <>{children}</>
         </Providers>
       </body>
     </html>
