@@ -9,9 +9,16 @@
   @include paddingHorizontal(var(--p-level-4));
   @include paddingVertical(calc(var(--p-level-4) * .75));
 
-  transition: .1s ease-out;
+  $anim: .1s ease-out;
+  transition: $anim background-color,
+              $anim opacity;
 
   @include desktopHover {
     @apply bg-secondary-bg-accent;
+  }
+
+  &[aria-disabled~="true"] {
+    pointer-events: none;
+    opacity: .5;
   }
 }

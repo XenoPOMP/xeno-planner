@@ -10,6 +10,7 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
   className,
   children,
   icon: Icon,
+  'aria-disabled': ariaDisabled,
   ...props
 }) => {
   return (
@@ -17,6 +18,7 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
       <Link
         className={cn(styles.menuItem, className)}
         href={href}
+        aria-disabled={ariaDisabled}
         {...props}
       >
         {Icon && <Icon size={'1.33em'} />}

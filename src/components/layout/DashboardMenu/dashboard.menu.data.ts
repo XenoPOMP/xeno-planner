@@ -10,25 +10,30 @@ export const dashboardMenuData: Array<
     icon: LayoutDashboard,
     href: '/dashboard',
     children: 'Личный кабинет',
+    'aria-disabled': false,
   },
   {
     icon: LayoutDashboard,
     href: '/tasks',
     children: 'Задачи',
+    'aria-disabled': false,
   },
   {
     icon: Timer,
     href: '/pomodoro',
     children: 'Pomodoro',
+    'aria-disabled': false,
   },
   {
     icon: CalendarRange,
     href: '/time-blocking',
     children: 'Распорядок дня',
+    'aria-disabled': false,
   },
   {
     icon: Settings,
     href: '/settings',
     children: 'Настройки',
+    'aria-disabled': false,
   },
 ];
