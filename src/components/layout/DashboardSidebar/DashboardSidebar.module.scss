@@ -1,3 +1,5 @@
+@import "src/styles/templates";
+
 aside.sidebar {
   @apply overflow-y-auto bg-secondary-bg
           border-secondary-border
@@ -5,4 +7,12 @@ aside.sidebar {
 
   border-right-style: solid;
   border-right-width: 1px;
+
+  @include endAtFixed($mobileBreakpoint) {
+    @apply flex-row;
+
+    border-right: none;
+    border-top-style: solid;
+    border-top-width: 1px;
+  }
 }

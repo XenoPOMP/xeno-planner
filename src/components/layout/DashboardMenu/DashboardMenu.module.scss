@@ -1,0 +1,13 @@
+@import "src/styles/templates";
+
+nav.menu {
+  @include endAtFixed($mobileBreakpoint) {
+    ul {
+      @apply flex;
+
+      &, & > li, & > li > a {
+        @apply h-full;
+      }
+    }
+  }
+}

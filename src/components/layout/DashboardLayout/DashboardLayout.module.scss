@@ -1,3 +1,5 @@
+@import "src/styles/templates";
+
 .wrapper {
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -7,5 +9,14 @@
   & > main {
     width: 100%;
     overflow-y: auto;
+  }
+
+  @include endAtFixed($mobileBreakpoint) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr max-content;
+
+    & > main {
+      grid-row: 1 / span 1;
+    }
   }
 }

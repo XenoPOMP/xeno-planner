@@ -6,6 +6,7 @@ import cn from 'classnames';
 import { dashboardMenuData } from '@/src/components/layout/DashboardMenu/dashboard.menu.data.ts';
 import DashboardMenuItem from '@/src/components/layout/DashboardMenuItem';
 
+import styles from './DashboardMenu.module.scss';
 import type { DashboardMenuProps } from './DashboardMenu.props';
 
 const DashboardMenu: VariableFC<'nav', DashboardMenuProps, 'children'> = ({
@@ -14,7 +15,7 @@ const DashboardMenu: VariableFC<'nav', DashboardMenuProps, 'children'> = ({
 }) => {
   return (
     <nav
-      className={cn('flex-grow overflow-y-auto', className)}
+      className={cn('flex-grow overflow-y-auto', styles.menu, className)}
       {...props}
     >
       <ul>
