@@ -3,7 +3,7 @@ import ogWideImg from '@/public/open-graph/og (1200x627).png';
 import type IAppConstants from '@/src/interfaces/AppConstants.interface';
 
 export const AppConstants: IAppConstants = {
-  appName: 'Next Template',
+  appName: 'XENO Planner',
   defaultCanonical: 'http://localhost:3000',
   sharedOpenGraphConfig: {
     images: [
@@ -18,7 +18,7 @@ export const AppConstants: IAppConstants = {
         height: 627,
       },
     ],
-    siteName: 'Next Template',
+    siteName: 'XENO Planner',
     url: process.env.CANONICAL_URL,
   },
 };
