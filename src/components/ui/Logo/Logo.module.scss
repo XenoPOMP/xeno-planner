@@ -1,12 +1,14 @@
 a.logo {
-  @apply flex items-center;
+  &.sidebar {
+    @apply flex items-center justify-start;
 
-  padding: var(--p-level-2);
-  gap: var(--p-level-5);
-  font-size: var(--p24);
+    padding: var(--p-level-3);
+    gap: var(--p-level-5);
+    font-size: var(--p24);
 
-  // Border
-  border-color: inherit;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+    // Border
+    border-color: inherit;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+  }
 }
