@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { type ComponentProps } from 'react';
 
 import { AppConstants } from '@/app/app.constants.ts';
+import packageJson from '@/package.json';
 
 import styles from './Logo.module.scss';
 import type { LogoProps } from './Logo.props';
@@ -12,6 +13,7 @@ import type { LogoProps } from './Logo.props';
 const Logo: VariableFC<typeof Link, LogoProps, 'children' | 'href'> = ({
   className,
   variant = 'sidebar',
+  preid = true,
   ...props
 }) => {
   const variantsMap: Record<
@@ -22,6 +24,11 @@ const Logo: VariableFC<typeof Link, LogoProps, 'children' | 'href'> = ({
       className: styles.sidebar,
     },
   };
+
+  const preidLabel = packageJson.version.replace(
+    /(^(\d\.){2}\d-)|(\.\d$)/gi,
+    '',
+  );
 
   return (
     <Link
@@ -35,6 +42,8 @@ const Logo: VariableFC<typeof Link, LogoProps, 'children' | 'href'> = ({
       />
 
       <strong>{AppConstants.appName}</strong>
+
+      {preid && <div className={cn(styles.preid)}>{preidLabel}</div>}
     </Link>
   );
 };
