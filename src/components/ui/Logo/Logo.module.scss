@@ -17,7 +17,7 @@ a.logo {
     border-bottom-width: 1px;
     line-height: normal;
 
-    @include endAtFixed($mobileBreakpoint) {
+    @include endAtFixed($tabletBreakpoint) {
       & > strong {
         display: none;
       }
@@ -33,7 +33,7 @@ a.logo {
     font-size: .5em;
     rotate: 20deg;
 
-    @include endAtFixed($mobileBreakpoint) {
+    @include endAtFixed($tabletBreakpoint) {
       top: calc(var(--p-level-3) - 1em);
       right: calc(var(--p-level-3) - 1.5em);
     }

@@ -26,7 +26,7 @@
     @apply bg-accent;
   }
 
-  @include endAtFixed($mobileBreakpoint) {
+  @include endAtFixed($tabletBreakpoint) {
     @apply flex-center;
     @include paddingVertical(var(--p-level-4));
 
