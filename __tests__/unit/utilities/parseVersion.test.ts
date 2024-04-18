@@ -21,9 +21,19 @@ describe('parseVersion func', () => {
   });
 
   test('Preid is parsed correctly', () => {
+    testParseVersion('0.0.0-alpha.0', {
+      version: '0.0.0',
+      preid: 'alpha',
+    });
+
     testParseVersion('0.0.0-beta.0', {
       version: '0.0.0',
       preid: 'beta',
+    });
+
+    testParseVersion('0.0.0-rc.0', {
+      version: '0.0.0',
+      preid: 'rc',
     });
   });
 
