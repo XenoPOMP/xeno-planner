@@ -15,7 +15,7 @@ export const lightTheme = {
     },
     secondary: {
       bg: '#151315',
-      'bg-brutal': '#0B0B0B',
+      'bg-accent': '#1A1A1A',
       border: '#404142',
     },
   },

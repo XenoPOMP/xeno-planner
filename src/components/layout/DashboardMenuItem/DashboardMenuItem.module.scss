@@ -1,0 +1,17 @@
+@import "src/styles/templates";
+
+.menuItem {
+  @apply flex items-center;
+
+  line-height: normal;
+  gap: var(--p-level-5);
+
+  @include paddingHorizontal(var(--p-level-4));
+  @include paddingVertical(calc(var(--p-level-4) * .75));
+
+  transition: .1s ease-out;
+
+  @include desktopHover {
+    @apply bg-secondary-bg-accent;
+  }
+}
