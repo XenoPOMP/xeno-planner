@@ -21,4 +21,8 @@
     pointer-events: none;
     opacity: .5;
   }
+
+  &.active {
+    @apply bg-accent;
+  }
 }

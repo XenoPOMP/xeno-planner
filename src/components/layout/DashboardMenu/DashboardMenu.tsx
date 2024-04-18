@@ -1,3 +1,5 @@
+'use client';
+
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
