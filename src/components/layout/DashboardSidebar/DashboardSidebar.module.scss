@@ -1,0 +1,7 @@
+aside.sidebar {
+  @apply overflow-y-auto bg-secondary-bg
+          border-secondary-border;
+
+  border-right-style: solid;
+  border-right-width: 1px;
+}
