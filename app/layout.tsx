@@ -10,8 +10,6 @@ import { generateOpenGraph, generateStaticMetadata } from '@/src/utils/seo';
 import { AppConstants } from './app.constants';
 import './globals.scss';
 
-const mainFont = MainFont();
-
 export async function generateMetadata(): Promise<Metadata> {
   const env = useEnv();
   const CANONICAL_URL =
@@ -47,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='ru'>
-      <body className={mainFont.className}>
+      <body className={MainFont.className}>
         <Providers>
           <CoreLayout>{children}</CoreLayout>
         </Providers>
