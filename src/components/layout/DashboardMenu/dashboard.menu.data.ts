@@ -1,4 +1,10 @@
-import { CalendarRange, LayoutDashboard, Settings, Timer } from 'lucide-react';
+import {
+  CalendarRange,
+  LayoutDashboard,
+  Settings,
+  SquareKanban,
+  Timer,
+} from 'lucide-react';
 import { type ComponentProps } from 'react';
 
 import type DashboardMenuItem from '@/src/components/layout/DashboardMenuItem';
@@ -13,7 +19,7 @@ export const dashboardMenuData: Array<
     'aria-disabled': false,
   },
   {
-    icon: LayoutDashboard,
+    icon: SquareKanban,
     href: '/tasks',
     children: 'Задачи',
     'aria-disabled': false,
