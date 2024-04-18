@@ -6,6 +6,7 @@ import { type ComponentProps } from 'react';
 
 import { AppConstants } from '@/app/app.constants.ts';
 import packageJson from '@/package.json';
+import { parseVersion } from '@/src/utils/misc';
 
 import styles from './Logo.module.scss';
 import type { LogoProps } from './Logo.props';
@@ -25,11 +26,7 @@ const Logo: VariableFC<typeof Link, LogoProps, 'children' | 'href'> = ({
     },
   };
 
-  const preidRegex = /(\d\.){2}\d-\w+\.\d/gi;
-  const preidLabel = packageJson.version.replace(
-    /(^(\d\.){2}\d-)|(\.\d$)/gi,
-    '',
-  );
+  const { preid: parsedPreid } = parseVersion(packageJson.version);
 
   return (
     <Link
@@ -44,8 +41,8 @@ const Logo: VariableFC<typeof Link, LogoProps, 'children' | 'href'> = ({
 
       <strong>{AppConstants.appName}</strong>
 
-      {preid && preidRegex.test(packageJson.version) && (
-        <div className={cn(styles.preid)}>{preidLabel}</div>
+      {preid && parsedPreid !== undefined && (
+        <div className={cn(styles.preid)}>{parsedPreid}</div>
       )}
     </Link>
   );
