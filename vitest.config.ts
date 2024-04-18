@@ -6,10 +6,14 @@ const testingExclusion: string[] = [
   // Default exclusions
   ...configDefaults.exclude,
 
+  // Libraries & frameworks
   '**/.next',
+  '.storybook',
+
+  // Testing artifacts
   './coverage',
   './app/test',
-  '.storybook',
+  '__tests__/{e2e,assets}',
 
   // Resource configs
   '.*rc',
