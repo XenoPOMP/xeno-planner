@@ -32,5 +32,10 @@ a.logo {
     right: calc(var(--p-level-3) - 1.75em);
     font-size: .5em;
     rotate: 20deg;
+
+    @include endAtFixed($mobileBreakpoint) {
+      top: calc(var(--p-level-3) - 1em);
+      right: calc(var(--p-level-3) - 1.5em);
+    }
   }
 }
