@@ -8,7 +8,10 @@ const testingExclusion: string[] = [
 
   // Libraries & frameworks
   '**/.next',
+
+  // Storybook
   '.storybook',
+  '**/*.stories.{ts,tsx}',
 
   // Testing artifacts
   './coverage',
