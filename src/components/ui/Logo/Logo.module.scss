@@ -1,0 +1,12 @@
+a.logo {
+  @apply flex items-center;
+
+  padding: var(--p-level-2);
+  gap: var(--p-level-5);
+  font-size: var(--p24);
+
+  // Border
+  border-color: inherit;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
