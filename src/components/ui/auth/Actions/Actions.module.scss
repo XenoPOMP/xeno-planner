@@ -1,0 +1,11 @@
+footer.actions {
+  @apply flex flex-wrap justify-center;
+
+  gap: var(--p-level-3);
+}
+
+a.formLink {
+  @apply text-accent-bright hover:text-primary-font;
+
+  transition: .15s ease color;
+}
