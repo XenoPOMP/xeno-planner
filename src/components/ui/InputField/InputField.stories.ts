@@ -21,6 +21,7 @@ export const Default: Story = {
     icon: Mail,
     description: 'Поле ввода электронной почты',
     placeholder: 'Email',
+    type: 'email',
   },
 };
 
