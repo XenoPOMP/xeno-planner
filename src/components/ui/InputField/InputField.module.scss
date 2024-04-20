@@ -1,0 +1,52 @@
+@import "src/styles/templates";
+
+.holder {
+  @apply bg-field-bg text-[.9em] rounded-[8px]
+         flex items-center;
+
+  gap: var(--p-level-5);
+  min-height: 2.7em;
+  font-size: 1rem;
+
+  @include paddingHorizontal(var(--p-level-3));
+
+  .placeholderText {
+    @apply text-field-placeholder;
+  }
+
+  label.inline {
+    @apply flex flex-grow flex-col;
+
+    gap: 3px;
+
+    & > input, .hint {
+      line-height: 100%;
+    }
+
+    .hint {
+      @apply text-field-placeholder select-none;
+
+      $anim: .15s ease-out;
+
+      // Not focused
+      translate: 0 calc(100% - .25em);
+      font-size: .9em;
+      transition: $anim translate,
+                  $anim font-size;
+
+      &:has(+ input:focus),
+      &:has(+ input[data-focused~="true"]) {
+        font-size: .6em;
+        translate: 0;
+      }
+    }
+
+    & > input {
+      @apply flex-grow bg-transparent;
+
+      border: none;
+      outline: none;
+      // font-size: .8em;
+    }
+  }
+}
