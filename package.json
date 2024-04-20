@@ -73,6 +73,7 @@
     "@typescript-eslint/parser": "^7.7.0",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-istanbul": "^1.5.0",
+    "@xeno-planner/backend-types": "^0.1.0",
     "@xenopomp/advanced-types": "^1.x",
     "concurrently": "^8.2.2",
     "cypress": "^13.7.0",
