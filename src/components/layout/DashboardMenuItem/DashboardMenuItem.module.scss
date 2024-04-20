@@ -35,6 +35,10 @@
     }
   }
 
+  @media ($mobileBreakpoint < width < $tabletBreakpoint) {
+    aspect-ratio: 1;
+  }
+
   @include endAtFixed($mobileBreakpoint) {
     // height: 3.5em !important;
   }
