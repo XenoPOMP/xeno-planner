@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { type ReactNode } from 'react';
-import { Toaster } from 'sonner';
 
+import CustomToaster from '@/src/components/layout/CustomToaster';
 import Providers from '@/src/components/layout/Providers/Providers';
 import { MainFont } from '@/src/fonts';
 import { useEnv } from '@/src/hooks/use-env';
@@ -50,15 +50,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <>
             {children}
 
-            <Toaster
-              toastOptions={{
-                className:
-                  'bg-secondary-bg text-primary-font border-secondary-border',
-                style: {
-                  fontFamily: 'inherit',
-                },
-              }}
-            />
+            <CustomToaster />
           </>
         </Providers>
       </body>
