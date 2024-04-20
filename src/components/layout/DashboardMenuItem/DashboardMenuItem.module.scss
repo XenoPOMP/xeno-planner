@@ -34,4 +34,8 @@
       display: none;
     }
   }
+
+  @include endAtFixed($mobileBreakpoint) {
+    // height: 3.5em !important;
+  }
 }

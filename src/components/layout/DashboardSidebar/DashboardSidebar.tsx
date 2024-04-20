@@ -10,7 +10,7 @@ import type { DashboardSidebarProps } from './DashboardSidebar.props';
 const DashboardSidebar: FC<DashboardSidebarProps> = () => {
   return (
     <aside className={cn(styles.sidebar)}>
-      <Logo />
+      <Logo className={cn(styles.logo)} />
 
       <DashboardMenu />
     </aside>

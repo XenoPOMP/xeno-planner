@@ -6,7 +6,7 @@ nav.menu {
       @apply flex;
 
       &, & > li, & > li > a {
-        @apply h-full;
+        @apply h-[3.5em];
       }
     }
   }
