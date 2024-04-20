@@ -1,0 +1,24 @@
+@import "src/styles/templates";
+
+form.auth {
+  @apply bg-secondary-bg border-secondary-border rounded-[8px];
+
+  border-width: 1px;
+  border-style: solid;
+
+  padding: var(--p-level-1);
+
+  .heading {
+    @apply text-center;
+
+    &:has(+ .body) {
+      margin-bottom: var(--p-level-2);
+    }
+  }
+
+  .body {
+    @apply flex flex-col;
+
+    gap: var(--p-level-3);
+  }
+}

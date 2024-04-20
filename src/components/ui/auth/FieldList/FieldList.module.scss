@@ -1,0 +1,5 @@
+.list {
+  @apply flex flex-col;
+
+  gap: var(--p-level-4);
+}
