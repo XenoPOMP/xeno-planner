@@ -13,6 +13,7 @@ const AuthForm: VariableFC<'form', AuthFormProps> = ({
   className,
   children,
   heading,
+  style,
   ...props
 }) => {
   return (
@@ -22,6 +23,10 @@ const AuthForm: VariableFC<'form', AuthFormProps> = ({
         onSubmit?.(ev);
       }}
       className={cn(styles.auth, className)}
+      style={{
+        width: 'min(600px, 100%)',
+        ...style,
+      }}
       {...props}
     >
       {heading && (

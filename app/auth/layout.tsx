@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const AuthLayout: FC<PropsWith<'children', {}>> = ({ children }) => {
-  return <main className={cn('h-dvh flex-center')}>{children}</main>;
+  return <main className={cn('h-dvh flex-center px-[1rem]')}>{children}</main>;
 };
 
 export default AuthLayout;
