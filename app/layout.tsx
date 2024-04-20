@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { type ReactNode } from 'react';
+import { Toaster } from 'sonner';
 
 import Providers from '@/src/components/layout/Providers/Providers';
 import { MainFont } from '@/src/fonts';
@@ -46,7 +47,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang='ru'>
       <body className={MainFont.className}>
         <Providers>
-          <>{children}</>
+          <>
+            {children}
+
+            <Toaster
+              toastOptions={{
+                className:
+                  'bg-secondary-bg text-primary-font border-secondary-border',
+                style: {
+                  fontFamily: 'inherit',
+                },
+              }}
+            />
+          </>
         </Providers>
       </body>
     </html>
