@@ -1,6 +1,8 @@
 @import "src/styles/templates";
 
 nav.menu {
+  @extend %noScrollbar;
+
   @include endAtFixed($mobileBreakpoint) {
     ul {
       @apply flex;
