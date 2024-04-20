@@ -1,0 +1,10 @@
+@import "src/styles/templates";
+
+button.uiButton {
+  @apply bg-accent rounded-[8px];
+
+  font-size: var(--p16);
+
+  @include paddingVertical(var(--p-level-4));
+  @include paddingHorizontal(var(--p-level-3));
+}

@@ -3,6 +3,7 @@
 import { KeyRound, Mail } from 'lucide-react';
 import { type FC } from 'react';
 
+import Button from '@/src/components/ui/Button';
 import InputField from '@/src/components/ui/InputField';
 import AuthForm from '@/src/components/ui/auth/AuthForm';
 import FieldList from '@/src/components/ui/auth/FieldList';
@@ -36,6 +37,8 @@ const LoginForm: FC<LoginFormProps> = () => {
           formNoValidate
           {...NO_AUTOCOMPLETE}
         />
+
+        <Button>Войти</Button>
       </FieldList>
     </AuthForm>
   );
