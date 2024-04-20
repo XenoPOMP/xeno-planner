@@ -1,9 +1,19 @@
 import type { Metadata } from 'next';
 import { type FC } from 'react';
 
+import { generateOpenGraph } from '@/src/utils/seo';
+
 export async function generateMetadata(): Promise<Metadata> {
+  const title = 'Задачи';
+  const description = undefined;
+
   return {
-    title: 'Задачи',
+    title,
+    description,
+    openGraph: generateOpenGraph({
+      title,
+      description,
+    }),
   };
 }
 

@@ -4,6 +4,7 @@ import type IAppConstants from '@/src/interfaces/AppConstants.interface';
 
 export const AppConstants: IAppConstants = {
   appName: 'XENO Planner',
+  desc: 'Description...',
   defaultCanonical: 'http://localhost:3000',
   sharedOpenGraphConfig: {
     images: [
