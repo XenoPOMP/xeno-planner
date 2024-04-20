@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Mail } from 'lucide-react';
+import { KeyRound, Mail } from 'lucide-react';
 
 import InputField from './InputField';
 
@@ -21,5 +21,14 @@ export const Default: Story = {
     icon: Mail,
     description: 'Поле ввода электронной почты',
     placeholder: 'Email',
+  },
+};
+
+export const Password: Story = {
+  args: {
+    icon: KeyRound,
+    description: 'Поле ввода пароля',
+    placeholder: 'Пароль',
+    type: 'password',
   },
 };

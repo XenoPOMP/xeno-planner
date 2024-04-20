@@ -1,6 +1,9 @@
+'use client';
+
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
-import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
+import { type HTMLInputTypeAttribute, useState } from 'react';
 
 import { useUniqueId } from '@/src/hooks/useUniqueId';
 
@@ -14,10 +17,23 @@ const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
   placeholder,
   description,
   onChange,
+  type,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false);
   const inputId = id || useUniqueId(gen => `input:${gen}`);
+
+  const processType = (
+    type: HTMLInputTypeAttribute,
+  ): HTMLInputTypeAttribute => {
+    // Hide and show password
+    if (type === 'password') {
+      return !isPasswordShown ? 'password' : 'text';
+    }
+
+    return type;
+  };
 
   return (
     <div
@@ -51,7 +67,9 @@ const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
         <input
           id={inputId}
           className={cn(className)}
+          data-password-shown={isPasswordShown}
           data-focused={isFocused}
+          type={processType(type || 'text')}
           onChange={ev => {
             setIsFocused(ev.target.value.length > 0);
             onChange?.(ev);
@@ -59,6 +77,21 @@ const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
           {...props}
         />
       </label>
+
+      {type === 'password' && (
+        <button
+          className={cn(styles.placeholderText)}
+          onClick={() => {
+            setIsPasswordShown(prev => !prev);
+          }}
+        >
+          <div className={cn('sr-only')}>
+            {isPasswordShown ? 'Скрыть пароль' : 'Открыть пароль'}
+          </div>
+
+          {isPasswordShown ? <Eye /> : <EyeOff />}
+        </button>
+      )}
     </div>
   );
 };
