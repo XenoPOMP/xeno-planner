@@ -3,6 +3,10 @@ import { Toaster } from 'sonner';
 
 import type { CustomToasterProps } from './CustomToaster.props';
 
+/**
+ * Styled toaster component.
+ * @constructor
+ */
 const CustomToaster: FC<CustomToasterProps> = () => {
   return (
     <Toaster
