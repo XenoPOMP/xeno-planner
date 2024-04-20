@@ -133,7 +133,7 @@ dist
 .pnp.*
 
 # Template development specific files
-app/test
+app/**/test
 **/{ignore}/*
 
 # Vitest
