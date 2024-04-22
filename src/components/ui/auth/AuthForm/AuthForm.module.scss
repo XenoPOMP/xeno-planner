@@ -1,11 +1,11 @@
 @import "src/styles/templates";
 
 form.auth {
-  @apply bg-secondary-bg border-secondary-border rounded-[8px];
+  @apply bg-secondary-bg border-secondary-border rounded-[8px]
+         flex-center flex-col;
 
   border-width: 1px;
   border-style: solid;
-
   padding: var(--p-level-1);
 
   .heading {
