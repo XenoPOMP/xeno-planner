@@ -14,12 +14,18 @@ const AuthForm: VariableFC<'form', AuthFormProps> = ({
   children,
   heading,
   style,
+  allowDefaultEvent,
   ...props
 }) => {
   return (
     <form
       onSubmit={ev => {
-        ev.preventDefault();
+        // Prevent default only
+        // if user disallow it (default behaviour).
+        if (!allowDefaultEvent) {
+          ev.preventDefault();
+        }
+
         onSubmit?.(ev);
       }}
       className={cn(styles.auth, className)}
