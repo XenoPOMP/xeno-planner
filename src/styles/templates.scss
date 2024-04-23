@@ -11,6 +11,7 @@
 @import "mixins/cascade-down";
 @import "mixins/assign-variable";
 @import "mixins/maskImage";
+@import "mixins/polyfills";
 
 // Import templates
 @import "templates/contentlessOverlay";
