@@ -18,5 +18,9 @@ export const darkTheme: CustomTheme = {
       bg: '#262626',
       placeholder: '#A8A8A8',
     },
+    shiny: {
+      bg: '#0F0F0F',
+      blink: '#FAFAFA',
+    },
   },
 };

@@ -13,7 +13,7 @@ button.uiButton {
     @include paddingHorizontal(calc(var(--p-level-3) * .5));
   }
 
-  // Themes
+  // Primary
   &.themePrimary {
     @apply bg-accent;
 

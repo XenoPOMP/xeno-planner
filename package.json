@@ -39,6 +39,7 @@
     "axios": "1.6.8",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
+    "framer-motion": "^11.1.7",
     "js-cookie": "^3.0.5",
     "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.372.0",

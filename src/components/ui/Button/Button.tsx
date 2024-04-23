@@ -1,42 +1,29 @@
-import type { Defined, VariableFC } from '@xenopomp/advanced-types';
+import type { PropsWith, VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
 import styles from './Button.module.scss';
 import type { ButtonProps } from './Button.props';
 
-type ClassnameRecord = Required<{
-  [PropertyType in keyof Omit<ButtonProps, 'thin'>]: Record<
-    Defined<ButtonProps[PropertyType]>,
-    string | undefined
-  >;
-}>;
-
-const Button: VariableFC<'button', ButtonProps> = ({
+const Button: VariableFC<
+  'button',
+  PropsWith<'children', ButtonProps>,
+  'children'
+> = ({
   className,
   children,
-  theme = 'primary',
-  variant = 'default',
   thin = false,
+  hollow = false,
+  unstyled = false,
   ...props
 }) => {
-  const classnames: ClassnameRecord = {
-    theme: {
-      primary: styles.themePrimary,
-    },
-    variant: {
-      default: '',
-      hollow: styles.hollow,
-    },
-  };
-
   return (
     <button
       className={cn(
-        styles.uiButton,
-        classnames.theme[theme],
-        classnames.variant[variant],
         {
-          [`${styles.thin}`]: thin,
+          [`${styles.uiButton}`]: !unstyled && true,
+          [`${styles.themePrimary}`]: !unstyled && true,
+          [`${styles.thin}`]: !unstyled && thin,
+          [`${styles.hollow}`]: !unstyled && hollow,
         },
         className,
       )}

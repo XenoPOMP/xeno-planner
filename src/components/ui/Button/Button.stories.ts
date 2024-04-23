@@ -18,17 +18,8 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     children: 'Click me',
-    theme: 'primary',
-    variant: 'default',
     thin: false,
-  },
-};
-
-export const PrimaryHollow: Story = {
-  args: {
-    children: 'Click me',
-    theme: 'primary',
-    variant: 'hollow',
-    thin: false,
+    hollow: false,
+    unstyled: false,
   },
 };
