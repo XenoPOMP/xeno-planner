@@ -1,10 +1,30 @@
 @import "src/styles/templates";
 
 button.uiButton {
-  @apply bg-accent rounded-[8px];
+  @apply rounded-[8px];
 
   font-size: var(--p16);
 
   @include paddingVertical(var(--p-level-4));
   @include paddingHorizontal(var(--p-level-3));
+
+  &.thin {
+    @include paddingVertical(calc(var(--p-level-4) * .5));
+    @include paddingHorizontal(calc(var(--p-level-3) * .5));
+  }
+
+  // Themes
+  &.themePrimary {
+    @apply bg-accent;
+
+    &.hollow {
+      @apply bg-transparent border-[1px] border-accent;
+
+      transition: .08s ease background;
+
+      &:hover {
+        @apply bg-accent;
+      }
+    }
+  }
 }
