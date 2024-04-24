@@ -3772,10 +3772,10 @@
     "@webassemblyjs/ast" "1.12.1"
     "@xtuc/long" "4.2.2"
 
-"@xeno-planner/backend-types@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@xeno-planner/backend-types/-/backend-types-0.1.0.tgz#4aa3c055791e9338a94bb1f25da1995638216b90"
-  integrity sha512-QcK742RZFsyPL2YzwkPmwzndham2yCdnBcyVdMLQVBrHOb3yOfywWNwy6Pg/+kThV2oOsgwQiZHbceb4YDKXNQ==
+"@xeno-planner/backend-types@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@xeno-planner/backend-types/-/backend-types-1.0.0.tgz#2efe0c2773acf19c14486add4bc492795e8fa25c"
+  integrity sha512-u12RFddDtsiq9ZasXWBVmBe9RHKMA+TBvQD9uaMR5ogqX33rlJzexiv/JOVUl0rep7G18yHt5/yvbHTSNXOb1A==
 
 "@xenopomp/advanced-types@^1.x":
   version "1.7.4"
