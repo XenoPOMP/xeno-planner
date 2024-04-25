@@ -36,13 +36,18 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
 
         {children && <section className={cn(styles.grid)}>{children}</section>}
 
-        <Button
-          thin
-          hollow
-          className={cn('w-fit')}
-        >
-          Save
-        </Button>
+        {save && (
+          <Button
+            thin
+            hollow
+            className={cn('w-fit')}
+            onClick={() => {
+              save?.action?.();
+            }}
+          >
+            {save.label}
+          </Button>
+        )}
       </UiContainer>
     </article>
   );

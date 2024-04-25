@@ -16,8 +16,18 @@ import InputField from '@/src/components/ui/InputField';
 import type { AccountSettingsProps } from './AccountSettings.props';
 
 const AccountSettings: FC<AccountSettingsProps> = () => {
+  const handleSave = () => {
+    console.log('Account saving started...');
+  };
+
   return (
-    <SettingGroup heading={'Настройки аккаунта'}>
+    <SettingGroup
+      heading={'Настройки аккаунта'}
+      save={{
+        label: 'Сохранить',
+        action: handleSave,
+      }}
+    >
       <InputField
         icon={Mail}
         placeholder={'Email'}
