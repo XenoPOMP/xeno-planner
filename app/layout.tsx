@@ -44,10 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang='ru'
-      suppressHydrationWarning
-    >
+    <html lang='ru'>
       <body className={MainFont.className}>
         <Providers>
           <>
