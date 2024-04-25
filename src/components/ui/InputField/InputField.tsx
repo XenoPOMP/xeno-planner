@@ -19,9 +19,9 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
   onChange,
   type = 'text',
   children,
+  focused = false,
   outerRef,
   outerOnClick,
-  focused = false,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(focused || false);

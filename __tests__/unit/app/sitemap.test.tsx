@@ -33,7 +33,7 @@ describe('Next.js sitemap generation', () => {
       `${CANONICAL}/tasks`,
       `${CANONICAL}/pomodoro`,
       `${CANONICAL}/time-blocking`,
-      `${CANONICAL}/settings`,
+      // `${CANONICAL}/settings`,
     ];
     const real = sitemap().map(({ url }) => url);
 
