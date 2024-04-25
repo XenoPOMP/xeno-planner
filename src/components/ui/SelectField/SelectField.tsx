@@ -15,7 +15,14 @@ const SelectField: VariableFC<
   typeof InputField,
   SelectFieldProps,
   'children' | 'outerRef' | 'focused'
-> = ({ className, outerOnClick, currentItem, ...props }) => {
+> = ({
+  className,
+  outerOnClick,
+  currentItem,
+  items,
+  onSelection,
+  ...props
+}) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const outerRef = useOutside<HTMLDivElement>('click', () => {
     setExpanded(false);
@@ -65,6 +72,24 @@ const SelectField: VariableFC<
       >
         {expanded ? 'Hide' : 'Show'}
       </button>
+
+      {items && expanded && (
+        <div className={cn(styles.selectionGroup)}>
+          {items?.map(({ icon: Icon, name, value }, index) => (
+            <div
+              key={`[${index}] ${value}`}
+              onClick={() => {
+                onSelection?.({ icon: Icon, name, value });
+              }}
+              className={cn('flex items-center', styles.item)}
+            >
+              {Icon && <Icon size={'1em'} />}
+
+              {name || value}
+            </div>
+          ))}
+        </div>
+      )}
     </InputField>
   );
 };

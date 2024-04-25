@@ -1,6 +1,13 @@
+@import "src/styles/templates";
+
 .selectField {
+  @apply relative;
+
   &.expanded {
     // No empty!!!
+
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   & > label {
@@ -13,5 +20,30 @@
     grid-row: 1 / span 2;
     justify-self: center;
     align-self: center;
+  }
+
+  .selectionGroup {
+    @apply absolute left-0 w-full bg-inherit
+           rounded-b-[8px] overflow-hidden;
+
+    top: calc(100% + 2px);
+
+    .item {
+      @apply bg-field-bg cursor-pointer;
+
+      @include paddingHorizontal(var(--p-level-3));
+      @include paddingVertical(var(--p-level-4));
+
+      gap: var(--p-level-5);
+
+      $anim: .08s ease;
+      transition:
+              $anim background-color,
+              $anim color;
+
+      &:hover {
+        @apply bg-accent text-primary-font;
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 
 import SelectField from './SelectField';
 
@@ -21,6 +21,18 @@ export const Default: Story = {
     icon: Sun,
     placeholder: 'Тема',
     currentItem: 'Светлая',
+    items: [
+      {
+        icon: Sun,
+        name: 'Светлая',
+        value: 'light',
+      },
+      {
+        icon: Moon,
+        name: 'Темная',
+        value: 'dark',
+      },
+    ],
   },
 };
 
