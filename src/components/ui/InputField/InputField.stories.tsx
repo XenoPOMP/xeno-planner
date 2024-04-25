@@ -5,7 +5,7 @@ import { KeyRound, Mail, Moon } from 'lucide-react';
 import InputField from './InputField';
 
 const meta = {
-  title: 'UI/Input field',
+  title: 'UI/Fields/Input field [BASE]',
   component: InputField,
   tags: ['autodoc'],
   parameters: {

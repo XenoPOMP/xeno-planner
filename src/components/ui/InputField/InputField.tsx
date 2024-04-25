@@ -10,7 +10,7 @@ import { useUniqueId } from '@/src/hooks/useUniqueId';
 import styles from './InputField.module.scss';
 import type { InputFieldProps } from './InputField.props';
 
-const InputField: VariableFC<'input', InputFieldProps> = ({
+const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
   className,
   id,
   icon: Icon,
@@ -19,6 +19,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   onChange,
   type = 'text',
   children,
+  outerRef,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -42,6 +43,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
         [className || '']: children !== undefined,
       })}
       aria-hidden={children === undefined}
+      ref={outerRef}
     >
       {Icon && (
         <Icon
