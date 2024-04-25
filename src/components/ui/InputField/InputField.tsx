@@ -10,14 +10,15 @@ import { useUniqueId } from '@/src/hooks/useUniqueId';
 import styles from './InputField.module.scss';
 import type { InputFieldProps } from './InputField.props';
 
-const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
+const InputField: VariableFC<'input', InputFieldProps> = ({
   className,
   id,
   icon: Icon,
   placeholder,
   description,
   onChange,
-  type,
+  type = 'text',
+  children,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -37,8 +38,10 @@ const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
 
   return (
     <div
-      className={cn(styles.holder)}
-      aria-hidden
+      className={cn(styles.holder, {
+        [className || '']: children !== undefined,
+      })}
+      aria-hidden={children === undefined}
     >
       {Icon && (
         <Icon
@@ -48,35 +51,37 @@ const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
         />
       )}
 
-      <label
-        htmlFor={inputId}
-        className={cn(styles.inline)}
-        aria-hidden={false}
-      >
-        {description && <div className={cn('sr-only')}>{description}</div>}
+      {children || (
+        <label
+          htmlFor={inputId}
+          className={cn(styles.inline)}
+          aria-hidden={false}
+        >
+          {description && <div className={cn('sr-only')}>{description}</div>}
 
-        {placeholder && (
-          <div
-            className={cn(styles.hint)}
-            aria-hidden
-          >
-            {placeholder}
-          </div>
-        )}
+          {placeholder && (
+            <div
+              className={cn(styles.hint)}
+              aria-hidden
+            >
+              {placeholder}
+            </div>
+          )}
 
-        <input
-          id={inputId}
-          className={cn(className)}
-          data-password-shown={isPasswordShown}
-          data-focused={isFocused}
-          type={processType(type || 'text')}
-          onChange={ev => {
-            setIsFocused(ev.target.value.length > 0);
-            onChange?.(ev);
-          }}
-          {...props}
-        />
-      </label>
+          <input
+            id={inputId}
+            className={cn(className)}
+            data-password-shown={isPasswordShown}
+            data-focused={isFocused}
+            type={processType(type || 'text')}
+            onChange={ev => {
+              setIsFocused(ev.target.value.length > 0);
+              onChange?.(ev);
+            }}
+            {...props}
+          />
+        </label>
+      )}
 
       {type === 'password' && (
         <button

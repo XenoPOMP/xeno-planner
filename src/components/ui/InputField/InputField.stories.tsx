@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { KeyRound, Mail } from 'lucide-react';
+import cn from 'classnames';
+import { KeyRound, Mail, Moon } from 'lucide-react';
 
 import InputField from './InputField';
 
@@ -31,5 +32,16 @@ export const Password: Story = {
     description: 'Поле ввода пароля',
     placeholder: 'Пароль',
     type: 'password',
+  },
+};
+
+export const Custom: Story = {
+  args: {
+    icon: Moon,
+    description: 'Поле ввода пароля',
+    placeholder: 'Пароль',
+    type: 'text',
+    className: cn('select-none'),
+    children: <>This is an custom field</>,
   },
 };
