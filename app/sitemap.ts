@@ -9,14 +9,14 @@ export default function sitemap(): Sitemap {
   const env = useEnv();
   const CANONICAL = env.get('CANONICAL_URL') || AppConstants.defaultCanonical;
 
-  const dashboardEntries: Sitemap = dashboardMenuData.map<ArrayType<Sitemap>>(
-    ({ href }) => {
+  const dashboardEntries: Sitemap = dashboardMenuData
+    .filter(({ href }) => !['/settings'].includes(href.toString()))
+    .map<ArrayType<Sitemap>>(({ href }) => {
       return {
         url: `${CANONICAL}${href}`,
         priority: 1,
       };
-    },
-  );
+    });
   return [
     {
       url: `${CANONICAL}`,
