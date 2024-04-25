@@ -1,0 +1,5 @@
+%field {
+  @apply bg-field-bg rounded-[8px];
+  @include paddingHorizontal(var(--p-level-3));
+  @include paddingVertical(var(--p-level-4));
+}
