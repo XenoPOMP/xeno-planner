@@ -1,9 +1,15 @@
-import { type LucideIcon } from 'lucide-react';
-import { type ComponentRef, type RefObject } from 'react';
+import type { LucideIcon } from 'lucide-react';
+import type { ComponentProps, ComponentRef, RefObject } from 'react';
+import type { CamelCasedProperties } from 'type-fest';
 
-export interface InputFieldProps {
+/** Field`s wrapper props. */
+type OuterProps = CamelCasedProperties<{
+  [Prop in keyof ComponentProps<'div'> as `outer ${Prop}`]: ComponentProps<'div'>[Prop];
+}>;
+
+export interface InputFieldProps
+  extends Pick<OuterProps, 'outerRef' | 'outerOnClick'> {
   icon?: LucideIcon;
   description?: string;
-  outerRef?: RefObject<ComponentRef<'div'>>;
   ref?: RefObject<ComponentRef<'input'>>;
 }

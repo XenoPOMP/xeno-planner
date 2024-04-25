@@ -20,6 +20,7 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
   type = 'text',
   children,
   outerRef,
+  outerOnClick,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -44,6 +45,9 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
       })}
       aria-hidden={children === undefined}
       ref={outerRef}
+      onClick={ev => {
+        outerOnClick?.(ev);
+      }}
     >
       {Icon && (
         <Icon
