@@ -14,8 +14,8 @@ const testingExclusion: string[] = [
   '**/*.stories.{ts,tsx}',
 
   // Testing artifacts
-  './coverage',
-  './app/test',
+  'coverage/*',
+  'app/test/*',
   '__tests__/{e2e,assets}',
 
   // Resource configs
