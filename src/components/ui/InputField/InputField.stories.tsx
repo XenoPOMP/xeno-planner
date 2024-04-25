@@ -38,10 +38,15 @@ export const Password: Story = {
 export const Custom: Story = {
   args: {
     icon: Moon,
-    description: 'Поле ввода пароля',
-    placeholder: 'Пароль',
-    type: 'text',
+    description: 'Поле выбора темы',
+    placeholder: 'Тема',
+    // type: 'text',
     className: cn('select-none'),
-    children: <>This is an custom field</>,
+    focused: true,
+    children: (
+      <>
+        <span>Темная</span>
+      </>
+    ),
   },
 };

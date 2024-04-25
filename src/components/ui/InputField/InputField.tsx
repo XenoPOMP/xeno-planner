@@ -3,7 +3,7 @@
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { Eye, EyeOff } from 'lucide-react';
-import { type HTMLInputTypeAttribute, useState } from 'react';
+import { type HTMLInputTypeAttribute, useEffect, useState } from 'react';
 
 import { useUniqueId } from '@/src/hooks/useUniqueId';
 
@@ -21,9 +21,10 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
   children,
   outerRef,
   outerOnClick,
+  focused = false,
   ...props
 }) => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState<boolean>(focused || false);
   const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false);
   const inputId = id || useUniqueId(gen => `input:${gen}`);
 
@@ -37,6 +38,10 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
 
     return type;
   };
+
+  useEffect(() => {
+    setIsFocused(focused);
+  }, [focused]);
 
   return (
     <div
@@ -57,28 +62,33 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
         />
       )}
 
-      {children || (
-        <label
-          htmlFor={inputId}
-          className={cn(styles.inline)}
-          aria-hidden={false}
-        >
-          {description && <div className={cn('sr-only')}>{description}</div>}
+      <label
+        htmlFor={inputId}
+        className={cn(styles.inline)}
+        aria-hidden={false}
+      >
+        {description && <div className={cn('sr-only')}>{description}</div>}
 
-          {placeholder && (
-            <div
-              className={cn(styles.hint)}
-              aria-hidden
-            >
-              {placeholder}
-            </div>
-          )}
+        {placeholder && (
+          <div
+            className={cn(styles.hint)}
+            aria-hidden
+          >
+            {placeholder}
+          </div>
+        )}
 
+        <div
+          aria-hidden
+          className={cn(styles.focusTracker)}
+          data-focused={isFocused}
+        ></div>
+
+        {children || (
           <input
             id={inputId}
             className={cn(className)}
             data-password-shown={isPasswordShown}
-            data-focused={isFocused}
             type={processType(type || 'text')}
             onChange={ev => {
               setIsFocused(ev.target.value.length > 0);
@@ -86,8 +96,8 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
             }}
             {...props}
           />
-        </label>
-      )}
+        )}
+      </label>
 
       {type === 'password' && (
         <button

@@ -12,4 +12,5 @@ export interface InputFieldProps
   icon?: LucideIcon;
   description?: string;
   ref?: RefObject<ComponentRef<'input'>>;
+  focused?: boolean;
 }
