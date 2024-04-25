@@ -4,6 +4,7 @@ import { type FC } from 'react';
 
 import DashboardHeader from '@/src/components/layout/DashboardHeader';
 import AccountSettings from '@/src/components/settings/AccountSettings';
+import AppearanceSettings from '@/src/components/settings/AppearanceSettings';
 import { NO_INDEX_PAGE } from '@/src/constants/seo.constants.ts';
 import { generateOpenGraph } from '@/src/utils/seo';
 
@@ -28,6 +29,7 @@ const SettingsPage: FC<{}> = () => {
       <DashboardHeader heading={'Настройки'} />
 
       <section className={cn('')}>
+        <AppearanceSettings />
         <AccountSettings />
       </section>
     </main>
