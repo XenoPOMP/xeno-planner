@@ -3,6 +3,7 @@
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
+import Button from '@/src/components/ui/Button';
 import HtmlHeading from '@/src/components/ui/Heading';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer.tsx';
 
@@ -13,6 +14,7 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
   className,
   children,
   heading,
+  save,
   ...props
 }) => {
   return (
@@ -24,6 +26,7 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
         as={'div'}
         className={cn(styles.container)}
         maxWidth={`800px`}
+        margin={'0px'}
       >
         {heading && (
           <header>
@@ -32,6 +35,14 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
         )}
 
         {children && <section className={cn(styles.grid)}>{children}</section>}
+
+        <Button
+          thin
+          hollow
+          className={cn('w-fit')}
+        >
+          Save
+        </Button>
       </UiContainer>
     </article>
   );
