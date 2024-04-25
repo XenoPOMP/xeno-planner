@@ -9,8 +9,8 @@ button.uiButton {
   @include paddingHorizontal(var(--p-level-3));
 
   &.thin {
-    @include paddingVertical(calc(var(--p-level-4) * .5));
-    @include paddingHorizontal(calc(var(--p-level-3) * .5));
+    @include paddingVertical(var(--p-level-5));
+    @include paddingHorizontal(calc(var(--p-level-5) * 2.5));
   }
 
   // Primary
