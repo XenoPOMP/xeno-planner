@@ -80,7 +80,7 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
 
         <div
           aria-hidden
-          className={cn(styles.focusTracker)}
+          className={cn(styles.focusTracker, 'hidden')}
           data-focused={isFocused}
         ></div>
 
