@@ -1,0 +1,17 @@
+.selectField {
+  &.expanded {
+    // No empty!!!
+  }
+
+  & > label {
+    display: grid !important;
+    grid-template-columns: 1fr max-content;
+  }
+
+  button.expandButton {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+    justify-self: center;
+    align-self: center;
+  }
+}
