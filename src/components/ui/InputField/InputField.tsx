@@ -23,6 +23,7 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
   focused = false,
   outerRef,
   outerOnClick,
+  outerClassName,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(focused || false);
@@ -46,7 +47,7 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
 
   return (
     <div
-      className={cn(styles.holder, {
+      className={cn(styles.holder, outerClassName, {
         [className || '']: children !== undefined,
       })}
       aria-hidden={children === undefined}

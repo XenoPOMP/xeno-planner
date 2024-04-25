@@ -8,7 +8,7 @@ type OuterProps = CamelCasedProperties<{
 }>;
 
 export interface InputFieldProps
-  extends Pick<OuterProps, 'outerRef' | 'outerOnClick'> {
+  extends Pick<OuterProps, 'outerRef' | 'outerOnClick' | 'outerClassName'> {
   icon?: LucideIcon;
   description?: string;
   ref?: RefObject<ComponentRef<'input'>>;

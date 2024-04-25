@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { type FC } from 'react';
 
 import DashboardHeader from '@/src/components/layout/DashboardHeader';
-import SettingGroup from '@/src/components/layout/SettingGroup';
+import AccountSettings from '@/src/components/settings/AccountSettings';
 import { NO_INDEX_PAGE } from '@/src/constants/seo.constants.ts';
 import { generateOpenGraph } from '@/src/utils/seo';
 
@@ -28,7 +28,7 @@ const SettingsPage: FC<{}> = () => {
       <DashboardHeader heading={'Настройки'} />
 
       <section className={cn('')}>
-        <SettingGroup heading={'Group name 12'} />
+        <AccountSettings />
       </section>
     </main>
   );
