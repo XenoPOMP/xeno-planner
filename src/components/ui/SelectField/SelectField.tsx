@@ -3,7 +3,8 @@
 import { useOutside } from '@pacote/react-use-outside';
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import useSmoothScroll from 'react-smooth-scroll-hook';
 
 import InputField from '@/src/components/ui/InputField';
 
@@ -19,6 +20,18 @@ const SelectField: VariableFC<
   const outerRef = useOutside<HTMLDivElement>('click', () => {
     setExpanded(false);
   });
+
+  const { scrollTo } = useSmoothScroll({
+    ref: outerRef,
+    speed: 100,
+    direction: 'y',
+  });
+
+  useEffect(() => {
+    if (expanded) {
+      scrollTo();
+    }
+  }, [expanded]);
 
   return (
     <InputField
