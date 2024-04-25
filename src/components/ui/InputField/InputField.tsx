@@ -72,7 +72,7 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
         {placeholder && (
           <div
             className={cn(styles.hint)}
-            aria-hidden
+            aria-hidden={children === undefined}
           >
             {placeholder}
           </div>
