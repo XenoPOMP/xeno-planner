@@ -1,0 +1,21 @@
+@import "src/styles/templates";
+
+article.group {
+  &:not(:last-of-type) {
+    @apply border-b-[1px] border-b-secondary-border;
+  }
+
+  .container {
+    @apply mx-0 flex flex-col;
+
+    padding: var(--p-level-2);
+    gap: var(--p-level-3);
+
+    section.grid {
+      @include automaticColumns(300px);
+
+      display: grid;
+      gap: var(--p-level-4);
+    }
+  }
+}
