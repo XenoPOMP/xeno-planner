@@ -28,9 +28,7 @@ const SettingsPage: FC<{}> = () => {
       <DashboardHeader heading={'Настройки'} />
 
       <section className={cn('')}>
-        <SettingGroup />
-        <SettingGroup />
-        <SettingGroup />
+        <SettingGroup heading={'Group name 12'} />
       </section>
     </main>
   );
