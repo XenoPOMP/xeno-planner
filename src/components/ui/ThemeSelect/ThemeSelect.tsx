@@ -27,6 +27,25 @@ const data: Record<string, Omit<Selection, 'value'>> = {
   },
 };
 
+/**
+ * Theme select component.
+ * It may be working only if you will import it dynamically, by disabling ssr.
+ *
+ * @constructor
+ *
+ * @example
+ * const ThemeSelect = dynamic(() => import('@/src/components/ui/ThemeSelect'), {
+ *   ssr: false,
+ * });
+ *
+ * const TestPage: FC<{}> = () => {
+ *   return (
+ *     <main className={cn('p-[1rem]')}>
+ *       <ThemeSelect />
+ *     </main>
+ *   );
+ * };
+ */
 const ThemeSelect: FC<ThemeSelectProps> = () => {
   const { theme, themes, setTheme } = useTheme();
 
