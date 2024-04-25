@@ -10,5 +10,5 @@ interface Selection extends Pick<ComponentProps<typeof InputField>, 'icon'> {
 export interface SelectFieldProps {
   currentItem?: string;
   items?: Selection[];
-  onSelection?: (newItem: Selection) => void;
+  onSelection?: (newValue: Selection['value']) => void;
 }

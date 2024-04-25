@@ -79,7 +79,7 @@ const SelectField: VariableFC<
             <div
               key={`[${index}] ${value}`}
               onClick={() => {
-                onSelection?.({ icon: Icon, name, value });
+                onSelection?.(value);
               }}
               className={cn('flex items-center', styles.item)}
             >
