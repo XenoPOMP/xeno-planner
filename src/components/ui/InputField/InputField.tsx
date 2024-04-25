@@ -3,24 +3,28 @@
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { Eye, EyeOff } from 'lucide-react';
-import { type HTMLInputTypeAttribute, useState } from 'react';
+import { type HTMLInputTypeAttribute, useEffect, useState } from 'react';
 
 import { useUniqueId } from '@/src/hooks/useUniqueId';
 
 import styles from './InputField.module.scss';
 import type { InputFieldProps } from './InputField.props';
 
-const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
+const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
   className,
   id,
   icon: Icon,
   placeholder,
   description,
   onChange,
-  type,
+  type = 'text',
+  children,
+  outerRef,
+  outerOnClick,
+  focused = false,
   ...props
 }) => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState<boolean>(focused || false);
   const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false);
   const inputId = id || useUniqueId(gen => `input:${gen}`);
 
@@ -35,10 +39,20 @@ const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
     return type;
   };
 
+  useEffect(() => {
+    setIsFocused(focused);
+  }, [focused]);
+
   return (
     <div
-      className={cn(styles.holder)}
-      aria-hidden
+      className={cn(styles.holder, {
+        [className || '']: children !== undefined,
+      })}
+      aria-hidden={children === undefined}
+      ref={outerRef}
+      onClick={ev => {
+        outerOnClick?.(ev);
+      }}
     >
       {Icon && (
         <Icon
@@ -58,24 +72,31 @@ const InputField: VariableFC<'input', InputFieldProps, 'children'> = ({
         {placeholder && (
           <div
             className={cn(styles.hint)}
-            aria-hidden
+            aria-hidden={children === undefined}
           >
             {placeholder}
           </div>
         )}
 
-        <input
-          id={inputId}
-          className={cn(className)}
-          data-password-shown={isPasswordShown}
+        <div
+          aria-hidden
+          className={cn(styles.focusTracker, 'hidden')}
           data-focused={isFocused}
-          type={processType(type || 'text')}
-          onChange={ev => {
-            setIsFocused(ev.target.value.length > 0);
-            onChange?.(ev);
-          }}
-          {...props}
-        />
+        ></div>
+
+        {children || (
+          <input
+            id={inputId}
+            className={cn(className)}
+            data-password-shown={isPasswordShown}
+            type={processType(type || 'text')}
+            onChange={ev => {
+              setIsFocused(ev.target.value.length > 0);
+              onChange?.(ev);
+            }}
+            {...props}
+          />
+        )}
       </label>
 
       {type === 'password' && (

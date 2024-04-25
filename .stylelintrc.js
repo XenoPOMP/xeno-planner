@@ -28,7 +28,12 @@ module.exports = {
     'declaration-block-no-duplicate-properties': WITH_ERROR,
     'no-duplicate-selectors': WITH_ERROR,
     'comment-no-empty': WITH_ERROR,
-    'declaration-no-important': WITH_ERROR,
+    'declaration-no-important': [
+      true,
+      {
+        severity: 'warning',
+      },
+    ],
 
     'selector-class-pattern': CAMEL_CASE,
     'scss/at-function-pattern': CAMEL_CASE,

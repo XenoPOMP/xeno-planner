@@ -23,8 +23,12 @@
       line-height: 100%;
     }
 
+    & > *:nth-child(1) {
+      translate: 0 -.1em;
+    }
+
     .hint {
-      @apply text-field-placeholder select-none;
+      @apply text-field-placeholder select-none bg-transparent;
 
       $anim: .15s ease-out;
 
@@ -34,8 +38,8 @@
       transition: $anim translate,
                   $anim font-size;
 
-      &:has(+ input:focus),
-      &:has(+ input[data-focused~="true"]) {
+      &:has(+ .focusTracker[data-focused~="true"]),
+      &:has(+ .focusTracker + input:focus) {
         font-size: .6em;
         translate: 0;
       }
@@ -46,7 +50,6 @@
 
       border: none;
       outline: none;
-      translate: 0 -.1em;
     }
   }
 }

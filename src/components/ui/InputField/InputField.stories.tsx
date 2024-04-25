@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { KeyRound, Mail } from 'lucide-react';
+import cn from 'classnames';
+import { KeyRound, Mail, Moon } from 'lucide-react';
 
 import InputField from './InputField';
 
 const meta = {
-  title: 'UI/Input field',
+  title: 'UI/Fields/Input field [BASE]',
   component: InputField,
   tags: ['autodoc'],
   parameters: {
@@ -31,5 +32,21 @@ export const Password: Story = {
     description: 'Поле ввода пароля',
     placeholder: 'Пароль',
     type: 'password',
+  },
+};
+
+export const Custom: Story = {
+  args: {
+    icon: Moon,
+    description: 'Поле выбора темы',
+    placeholder: 'Тема',
+    // type: 'text',
+    className: cn('select-none'),
+    focused: true,
+    children: (
+      <>
+        <span>Темная</span>
+      </>
+    ),
   },
 };
