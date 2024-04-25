@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { type FC } from 'react';
 
+import DashboardHeader from '@/src/components/layout/DashboardHeader';
 import { NO_INDEX_PAGE } from '@/src/constants/seo.constants.ts';
 import { generateOpenGraph } from '@/src/utils/seo';
 
@@ -20,7 +21,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const SettingsPage: FC<{}> = () => {
-  return <main>Settings</main>;
+  return (
+    <main>
+      <DashboardHeader heading={'Настройки'} />
+
+      <section>Settings</section>
+    </main>
+  );
 };
 
 export default SettingsPage;
