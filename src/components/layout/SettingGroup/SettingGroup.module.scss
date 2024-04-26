@@ -16,6 +16,10 @@ article.group {
 
       display: grid;
       gap: var(--p-level-4);
+
+      @include endAtFixed(450px) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }
