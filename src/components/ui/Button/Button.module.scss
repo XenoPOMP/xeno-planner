@@ -8,6 +8,13 @@ button.uiButton {
   @include paddingVertical(var(--p-level-4));
   @include paddingHorizontal(var(--p-level-3));
 
+  &:disabled {
+    @extend %notSelectable;
+
+    opacity: .5;
+    pointer-events: none;
+  }
+
   &.thin {
     @include paddingVertical(var(--p-level-5));
     @include paddingHorizontal(calc(var(--p-level-5) * 2.5));

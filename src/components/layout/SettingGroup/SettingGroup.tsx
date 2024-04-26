@@ -15,6 +15,7 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
   children,
   heading,
   save,
+  saveButtonProps,
   ...props
 }) => {
   return (
@@ -44,6 +45,7 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
             onClick={() => {
               save?.action?.();
             }}
+            {...saveButtonProps}
           >
             {save.label}
           </Button>
