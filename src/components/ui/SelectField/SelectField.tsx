@@ -3,6 +3,7 @@
 import { useOutside } from '@pacote/react-use-outside';
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import useSmoothScroll from 'react-smooth-scroll-hook';
 
@@ -70,7 +71,7 @@ const SelectField: VariableFC<
         aria-hidden
         className={cn(styles.expandButton)}
       >
-        {expanded ? 'Hide' : 'Show'}
+        {!expanded ? <ChevronDown /> : <ChevronUp />}
       </button>
 
       {items && expanded && (
