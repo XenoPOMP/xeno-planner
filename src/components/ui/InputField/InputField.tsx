@@ -11,7 +11,7 @@ import { useUniqueId } from '@/src/hooks/useUniqueId';
 import styles from './InputField.module.scss';
 import type { InputFieldProps } from './InputField.props';
 
-const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
+const InputField: VariableFC<'input', InputFieldProps> = ({
   className,
   id,
   icon: Icon,
