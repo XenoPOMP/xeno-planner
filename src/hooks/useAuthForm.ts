@@ -34,20 +34,12 @@ export const useAuthForm = <
     },
   });
 
-  const authSubmitAction: SubmitHandler<TForm> = async data => {
+  const authSubmitAction: SubmitHandler<TForm> = data => {
     mutate(data);
-  };
-
-  /**
-   * Automatically generates submit handler for
-   * you.
-   */
-  const getSubmitHandler = () => {
-    return hookForm.handleSubmit(authSubmitAction);
   };
 
   return {
     ...hookForm,
-    getSubmitHandler,
+    authSubmitAction,
   };
 };
