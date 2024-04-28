@@ -27,6 +27,7 @@ const LoginForm: FC<LoginFormProps> = () => {
       <AuthForm
         heading={'Вход'}
         onSubmit={handleSubmit(authSubmitAction)}
+        noValidate
       >
         <FieldList>
           <InputField

@@ -32,7 +32,8 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
 
   const getRegisterObject = () => {
     if (registerName && formContext) {
-      return formContext.register(registerName);
+      const { onChange, ...rest } = formContext.register(registerName);
+      return { methods: rest, onChange };
     }
 
     return {};
@@ -106,9 +107,10 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
             type={processType(type || 'text')}
             onChange={ev => {
               setIsFocused(ev.target.value.length > 0);
+              getRegisterObject().onChange?.(ev);
               onChange?.(ev);
             }}
-            {...getRegisterObject()}
+            {...getRegisterObject().methods}
             {...props}
           />
         )}
