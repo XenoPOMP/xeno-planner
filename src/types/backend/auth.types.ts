@@ -11,3 +11,7 @@ export interface IAuthResponse {
   accessToken: string;
   user: SanitizedUser;
 }
+
+export interface ILogoutResponse {
+  logout: boolean;
+}
