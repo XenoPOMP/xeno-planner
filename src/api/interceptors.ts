@@ -9,7 +9,7 @@ import { AuthService } from '@/src/services/auth.service.ts';
 
 /** Default options for Axios interceptors. */
 const options: CreateAxiosDefaults = {
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
+  baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
   headers: {
     'Content-Type': 'application/json',
   },
