@@ -1,6 +1,6 @@
 'use client';
 
-import { CircleUserRound, KeyRound, Mail } from 'lucide-react';
+import { KeyRound, Mail } from 'lucide-react';
 import { type FC } from 'react';
 
 import Button from '@/src/components/ui/Button';
@@ -16,14 +16,6 @@ const RegisterForm: FC<RegisterFormProps> = () => {
   return (
     <AuthForm heading={'Регистрация'}>
       <FieldList>
-        <InputField
-          icon={CircleUserRound}
-          description={'Поле ввода имени'}
-          placeholder={'Имя'}
-          formNoValidate
-          {...NO_AUTOCOMPLETE}
-        />
-
         <InputField
           icon={Mail}
           description={'Поле ввода электронной почты'}
