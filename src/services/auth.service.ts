@@ -7,7 +7,7 @@ import type { IAuthForm, IAuthResponse, ILogoutResponse } from '@/src/types';
 
 export enum EnumTokens {
   // eslint-disable-next-line no-unused-vars
-  ACCESS_TOKEN = 'accessToken',
+  ACCESS_TOKEN = 'XENO_PLANNER_accessToken',
   // eslint-disable-next-line no-unused-vars
   REFRESH_TOKEN = 'refreshToken',
 }
