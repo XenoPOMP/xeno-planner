@@ -15,4 +15,6 @@ export interface InputFieldProps
 
   /** Use react-hook-form context. */
   register?: string;
+
+  isError?: boolean;
 }

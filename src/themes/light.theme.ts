@@ -12,7 +12,8 @@ export const lightTheme = {
     'accent-bright': '#9982EB',
     primary: {
       bg: '#0C0D0E',
-      font: '#E6E5E6',
+      font: '#E5E6E5',
+      error: '#FF0000',
     },
     secondary: {
       bg: '#151315',
