@@ -26,7 +26,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   outerOnClick,
   outerClassName,
   register: registerName,
-  isError = false,
+  error = false,
   ...props
 }) => {
   const formContext = useFormContext();
@@ -66,7 +66,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
       })}
       aria-hidden={children === undefined}
       ref={outerRef}
-      data-is-error={isError}
+      data-is-error={error !== undefined && error !== ''}
       onClick={ev => {
         outerOnClick?.(ev);
       }}

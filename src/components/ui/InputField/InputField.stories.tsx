@@ -23,7 +23,7 @@ export const Default: Story = {
     description: 'Поле ввода электронной почты',
     placeholder: 'Email',
     type: 'email',
-    isError: false,
+    error: 'No error???',
   },
 };
 
