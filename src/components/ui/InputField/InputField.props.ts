@@ -12,4 +12,7 @@ export interface InputFieldProps
   icon?: LucideIcon;
   description?: string;
   focused?: boolean;
+
+  /** Use react-hook-form context. */
+  register?: string;
 }

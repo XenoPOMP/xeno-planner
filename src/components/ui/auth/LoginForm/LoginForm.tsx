@@ -2,6 +2,7 @@
 
 import { KeyRound, Mail } from 'lucide-react';
 import { type FC } from 'react';
+import { FormProvider } from 'react-hook-form';
 
 import Button from '@/src/components/ui/Button';
 import InputField from '@/src/components/ui/InputField';
@@ -14,38 +15,44 @@ import type { IAuthForm } from '@/src/types';
 import type { LoginFormProps } from './LoginForm.props';
 
 const LoginForm: FC<LoginFormProps> = () => {
-  const { register, authSubmitAction, handleSubmit } =
+  const { register, handleSubmit, authSubmitAction, ...methods } =
     useAuthForm<IAuthForm>('login');
 
   return (
-    <AuthForm
-      heading={'Вход'}
-      onSubmit={handleSubmit(authSubmitAction)}
+    <FormProvider
+      register={register}
+      handleSubmit={handleSubmit}
+      {...methods}
     >
-      <FieldList>
-        <InputField
-          icon={Mail}
-          description={'Поле ввода электронной почты'}
-          placeholder={'Email'}
-          type={'email'}
-          {...register('email')}
-        />
+      <AuthForm
+        heading={'Вход'}
+        onSubmit={handleSubmit(authSubmitAction)}
+      >
+        <FieldList>
+          <InputField
+            icon={Mail}
+            description={'Поле ввода электронной почты'}
+            placeholder={'Email'}
+            type={'email'}
+            register={'email'}
+          />
 
-        <InputField
-          icon={KeyRound}
-          description={'Поле ввода пароля'}
-          placeholder={'Пароль'}
-          type={'password'}
-          {...register('password')}
-        />
+          <InputField
+            icon={KeyRound}
+            description={'Поле ввода пароля'}
+            placeholder={'Пароль'}
+            type={'password'}
+            register={'password'}
+          />
 
-        <Button type={'submit'}>Войти</Button>
-      </FieldList>
+          <Button type={'submit'}>Войти</Button>
+        </FieldList>
 
-      <FormActions>
-        <FormLink href={'/auth/register'}>Регистрация</FormLink>
-      </FormActions>
-    </AuthForm>
+        <FormActions>
+          <FormLink href={'/auth/register'}>Регистрация</FormLink>
+        </FormActions>
+      </AuthForm>
+    </FormProvider>
   );
 };
 
