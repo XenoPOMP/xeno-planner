@@ -6,6 +6,7 @@ import { darkTheme, lightTheme } from './src/themes';
 
 const tailwindConfig: Config = {
   darkMode: ['class', '[data-mode="dark"]'],
+  mode: 'jit',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx,scss}',
     './src/**/*.{js,ts,jsx,tsx,mdx,scss}',
