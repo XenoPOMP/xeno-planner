@@ -5,7 +5,7 @@ import { toast } from 'sonner';
 
 import { AuthService } from '@/src/services/auth.service.ts';
 import type { IAuthForm, IRegisterForm } from '@/src/types';
-import { DASHBOARD_PAGES } from '@/src/types/routes.ts';
+import { AUTH_PAGES, DASHBOARD_PAGES } from '@/src/types/routes.ts';
 
 type FormHookProps<TForm extends FieldValues> = Parameters<
   typeof useForm<TForm>
@@ -28,9 +28,21 @@ export const useAuthForm = <
         password,
       }),
     onSuccess() {
-      toast.success('Вы вошли успешно!');
-      hookForm.reset();
-      push(DASHBOARD_PAGES.HOME);
+      switch (type) {
+        case 'login': {
+          toast.success('Вы вошли успешно!');
+          hookForm.reset();
+          push(DASHBOARD_PAGES.HOME);
+          break;
+        }
+
+        case 'register': {
+          toast.success('Письмо подтверждения было отправлено на вашу почту.');
+          hookForm.reset();
+          push(AUTH_PAGES.LOGIN);
+          break;
+        }
+      }
     },
   });
 
