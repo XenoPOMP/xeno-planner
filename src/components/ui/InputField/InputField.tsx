@@ -28,11 +28,11 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   register: registerName,
   ...props
 }) => {
-  const { register } = useFormContext();
+  const formContext = useFormContext();
 
   const getRegisterObject = () => {
-    if (registerName) {
-      return register(registerName);
+    if (registerName && formContext) {
+      return formContext.register(registerName);
     }
 
     return {};
