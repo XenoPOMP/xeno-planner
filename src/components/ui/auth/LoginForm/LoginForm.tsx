@@ -18,7 +18,10 @@ const LoginForm: FC<LoginFormProps> = () => {
     useAuthForm<IAuthForm>('login');
 
   return (
-    <AuthForm heading={'Вход'}>
+    <AuthForm
+      heading={'Вход'}
+      onSubmit={handleSubmit(authSubmitAction)}
+    >
       <FieldList>
         <InputField
           icon={Mail}
@@ -36,7 +39,7 @@ const LoginForm: FC<LoginFormProps> = () => {
           {...register('password')}
         />
 
-        <Button onClick={handleSubmit(authSubmitAction)}>Войти</Button>
+        <Button type={'submit'}>Войти</Button>
       </FieldList>
 
       <FormActions>
