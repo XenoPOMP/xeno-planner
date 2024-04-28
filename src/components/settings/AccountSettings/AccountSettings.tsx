@@ -1,13 +1,7 @@
 'use client';
 
 import cn from 'classnames';
-import {
-  BookUser,
-  BriefcaseBusiness,
-  Ellipsis,
-  Mail,
-  Sofa,
-} from 'lucide-react';
+import { BookUser, BriefcaseBusiness, Ellipsis, Sofa } from 'lucide-react';
 import { type FC } from 'react';
 
 import SettingGroup from '@/src/components/layout/SettingGroup';
@@ -29,14 +23,9 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
       }}
     >
       <InputField
-        icon={Mail}
-        placeholder={'Email'}
-        type={'email'}
-      />
-
-      <InputField
         icon={BookUser}
         placeholder={'Имя'}
+        outerClassName={cn('col-span-full')}
       />
 
       <InputField
