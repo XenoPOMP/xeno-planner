@@ -8,11 +8,15 @@ import InputField from '@/src/components/ui/InputField';
 import { FormActions, FormLink } from '@/src/components/ui/auth/Actions';
 import AuthForm from '@/src/components/ui/auth/AuthForm';
 import FieldList from '@/src/components/ui/auth/FieldList';
-import { NO_AUTOCOMPLETE } from '@/src/constants/fields.constants.ts';
+import { useAuthForm } from '@/src/hooks/useAuthForm.ts';
+import type { IAuthForm } from '@/src/types';
 
 import type { LoginFormProps } from './LoginForm.props';
 
 const LoginForm: FC<LoginFormProps> = () => {
+  const { register, authSubmitAction, handleSubmit } =
+    useAuthForm<IAuthForm>('login');
+
   return (
     <AuthForm heading={'Вход'}>
       <FieldList>
@@ -21,8 +25,7 @@ const LoginForm: FC<LoginFormProps> = () => {
           description={'Поле ввода электронной почты'}
           placeholder={'Email'}
           type={'email'}
-          formNoValidate
-          {...NO_AUTOCOMPLETE}
+          {...register('email')}
         />
 
         <InputField
@@ -30,11 +33,10 @@ const LoginForm: FC<LoginFormProps> = () => {
           description={'Поле ввода пароля'}
           placeholder={'Пароль'}
           type={'password'}
-          formNoValidate
-          {...NO_AUTOCOMPLETE}
+          {...register('password')}
         />
 
-        <Button>Войти</Button>
+        <Button onClick={handleSubmit(authSubmitAction)}>Войти</Button>
       </FieldList>
 
       <FormActions>
