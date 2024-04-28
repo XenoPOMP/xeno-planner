@@ -15,7 +15,7 @@ import type { IAuthForm } from '@/src/types';
 import type { LoginFormProps } from './LoginForm.props';
 
 const LoginForm: FC<LoginFormProps> = () => {
-  const { register, authSubmitAction, handleSubmit, ...methods } =
+  const { register, handleSubmit, authSubmitAction, ...methods } =
     useAuthForm<IAuthForm>('login');
 
   return (
@@ -34,7 +34,7 @@ const LoginForm: FC<LoginFormProps> = () => {
             description={'Поле ввода электронной почты'}
             placeholder={'Email'}
             type={'email'}
-            {...register('email')}
+            register={'email'}
           />
 
           <InputField
@@ -42,7 +42,7 @@ const LoginForm: FC<LoginFormProps> = () => {
             description={'Поле ввода пароля'}
             placeholder={'Пароль'}
             type={'password'}
-            {...register('password')}
+            register={'password'}
           />
 
           <Button type={'submit'}>Войти</Button>

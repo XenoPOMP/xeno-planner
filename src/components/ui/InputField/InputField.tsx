@@ -4,6 +4,7 @@ import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { Eye, EyeOff } from 'lucide-react';
 import { type HTMLInputTypeAttribute, useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import TextOverflow from 'react-text-overflow';
 
 import { useUniqueId } from '@/src/hooks/useUniqueId';
@@ -24,8 +25,19 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   outerRef,
   outerOnClick,
   outerClassName,
+  register: registerName,
   ...props
 }) => {
+  const { register } = useFormContext();
+
+  const getRegisterObject = () => {
+    if (registerName) {
+      return register(registerName);
+    }
+
+    return {};
+  };
+
   const [isFocused, setIsFocused] = useState<boolean>(focused || false);
   const [isPasswordShown, setIsPasswordShown] = useState<boolean>(false);
   const inputId = id || useUniqueId(gen => `input:${gen}`);
@@ -96,6 +108,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
               setIsFocused(ev.target.value.length > 0);
               onChange?.(ev);
             }}
+            {...getRegisterObject()}
             {...props}
           />
         )}
