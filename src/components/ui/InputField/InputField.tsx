@@ -112,7 +112,11 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
             {isPasswordShown ? 'Скрыть пароль' : 'Открыть пароль'}
           </div>
 
-          {isPasswordShown ? <Eye /> : <EyeOff />}
+          {isPasswordShown ? (
+            <Eye size={'1.33em'} />
+          ) : (
+            <EyeOff size={'1.33em'} />
+          )}
         </button>
       )}
     </div>
