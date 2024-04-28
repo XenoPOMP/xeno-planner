@@ -4,6 +4,7 @@ import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { Eye, EyeOff } from 'lucide-react';
 import { type HTMLInputTypeAttribute, useEffect, useState } from 'react';
+import TextOverflow from 'react-text-overflow';
 
 import { useUniqueId } from '@/src/hooks/useUniqueId';
 
@@ -22,6 +23,7 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
   focused = false,
   outerRef,
   outerOnClick,
+  outerClassName,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(focused || false);
@@ -45,7 +47,7 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
 
   return (
     <div
-      className={cn(styles.holder, {
+      className={cn(styles.holder, outerClassName, {
         [className || '']: children !== undefined,
       })}
       aria-hidden={children === undefined}
@@ -74,7 +76,7 @@ const InputField: VariableFC<'input', InputFieldProps, 'ref'> = ({
             className={cn(styles.hint)}
             aria-hidden={children === undefined}
           >
-            {placeholder}
+            <TextOverflow text={placeholder} />
           </div>
         )}
 

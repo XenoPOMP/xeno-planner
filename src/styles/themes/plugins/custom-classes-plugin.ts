@@ -1,6 +1,19 @@
 import plugin from 'tailwindcss/plugin';
+import { type CSSRuleObject } from 'tailwindcss/types/config';
 
 import { cssPropertiesToTw } from './api';
+
+const generateFontClasses = (...sizes: number[]) => {
+  const classes: Record<string, CSSRuleObject> = {};
+
+  sizes.forEach(size => {
+    classes[`.p${size}`] = cssPropertiesToTw({
+      fontSize: `var(--p${size})`,
+    });
+  });
+
+  return classes;
+};
 
 /**
  * Add custom classes and utilities to tailwind.
@@ -14,6 +27,8 @@ export const CustomClassesPlugin = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }),
+
+      ...generateFontClasses(24, 20, 16, 14),
     });
   });
 };
