@@ -2,6 +2,7 @@ import type { PropsWith } from '@xenopomp/advanced-types';
 import type { Metadata } from 'next';
 import { type FC } from 'react';
 
+import DashboardHeader from '@/src/components/layout/DashboardHeader';
 import { generateOpenGraph } from '@/src/utils/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,7 +20,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const TaskPageLayout: FC<PropsWith<'children', {}>> = ({ children }) => {
-  return <main>{children}</main>;
+  return (
+    <main>
+      <DashboardHeader heading={'Задачи'} />
+
+      {children}
+    </main>
+  );
 };
 
 export default TaskPageLayout;
