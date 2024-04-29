@@ -1,3 +1,4 @@
+import type { PropsWith } from '@xenopomp/advanced-types';
 import type { Metadata } from 'next';
 import { type FC } from 'react';
 
@@ -17,8 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const TasksPage: FC<{}> = () => {
-  return <main>Tasks</main>;
+const TaskPageLayout: FC<PropsWith<'children', {}>> = ({ children }) => {
+  return <main>{children}</main>;
 };
 
-export default TasksPage;
+export default TaskPageLayout;
