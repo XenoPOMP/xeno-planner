@@ -14,4 +14,9 @@ export interface SettingGroupProps extends WithHeading {
     ComponentProps<typeof Button>,
     'onClick' | 'children' | 'thin' | 'hollow' | 'className'
   >;
+
+  /**
+   * If true, will add bottom border anyway.
+   */
+  forceBorder?: boolean;
 }

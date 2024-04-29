@@ -49,6 +49,7 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
             pending: isPending,
           }}
           id={'edit-account'}
+          forceBorder
         >
           <InputField
             icon={BookUser}

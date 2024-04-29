@@ -1,7 +1,8 @@
 @import "src/styles/templates";
 
 article.group {
-  &:not(:last-of-type) {
+  &:not(:last-of-type),
+  &.forceBorder {
     @apply border-b-[1px] border-b-secondary-border;
   }
 

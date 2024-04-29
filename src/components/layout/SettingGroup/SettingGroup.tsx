@@ -18,11 +18,18 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
   heading,
   save,
   saveButtonProps,
+  forceBorder,
   ...props
 }) => {
   return (
     <article
-      className={cn(styles.group, className)}
+      className={cn(
+        styles.group,
+        {
+          [`${styles.forceBorder}`]: forceBorder,
+        },
+        className,
+      )}
       {...props}
     >
       <UiContainer
