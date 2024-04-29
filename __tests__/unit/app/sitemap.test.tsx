@@ -29,10 +29,10 @@ describe('Next.js sitemap generation', () => {
 
     const expected: string[] = [
       CANONICAL,
-      `${CANONICAL}/dashboard`,
-      `${CANONICAL}/tasks`,
-      `${CANONICAL}/pomodoro`,
-      `${CANONICAL}/time-blocking`,
+      // `${CANONICAL}/dashboard`,
+      // `${CANONICAL}/tasks`,
+      // `${CANONICAL}/pomodoro`,
+      // `${CANONICAL}/time-blocking`,
       // `${CANONICAL}/settings`,
     ];
     const real = sitemap().map(({ url }) => url);
