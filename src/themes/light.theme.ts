@@ -13,7 +13,14 @@ export const lightTheme = {
     primary: {
       bg: '#0C0D0E',
       font: '#E5E6E5',
-      error: '#FF0000',
+      error: {
+        soft: {
+          font: '#F85149',
+          hover: {
+            bg: '#B62324',
+          },
+        },
+      },
     },
     secondary: {
       bg: '#151315',

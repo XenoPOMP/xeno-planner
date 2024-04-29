@@ -20,18 +20,23 @@ button.uiButton {
     @include paddingHorizontal(calc(var(--p-level-5) * 2.5));
   }
 
-  // Primary
   &.themePrimary {
-    @apply bg-accent;
+    @include buttonStyled(accent);
+  }
 
-    &.hollow {
-      @apply bg-transparent border-[1px] border-accent;
+  &.themeDanger {
+    @include buttonStyled(primary-error-soft-font);
+    @apply bg-field-bg text-primary-error-soft-font;
 
-      transition: .08s ease background;
+    border: none;
 
-      &:hover {
-        @apply bg-accent;
-      }
+    $anim: .08s ease;
+    transition:
+            $anim background,
+            $anim color;
+
+    &:hover {
+      @apply bg-primary-error-soft-hover-bg text-primary-font;
     }
   }
 }

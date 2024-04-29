@@ -1,4 +1,4 @@
-import type { PropsWith, VariableFC } from '@xenopomp/advanced-types';
+import type { Defined, PropsWith, VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
 import styles from './Button.module.scss';
@@ -11,17 +11,26 @@ const Button: VariableFC<
 > = ({
   className,
   children,
+  variant = 'primary',
   thin = false,
   hollow = false,
   unstyled = false,
   ...props
 }) => {
+  const variantClassname: Record<
+    Defined<typeof variant>,
+    string | undefined
+  > = {
+    primary: styles.themePrimary,
+    danger: styles.themeDanger,
+  };
+
   return (
     <button
       className={cn(
         {
           [`${styles.uiButton}`]: !unstyled && true,
-          [`${styles.themePrimary}`]: !unstyled && true,
+          [`${variantClassname[variant]}`]: !unstyled && true,
           [`${styles.thin}`]: !unstyled && thin,
           [`${styles.hollow}`]: !unstyled && hollow,
         },

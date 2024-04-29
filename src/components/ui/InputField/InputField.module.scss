@@ -21,7 +21,7 @@
   outline-style: solid;
 
   &[data-is-error="true"] {
-    @apply outline-primary-error;
+    // @apply outline-primary-error;
   }
 
   // Handle disabled state

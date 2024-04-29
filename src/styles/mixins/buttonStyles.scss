@@ -1,0 +1,16 @@
+@mixin buttonStyled($bgColor) {
+  @apply bg-#{$bgColor};
+
+  &.hollow {
+    @apply bg-transparent border-[1px] border-#{$bgColor};
+
+    $anim: .08s ease;
+    transition:
+        $anim background,
+        $anim color;
+
+    &:hover {
+      @apply bg-#{$bgColor};
+    }
+  }
+}

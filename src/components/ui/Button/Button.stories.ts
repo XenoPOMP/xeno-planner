@@ -21,5 +21,16 @@ export const Primary: Story = {
     thin: false,
     hollow: false,
     unstyled: false,
+    variant: 'primary',
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    children: 'Click me',
+    thin: true,
+    hollow: true,
+    unstyled: false,
+    variant: 'danger',
   },
 };
