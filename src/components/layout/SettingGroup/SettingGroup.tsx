@@ -42,6 +42,7 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
             thin
             hollow
             className={cn('w-fit')}
+            type={'submit'}
             onClick={() => {
               save?.action?.();
             }}
