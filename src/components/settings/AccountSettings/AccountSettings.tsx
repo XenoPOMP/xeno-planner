@@ -3,7 +3,7 @@
 import cn from 'classnames';
 import { BookUser, BriefcaseBusiness, Ellipsis, Sofa } from 'lucide-react';
 import { type FC } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, type SubmitHandler, useForm } from 'react-hook-form';
 
 import SettingGroup from '@/src/components/layout/SettingGroup';
 import InputField from '@/src/components/ui/InputField';
@@ -17,13 +17,21 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
   const { register, handleSubmit, reset, ...methods } = useForm<UserFormType>({
     mode: 'onChange',
   });
-  // eslint-disable-next-line no-unused-vars
   const { mutate, isPending } = useUpdateSettings();
 
   useInitialData(reset);
 
-  const handleSave = () => {
-    console.log('Account saving started...');
+  const onSubmit: SubmitHandler<UserFormType> = data => {
+    const { password, workInterval, breakInterval, intervalsCount, ...rest } =
+      data;
+
+    mutate({
+      ...rest,
+      workInterval: +(workInterval || 0),
+      breakInterval: +(breakInterval || 0),
+      intervalsCount: +(intervalsCount || 0),
+      password: password || undefined,
+    });
   };
 
   return (
@@ -33,40 +41,45 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
       reset={reset}
       {...methods}
     >
-      <SettingGroup
-        heading={'Настройки аккаунта'}
-        save={{
-          label: 'Сохранить',
-          action: handleSave,
-        }}
-        id={'edit-account'}
-      >
-        <InputField
-          icon={BookUser}
-          placeholder={'Имя'}
-          outerClassName={cn('col-span-full')}
-          register={'name'}
-        />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <SettingGroup
+          heading={'Настройки аккаунта'}
+          save={{
+            label: 'Сохранить',
+            pending: isPending,
+          }}
+          id={'edit-account'}
+        >
+          <InputField
+            icon={BookUser}
+            placeholder={'Имя'}
+            outerClassName={cn('col-span-full')}
+            register={'name'}
+          />
 
-        <InputField
-          icon={BriefcaseBusiness}
-          placeholder={'Время работы (в мин.)'}
-          type={'number'}
-        />
+          <InputField
+            icon={BriefcaseBusiness}
+            placeholder={'Время работы (в мин.)'}
+            type={'number'}
+            register={'workInterval'}
+          />
 
-        <InputField
-          icon={Sofa}
-          placeholder={'Время перерыва (в мин.)'}
-          type={'number'}
-        />
+          <InputField
+            icon={Sofa}
+            placeholder={'Время перерыва (в мин.)'}
+            type={'number'}
+            register={'breakInterval'}
+          />
 
-        <InputField
-          icon={Ellipsis}
-          placeholder={'Количество интервалов (макс 10)'}
-          type={'number'}
-          outerClassName={cn('col-span-full')}
-        />
-      </SettingGroup>
+          <InputField
+            icon={Ellipsis}
+            placeholder={'Количество интервалов (макс 10)'}
+            type={'number'}
+            outerClassName={cn('col-span-full')}
+            register={'intervalsCount'}
+          />
+        </SettingGroup>
+      </form>
     </FormProvider>
   );
 };
