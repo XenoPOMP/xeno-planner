@@ -8,37 +8,38 @@ import {
 import { type ComponentProps } from 'react';
 
 import type DashboardMenuItem from '@/src/components/layout/DashboardMenuItem';
+import { DASHBOARD_PAGES } from '@/src/types/routes.ts';
 
 export const dashboardMenuData: Array<
   ComponentProps<typeof DashboardMenuItem>
 > = [
   {
     icon: LayoutDashboard,
-    href: '/dashboard',
+    href: DASHBOARD_PAGES.HOME,
     children: 'Личный кабинет',
     'aria-disabled': false,
   },
   {
     icon: SquareKanban,
-    href: '/tasks',
+    href: DASHBOARD_PAGES.TASKS,
     children: 'Задачи',
     'aria-disabled': false,
   },
   {
     icon: Timer,
-    href: '/pomodoro',
+    href: DASHBOARD_PAGES.POMODORO,
     children: 'Pomodoro',
     'aria-disabled': false,
   },
   {
     icon: CalendarRange,
-    href: '/time-blocking',
+    href: DASHBOARD_PAGES.TIME_BLOCKING,
     children: 'Распорядок дня',
     'aria-disabled': false,
   },
   {
     icon: Settings,
-    href: '/settings',
+    href: DASHBOARD_PAGES.SETTINGS,
     children: 'Настройки',
     'aria-disabled': false,
   },
