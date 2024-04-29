@@ -14,6 +14,9 @@ export const useUpdateSettings = () => {
       toast.success('Профиль был успешно обновлен');
       queryClient.invalidateQueries({ queryKey: ['profile'] });
     },
+    onError() {
+      toast.error('Произошла ошибка при обновлении профиля!');
+    },
   });
 
   return {
