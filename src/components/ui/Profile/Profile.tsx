@@ -1,11 +1,13 @@
 'use client';
 
 import cn from 'classnames';
+import Link from 'next/link';
 import { type FC } from 'react';
 import TextOverflow from 'react-text-overflow';
 
 import CircleLoader from '@/src/components/ui/CircleLoader';
 import { useProfile } from '@/src/hooks/useProfile.ts';
+import { DASHBOARD_PAGES } from '@/src/types/routes.ts';
 
 import styles from './Profile.module.scss';
 import type { ProfileProps } from './Profile.props';
@@ -21,16 +23,18 @@ const Profile: FC<ProfileProps> = () => {
       <CircleLoader />
     </div>
   ) : data?.user ? (
-    <article className={cn(styles.profile)}>
-      <section className={cn(styles.name)}>
-        <strong>{data.user.name || 'Аноним'}</strong>
-        <p>
-          <TextOverflow text={data.user.email} />
-        </p>
-      </section>
+    <Link href={`${DASHBOARD_PAGES.SETTINGS}#edit-account`}>
+      <article className={cn(styles.profile)}>
+        <section className={cn(styles.name)}>
+          <strong>{data.user.name || 'Аноним'}</strong>
+          <p>
+            <TextOverflow text={data.user.email} />
+          </p>
+        </section>
 
-      <section className={cn(styles.avatar)}></section>
-    </article>
+        <section className={cn(styles.avatar)}></section>
+      </article>
+    </Link>
   ) : (
     <></>
   );

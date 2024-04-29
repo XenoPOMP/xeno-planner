@@ -21,6 +21,7 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
         label: 'Сохранить',
         action: handleSave,
       }}
+      id={'edit-account'}
     >
       <InputField
         icon={BookUser}
