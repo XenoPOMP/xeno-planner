@@ -2,6 +2,7 @@ import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
 import HtmlHeading from '@/src/components/ui/Heading';
+import Profile from '@/src/components/ui/Profile';
 
 import styles from './DashboardHeader.module.scss';
 import type { DashboardHeaderProps } from './DashboardHeader.props';
@@ -24,6 +25,8 @@ const DashboardHeader: VariableFC<
           {heading}
         </HtmlHeading>
       )}
+
+      <Profile />
     </header>
   );
 };

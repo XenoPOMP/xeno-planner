@@ -1,0 +1,23 @@
+article.profile {
+  @apply flex select-none;
+
+  gap: var(--p-level-5);
+
+  section.name {
+    @apply flex flex-col items-end justify-center;
+
+    & > strong {
+      @apply p20 font-medium;
+
+      & + p {
+        @apply p16 text-secondary-border-accent
+               max-w-[25ch];
+      }
+    }
+  }
+
+  section.avatar {
+    @apply h-[2.8em] aspect-square rounded-[6px]
+           bg-secondary-border-accent;
+  }
+}
