@@ -1,3 +1,5 @@
+@import "src/styles/templates";
+
 article.profile {
   @apply flex select-none;
 
@@ -13,6 +15,10 @@ article.profile {
         @apply p16 text-secondary-border-accent
                max-w-[25ch];
       }
+    }
+
+    @include endAtFixed($tabletBreakpoint) {
+      display: none;
     }
   }
 
