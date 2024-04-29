@@ -24,7 +24,7 @@ article.profile {
 
   section.avatar {
     @apply h-[2.8em] aspect-square rounded-[6px]
-           bg-secondary-border-accent overflow-hidden
+           bg-secondary-bg-accent overflow-hidden
            flex-shrink-0;
 
     & > img {
