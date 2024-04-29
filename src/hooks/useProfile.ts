@@ -4,7 +4,7 @@ import { UserService } from '@/src/services/user.service.ts';
 
 export const useProfile = () => {
   return useQuery({
-    queryKey: ['user', 'statistics'],
+    queryKey: ['profile'],
     queryFn: () => UserService.getProfile(),
   });
 };
