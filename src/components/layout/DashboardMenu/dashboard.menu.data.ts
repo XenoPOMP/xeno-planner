@@ -22,6 +22,7 @@ export const dashboardMenuData: Array<
   {
     icon: SquareKanban,
     href: `${DASHBOARD_PAGES.TASKS}/list-view`,
+    parent: DASHBOARD_PAGES.TASKS,
     children: 'Задачи',
     'aria-disabled': false,
   },

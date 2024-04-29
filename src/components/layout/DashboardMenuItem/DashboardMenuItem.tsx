@@ -14,13 +14,19 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
   children,
   icon: Icon,
   'aria-disabled': ariaDisabled,
+  parent,
   ...props
 }) => {
   const pathname = usePathname();
 
-  const isActive = () => {
+  const isActive = (): boolean => {
     if (href === '/') {
       return href === pathname;
+    }
+
+    /** Check if target url is nested inside parent url. */
+    if (parent) {
+      return href.toString().includes(parent.toString());
     }
 
     return href.toString().startsWith(pathname);
