@@ -3,43 +3,60 @@
 .menuItem {
   @apply flex items-center;
 
-  line-height: normal;
-  gap: var(--p-level-5);
-
-  @include paddingHorizontal(var(--p-level-4));
-  @include paddingVertical(calc(var(--p-level-4) * .75));
-
   $anim: .1s ease-out;
+
   transition: $anim background-color,
-              $anim opacity;
+              $anim opacity,
+              $anim color;
 
-  @include desktopHover {
-    @apply bg-secondary-bg-accent;
-  }
+  &:not(.tabLike) {
+    line-height: normal;
+    gap: var(--p-level-5);
 
-  &[aria-disabled~="true"] {
-    pointer-events: none;
-    opacity: .5;
-  }
+    @include paddingHorizontal(var(--p-level-4));
+    @include paddingVertical(calc(var(--p-level-4) * .75));
 
-  &.active {
-    @apply bg-accent;
-  }
+    @include desktopHover {
+      @apply bg-secondary-bg-accent;
+    }
 
-  @include endAtFixed($tabletBreakpoint) {
-    @apply flex-center;
-    @include paddingVertical(var(--p-level-4));
+    &[aria-disabled~="true"] {
+      pointer-events: none;
+      opacity: .5;
+    }
 
-    .linkText {
-      display: none;
+    &.active {
+      @apply bg-accent;
+    }
+
+    @include endAtFixed($tabletBreakpoint) {
+      @apply flex-center;
+      @include paddingVertical(var(--p-level-4));
+
+      .linkText {
+        display: none;
+      }
+    }
+
+    @include mediaWidthRange($mobileBreakpoint, $tabletBreakpoint) {
+      aspect-ratio: 1;
+    }
+
+    @include endAtFixed($mobileBreakpoint) {
+      // height: 3.5em !important;
     }
   }
 
-  @include mediaWidthRange($mobileBreakpoint, $tabletBreakpoint) {
-    aspect-ratio: 1;
-  }
+  &.tabLike {
+    gap: .2em;
 
-  @include endAtFixed($mobileBreakpoint) {
-    // height: 3.5em !important;
+    &:not(.active) {
+      @apply text-secondary-border-accent;
+    }
+
+    &.active,
+    &:hover {
+      @apply text-current;
+    }
   }
 }

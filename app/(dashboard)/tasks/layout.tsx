@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { type FC } from 'react';
 
 import DashboardHeader from '@/src/components/layout/DashboardHeader';
-import DashboardTabs from '@/src/components/layout/DashboardTabs';
+import TasksTabControl from '@/src/components/ui/TasksTabControl';
 import { generateOpenGraph } from '@/src/utils/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,7 +24,7 @@ const TaskPageLayout: FC<PropsWith<'children', {}>> = ({ children }) => {
   return (
     <main>
       <DashboardHeader heading={'Задачи'} />
-      <DashboardTabs></DashboardTabs>
+      <TasksTabControl />
 
       {children}
     </main>

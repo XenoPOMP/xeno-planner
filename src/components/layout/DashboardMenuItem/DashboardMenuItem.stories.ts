@@ -24,3 +24,13 @@ export const Default: Story = {
     children: 'Menu item',
   },
 };
+
+export const Tab: Story = {
+  args: {
+    href: '/',
+    'aria-disabled': false,
+    icon: KanbanSquareIcon,
+    children: 'Board',
+    isTab: true,
+  },
+};

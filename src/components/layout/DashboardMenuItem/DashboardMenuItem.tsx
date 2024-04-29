@@ -15,6 +15,7 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
   icon: Icon,
   'aria-disabled': ariaDisabled,
   parent,
+  isTab,
   ...props
 }) => {
   const pathname = usePathname();
@@ -33,12 +34,17 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
   };
 
   return (
-    <li className={cn('w-full')}>
+    <li
+      className={cn('w-full list-none', {
+        '!w-fit': isTab,
+      })}
+    >
       <Link
         className={cn(
           styles.menuItem,
           {
             [`${styles.active}`]: isActive(),
+            [`${styles.tabLike}`]: isTab,
           },
           className,
         )}
@@ -48,7 +54,7 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
       >
         {Icon && (
           <Icon
-            size={'1.33em'}
+            size={isTab ? '1.1em' : '1.33em'}
             className={cn('flex-shrink-0')}
           />
         )}

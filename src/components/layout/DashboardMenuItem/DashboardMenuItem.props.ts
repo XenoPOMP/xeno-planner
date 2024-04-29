@@ -7,4 +7,10 @@ export interface DashboardMenuItemProps {
 
   /** Indicates parent url in group. */
   parent?: ComponentProps<typeof Link>['href'];
+
+  /**
+   * If true, component will be styled
+   * as tab control entry.
+   */
+  isTab?: boolean;
 }
