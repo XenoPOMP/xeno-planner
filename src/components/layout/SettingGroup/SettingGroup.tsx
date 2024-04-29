@@ -4,7 +4,6 @@ import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
 import Button from '@/src/components/ui/Button';
-import CircleLoader from '@/src/components/ui/CircleLoader';
 import HtmlHeading from '@/src/components/ui/Heading';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer.tsx';
 import { SETTING_GROUP_SIZE } from '@/src/constants/fields.constants.ts';
@@ -56,9 +55,10 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
             onClick={() => {
               save?.action?.();
             }}
+            disabled={save.pending}
             {...saveButtonProps}
           >
-            {save.pending ? <CircleLoader /> : save.label}
+            {save.label}
           </Button>
         )}
       </UiContainer>
