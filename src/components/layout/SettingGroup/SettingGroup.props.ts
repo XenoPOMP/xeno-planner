@@ -16,7 +16,11 @@ export interface SettingGroupProps extends WithHeading {
   >;
 
   /**
-   * If true, will add bottom border anyway.
+   * If true, border will not be shown. Unless __forceBorder__
+   * is true.
    */
+  noBorder?: boolean;
+
+  /** If true, will add bottom border anyway. */
   forceBorder?: boolean;
 }

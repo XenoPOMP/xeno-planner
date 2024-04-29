@@ -18,6 +18,7 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
   heading,
   save,
   saveButtonProps,
+  noBorder,
   forceBorder,
   ...props
 }) => {
@@ -26,6 +27,7 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
       className={cn(
         styles.group,
         {
+          [`${styles.noBorder}`]: noBorder,
           [`${styles.forceBorder}`]: forceBorder,
         },
         className,
