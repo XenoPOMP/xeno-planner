@@ -1,12 +1,22 @@
 @import "src/styles/templates";
 
 article.grid {
-  @include automaticColumns(300px);
+  @include automaticColumns(387.5px);
 
   display: grid;
-  gap: 1rem;
+  gap: var(--p-level-4);
+  padding: var(--p-level-2);
 
   .block {
-    @apply p-[1rem] flex-center bg-secondary-bg;
+    @apply p-[1rem] flex-center bg-secondary-bg-accent
+           flex-col p20;
+
+    padding: var(--p-level-4);
+    gap: var(--p-level-5);
+    border-radius: var(--p-level-4);
+
+    & > strong {
+      @apply font-bold p24;
+    }
   }
 }

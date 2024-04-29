@@ -10,22 +10,27 @@ import styles from './Statistics.module.scss';
 import type { StatisticsProps } from './Statistics.props';
 
 const Statistics: FC<StatisticsProps> = () => {
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['user', 'statistics'],
     queryFn: async () => UserService.getProfile(),
   });
 
   return (
     <article className={cn(styles.grid)}>
-      {data &&
-        data.statistics.map(({ label, value }, index) => (
+      {isLoading ? (
+        <>Loading...</>
+      ) : (
+        data?.statistics.map(({ label, value }, index) => (
           <div
             key={`[${index}]: ${label}`}
             className={cn('whitespace-break-spaces', styles.block)}
           >
-            {label}: {value}
+            <strong>{value}</strong>
+
+            <span>{label}</span>
           </div>
-        ))}
+        ))
+      )}
     </article>
   );
 };
