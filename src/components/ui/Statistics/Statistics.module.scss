@@ -1,0 +1,12 @@
+@import "src/styles/templates";
+
+article.grid {
+  @include automaticColumns(300px);
+
+  display: grid;
+  gap: 1rem;
+
+  .block {
+    @apply p-[1rem] flex-center bg-secondary-bg;
+  }
+}
