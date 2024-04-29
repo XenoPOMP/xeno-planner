@@ -31,7 +31,12 @@ const Logo: VariableFC<typeof Link, LogoProps, 'children' | 'href'> = ({
   return (
     <Link
       href={'/'}
-      className={cn(styles.logo, variantsMap[variant].className, className)}
+      className={cn(
+        styles.logo,
+        variantsMap[variant].className,
+        'select-none',
+        className,
+      )}
       {...props}
     >
       <SquareGanttChart

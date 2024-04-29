@@ -15,7 +15,11 @@ const DashboardMenu: VariableFC<'nav', DashboardMenuProps, 'children'> = ({
 }) => {
   return (
     <nav
-      className={cn('flex-grow overflow-y-auto', styles.menu, className)}
+      className={cn(
+        'flex-grow overflow-y-auto select-none',
+        styles.menu,
+        className,
+      )}
       {...props}
     >
       <ul>
