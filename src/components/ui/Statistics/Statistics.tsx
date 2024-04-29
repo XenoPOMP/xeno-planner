@@ -1,31 +1,25 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import cn from 'classnames';
 import { type FC } from 'react';
 
 import CircleLoader from '@/src/components/ui/CircleLoader';
-import { UserService } from '@/src/services/user.service.ts';
+import { useProfile } from '@/src/hooks/useProfile.ts';
 
 import styles from './Statistics.module.scss';
 import type { StatisticsProps } from './Statistics.props';
 
 const Statistics: FC<StatisticsProps> = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['user', 'statistics'],
-    queryFn: async () => UserService.getProfile(),
-  });
+  const { data, isLoading } = useProfile();
 
   return (
     <article className={cn(styles.grid)}>
-      <div className={cn('flex-center col-span-full')}>
-        <CircleLoader />
-      </div>
-
       {isLoading ? (
-        <>Loading...</>
-      ) : (
-        data?.statistics.map(({ label, value }, index) => (
+        <div className={cn('flex-center col-span-full')}>
+          <CircleLoader />
+        </div>
+      ) : data?.statistics.length ? (
+        data.statistics.map(({ label, value }, index) => (
           <div
             key={`[${index}]: ${label}`}
             className={cn('whitespace-break-spaces', styles.block)}
@@ -35,6 +29,10 @@ const Statistics: FC<StatisticsProps> = () => {
             <span>{label}</span>
           </div>
         ))
+      ) : (
+        <div className={cn('flex-center col-span-full')}>
+          Статистика не найдена!
+        </div>
       )}
     </article>
   );

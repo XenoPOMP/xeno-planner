@@ -1,0 +1,10 @@
+import { useQuery } from '@tanstack/react-query';
+
+import { UserService } from '@/src/services/user.service.ts';
+
+export const useProfile = () => {
+  return useQuery({
+    queryKey: ['user', 'statistics'],
+    queryFn: () => UserService.getProfile(),
+  });
+};

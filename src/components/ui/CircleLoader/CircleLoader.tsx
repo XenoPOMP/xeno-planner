@@ -12,12 +12,16 @@ const CircleLoader: FC<CircleLoaderProps> = () => {
   return (
     <Icon
       size={'1em'}
+      initial={{
+        rotate: '0turn',
+      }}
       animate={{
-        rotate: ['0turn', '1turn'],
+        rotate: '1turn',
       }}
       transition={{
         ease: 'linear',
         duration: 2,
+        delay: 0,
         repeat: Number.POSITIVE_INFINITY,
       }}
     />
