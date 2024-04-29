@@ -1,0 +1,8 @@
+@import "src/styles/templates";
+
+article.tabs {
+  & > div {
+    padding-top: var(--p-level-4) !important;
+    padding-bottom: var(--p-level-4) !important;
+  }
+}
