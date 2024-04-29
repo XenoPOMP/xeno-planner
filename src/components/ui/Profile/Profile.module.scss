@@ -18,6 +18,13 @@ article.profile {
 
   section.avatar {
     @apply h-[2.8em] aspect-square rounded-[6px]
-           bg-secondary-border-accent;
+           bg-secondary-border-accent overflow-hidden;
+
+    & > img {
+      @apply size-full;
+
+      object-fit: cover;
+      object-position: center;
+    }
   }
 }

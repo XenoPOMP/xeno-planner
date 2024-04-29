@@ -1,6 +1,7 @@
 'use client';
 
 import cn from 'classnames';
+import Image from 'next/image';
 import Link from 'next/link';
 import { type FC } from 'react';
 import TextOverflow from 'react-text-overflow';
@@ -14,6 +15,12 @@ import type { ProfileProps } from './Profile.props';
 
 const Profile: FC<ProfileProps> = () => {
   const { data, isLoading } = useProfile();
+
+  const avatarParams = new URLSearchParams({
+    seed: data?.user.name || '',
+  });
+
+  const avatarUrl = `https://api.dicebear.com/8.x/identicon/png?${avatarParams.toString()}`;
 
   return isLoading ? (
     <div
@@ -32,7 +39,14 @@ const Profile: FC<ProfileProps> = () => {
           </p>
         </section>
 
-        <section className={cn(styles.avatar)}></section>
+        <section className={cn(styles.avatar, 'flex-center')}>
+          <Image
+            src={avatarUrl}
+            alt={'Ваш аватар'}
+            width={100}
+            height={100}
+          />
+        </section>
       </article>
     </Link>
   ) : (
