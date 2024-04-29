@@ -6,6 +6,7 @@ import cn from 'classnames';
 import Button from '@/src/components/ui/Button';
 import HtmlHeading from '@/src/components/ui/Heading';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer.tsx';
+import { SETTING_GROUP_SIZE } from '@/src/constants/fields.constants.ts';
 
 import styles from './SettingGroup.module.scss';
 import type { SettingGroupProps } from './SettingGroup.props';
@@ -26,8 +27,7 @@ const SettingGroup: VariableFC<'article', SettingGroupProps> = ({
       <UiContainer
         as={'div'}
         className={cn(styles.container)}
-        maxWidth={`800px`}
-        margin={'0px'}
+        {...SETTING_GROUP_SIZE}
       >
         {heading && (
           <header>
