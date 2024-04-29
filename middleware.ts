@@ -49,6 +49,7 @@ export const config: MiddlewareConfig = {
     '/settings',
     '/tasks',
     '/time-blocking',
-    '/auth/:path*',
+    '/auth/login',
+    '/auth/register',
   ],
 };
