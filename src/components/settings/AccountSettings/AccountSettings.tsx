@@ -10,6 +10,7 @@ import InputField from '@/src/components/ui/InputField';
 import { useInitialData } from '@/src/hooks/useInitialData.ts';
 import { useUpdateSettings } from '@/src/hooks/useUpdateSettings.ts';
 import type { UserFormType } from '@/src/types';
+import { registerNestedField } from '@/src/utils/misc';
 
 import type { AccountSettingsProps } from './AccountSettings.props';
 
@@ -55,21 +56,21 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
             icon={BookUser}
             placeholder={'Имя'}
             outerClassName={cn('col-span-full')}
-            register={'name'}
+            register={registerNestedField<UserFormType>('name')}
           />
 
           <InputField
             icon={BriefcaseBusiness}
             placeholder={'Время работы (в мин.)'}
             type={'number'}
-            register={'workInterval'}
+            register={registerNestedField<UserFormType>('workInterval')}
           />
 
           <InputField
             icon={Sofa}
             placeholder={'Время перерыва (в мин.)'}
             type={'number'}
-            register={'breakInterval'}
+            register={registerNestedField<UserFormType>('breakInterval')}
           />
 
           <InputField
@@ -77,7 +78,7 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
             placeholder={'Количество интервалов (макс 10)'}
             type={'number'}
             outerClassName={cn('col-span-full')}
-            register={'intervalsCount'}
+            register={registerNestedField<UserFormType>('intervalsCount')}
           />
         </SettingGroup>
       </form>
