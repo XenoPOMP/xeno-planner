@@ -27,7 +27,7 @@ const DashboardMenuItem: VariableFC<typeof Link, DashboardMenuItemProps> = ({
 
     /** Check if target url is nested inside parent url. */
     if (parent) {
-      return pathname.startsWith(parent.toString());
+      return pathname?.startsWith(parent.toString());
     }
 
     return href.toString().startsWith(pathname);
