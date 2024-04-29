@@ -8,5 +8,5 @@ $gridBreakpoints: (
         xl2: 1440px,
         xxl: 1600px
 );
-$tabletBreakpoint: map-get($gridBreakpoints, lg);
+$tabletBreakpoint: map-get($gridBreakpoints, xl2);
 $mobileBreakpoint: map-get($gridBreakpoints, md);
