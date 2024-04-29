@@ -57,6 +57,7 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
             placeholder={'Имя'}
             outerClassName={cn('col-span-full')}
             register={registerNestedField<UserFormType>('name')}
+            focused
           />
 
           <InputField
@@ -64,6 +65,7 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
             placeholder={'Время работы (в мин.)'}
             type={'number'}
             register={registerNestedField<UserFormType>('workInterval')}
+            focused
           />
 
           <InputField
@@ -71,6 +73,7 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
             placeholder={'Время перерыва (в мин.)'}
             type={'number'}
             register={registerNestedField<UserFormType>('breakInterval')}
+            focused
           />
 
           <InputField
@@ -79,6 +82,7 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
             type={'number'}
             outerClassName={cn('col-span-full')}
             register={registerNestedField<UserFormType>('intervalsCount')}
+            focused
           />
         </SettingGroup>
       </form>
