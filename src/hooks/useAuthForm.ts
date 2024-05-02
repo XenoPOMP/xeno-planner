@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { type AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -44,9 +45,28 @@ export const useAuthForm = <
         }
       }
     },
-    onError() {
-      hookForm.reset();
-      toast.error('Произошла ошибка!');
+    onError(err: AxiosError) {
+      const responseStatus = err.response?.status;
+
+      switch (responseStatus) {
+        // Bad Request
+        case 400: {
+          toast.error('Неверные данные!');
+          break;
+        }
+
+        // Not Found
+        case 404: {
+          toast.error('Пользователь не найден!');
+          break;
+        }
+
+        default: {
+          toast.error('Произошла ошибка!');
+        }
+      }
+
+      // hookForm.reset();
     },
   });
 
