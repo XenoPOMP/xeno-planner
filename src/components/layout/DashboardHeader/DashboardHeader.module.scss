@@ -1,3 +1,5 @@
+@import "src/styles/templates";
+
 header.dashboardHeader {
   @apply flex justify-between items-center
          border-b-[1px] border-b-secondary-border;
@@ -6,5 +8,9 @@ header.dashboardHeader {
 
   h1.heading {
     font-size: calc(var(--p-level-2) * 1.25);
+
+    @include endAtFixed($mobileBreakpoint) {
+      font-size: calc(var(--p-level-2) * 1.1);
+    }
   }
 }
