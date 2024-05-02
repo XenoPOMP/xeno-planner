@@ -44,6 +44,10 @@ export const useAuthForm = <
         }
       }
     },
+    onError() {
+      hookForm.reset();
+      toast.error('Произошла ошибка!');
+    },
   });
 
   const authSubmitAction: SubmitHandler<TForm> = data => {
