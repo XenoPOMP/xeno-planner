@@ -123,6 +123,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
           onClick={() => {
             setIsPasswordShown(prev => !prev);
           }}
+          type={'button'}
         >
           <div className={cn('sr-only')}>
             {isPasswordShown ? 'Скрыть пароль' : 'Открыть пароль'}
