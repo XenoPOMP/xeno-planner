@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { type FC } from 'react';
 
+import DashboardHeader from '@/src/components/layout/DashboardHeader';
 import { generateOpenGraph } from '@/src/utils/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,7 +19,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const PomodoroPage: FC<{}> = () => {
-  return <main>Pomodoro</main>;
+  return (
+    <main>
+      <DashboardHeader heading={'Таймер Pomodoro'} />
+    </main>
+  );
 };
 
 export default PomodoroPage;
