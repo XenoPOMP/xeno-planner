@@ -19,4 +19,8 @@ article.grid {
       @apply font-bold p24;
     }
   }
+
+  @include endAtFixed($mobileBreakpoint) {
+    grid-template-columns: 1fr;
+  }
 }
