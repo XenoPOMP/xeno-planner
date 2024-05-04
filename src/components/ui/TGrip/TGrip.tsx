@@ -1,5 +1,6 @@
 import { Priority } from '@xeno-planner/backend-types';
 import cn from 'classnames';
+import { GripVertical } from 'lucide-react';
 import { type FC } from 'react';
 
 import Checkbox from '@/src/components/ui/Checkbox';
@@ -12,7 +13,13 @@ const TGrip: FC<TGripProps> = () => {
   return (
     <>
       <td {...columnType('grip')}>
-        <Checkbox>Доделать дизайн</Checkbox>
+        <div className={cn('flex items-center gap-[.2em]')}>
+          <GripVertical
+            className={cn('text-secondary-border-accent cursor-grab')}
+          />
+
+          <Checkbox>Доделать дизайн</Checkbox>
+        </div>
       </td>
 
       <td
