@@ -1,7 +1,6 @@
 import { type FC } from 'react';
 
-import TGrip from '@/src/components/ui/TGrip';
-import TGroupName from '@/src/components/ui/TGroupName';
+import TGroup from '@/src/components/ui/TGroup';
 import TaskTable from '@/src/components/ui/TaskTable';
 import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 
@@ -15,17 +14,7 @@ const ListViewTasksPage: FC<{}> = () => {
           <td {...columnType('grip')}>Приоритет</td>
         </tr>
 
-        <tr>
-          <TGroupName>Сегодня</TGroupName>
-        </tr>
-
-        <tr>
-          <TGrip />
-        </tr>
-
-        <tr>
-          <td {...columnType('add')}>Добавить задачу...</td>
-        </tr>
+        <TGroup />
       </TaskTable>
     </>
   );
