@@ -2,7 +2,9 @@ import cn from 'classnames';
 import { GripVertical } from 'lucide-react';
 import { type FC } from 'react';
 
+import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
 import Checkbox from '@/src/components/ui/Checkbox';
+import DatePicker from '@/src/components/ui/DatePicker';
 import PriorityBadge from '@/src/components/ui/PriorityBadge';
 import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 import type { ITaskResponse } from '@/src/types';
@@ -29,7 +31,9 @@ const BadgeText = ({
   return 'Нажмите, чтобы выбрать';
 };
 
-const TGrip: FC<TGripProps> = ({ task: { name, priority } }) => {
+const TGrip: FC<TGripProps> = ({ task: { id, name, priority, createdAt } }) => {
+  const { updateTask } = useUpdateTask(id);
+
   return (
     <>
       <td {...columnType('grip')}>
@@ -47,7 +51,18 @@ const TGrip: FC<TGripProps> = ({ task: { name, priority } }) => {
         className={cn('select-none')}
         {...columnType('grip')}
       >
-        3 мая, 2024
+        <DatePicker
+          position={'left'}
+          value={createdAt}
+          onChange={date =>
+            updateTask({
+              id,
+              data: {
+                createdAt: new Date(date),
+              },
+            })
+          }
+        />
       </td>
 
       <td
