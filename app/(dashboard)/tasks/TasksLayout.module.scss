@@ -1,7 +1,11 @@
 @import "src/styles/templates";
 
 main.layout {
+  @apply overflow-x-hidden;
+
   section.content {
+    @apply overflow-x-auto;
+
     // padding: var(--p-level-2);
   }
 }
