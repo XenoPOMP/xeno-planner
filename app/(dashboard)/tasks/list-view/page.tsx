@@ -24,7 +24,7 @@ const ListViewTasksPage: FC<{}> = () => {
         </tr>
 
         <tr>
-          <td {...columnType('add')}>Add task...</td>
+          <td {...columnType('add')}>Добавить задачу...</td>
         </tr>
       </TaskTable>
     </>
