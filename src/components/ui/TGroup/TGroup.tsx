@@ -6,16 +6,18 @@ import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 
 import type { TGroupProps } from './TGroup.props';
 
-const TGroup: FC<TGroupProps> = () => {
+const TGroup: FC<TGroupProps> = ({ tasks }) => {
   return (
     <>
       <tr>
         <TGroupName>Сегодня</TGroupName>
       </tr>
 
-      <tr>
-        <TGrip />
-      </tr>
+      {tasks?.map(task => (
+        <tr key={`${task.id}`}>
+          <TGrip task={task} />
+        </tr>
+      ))}
 
       <tr>
         <td {...columnType('add')}>Добавить задачу...</td>

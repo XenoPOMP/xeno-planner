@@ -1,7 +1,12 @@
+'use client';
+
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
+import CircleLoader from '@/src/components/ui/CircleLoader';
+import TGroup from '@/src/components/ui/TGroup';
 import THead from '@/src/components/ui/THead';
+import { useTasks } from '@/src/hooks/useTasks.ts';
 
 import styles from './TaskTable.module.scss';
 import type { TaskTableProps } from './TaskTable.props';
@@ -38,11 +43,12 @@ export const columnType = (type: 'grip' | 'group' | 'add') => {
   }
 };
 
-const TaskTable: VariableFC<'table', TaskTableProps> = ({
+const TaskTable: VariableFC<'table', TaskTableProps, 'children'> = ({
   className,
-  children,
   ...props
 }) => {
+  const { tasks, isLoading } = useTasks();
+
   return (
     <table
       className={cn(
@@ -57,7 +63,17 @@ const TaskTable: VariableFC<'table', TaskTableProps> = ({
         <THead />
       </thead>
 
-      <tbody>{children}</tbody>
+      <tbody>
+        {isLoading ? (
+          <tr>
+            <td {...columnType('group')}>
+              <CircleLoader />
+            </td>
+          </tr>
+        ) : (
+          <TGroup tasks={tasks} />
+        )}
+      </tbody>
     </table>
   );
 };

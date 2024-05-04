@@ -1,4 +1,3 @@
-import { Priority } from '@xeno-planner/backend-types';
 import cn from 'classnames';
 import { GripVertical } from 'lucide-react';
 import { type FC } from 'react';
@@ -6,10 +5,31 @@ import { type FC } from 'react';
 import Checkbox from '@/src/components/ui/Checkbox';
 import PriorityBadge from '@/src/components/ui/PriorityBadge';
 import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
+import type { ITaskResponse } from '@/src/types';
 
 import type { TGripProps } from './TGrip.props';
 
-const TGrip: FC<TGripProps> = () => {
+const BadgeText = ({
+  priority,
+}: Partial<Pick<ITaskResponse, 'priority'>>): string => {
+  switch (priority) {
+    case 'low': {
+      return 'Низкий';
+    }
+
+    case 'medium': {
+      return 'Средний';
+    }
+
+    case 'high': {
+      return 'Высокий';
+    }
+  }
+
+  return 'Нажмите, чтобы выбрать';
+};
+
+const TGrip: FC<TGripProps> = ({ task: { name, priority } }) => {
   return (
     <>
       <td {...columnType('grip')}>
@@ -19,7 +39,7 @@ const TGrip: FC<TGripProps> = () => {
             className={cn('text-secondary-border-accent cursor-grab')}
           />
 
-          <Checkbox>Доделать дизайн</Checkbox>
+          <Checkbox>{name}</Checkbox>
         </div>
       </td>
 
@@ -34,7 +54,9 @@ const TGrip: FC<TGripProps> = () => {
         className={cn('select-none')}
         {...columnType('grip')}
       >
-        <PriorityBadge priority={Priority.high}>Высокий</PriorityBadge>
+        <PriorityBadge priority={priority || undefined}>
+          <BadgeText priority={priority} />
+        </PriorityBadge>
       </td>
     </>
   );
