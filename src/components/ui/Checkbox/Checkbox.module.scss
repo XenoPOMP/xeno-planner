@@ -3,8 +3,6 @@
 label.checkboxHolder {
   @apply flex items-center p16;
 
-  gap: var(--p-level-5);
-
   // Animation curve for all anims
   $anim: .08s ease;
 
@@ -20,6 +18,7 @@ label.checkboxHolder {
            border-[2px] border-current
            flex-center;
 
+    margin-right: var(--p-level-5);
     transition:
             $anim background-color
             $anim color;
