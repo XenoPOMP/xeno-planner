@@ -64,35 +64,35 @@ const TGrip: FC<TGripProps> = ({
         className={cn('select-none')}
         {...columnType('grip')}
       >
-        {priority && (
-          <SelectField
-            type={'priority-badges'}
-            currentItem={getPriorityName(priority)}
-            currentValue={priority}
-            items={[
-              {
-                name: getPriorityName(Priority.low),
-                value: Priority.low,
+        <SelectField
+          type={'priority-badges'}
+          currentItem={
+            priority ? getPriorityName(priority) : 'Нажмите, чтобы выбрать'
+          }
+          currentValue={priority || undefined}
+          items={[
+            {
+              name: getPriorityName(Priority.low),
+              value: Priority.low,
+            },
+            {
+              name: getPriorityName(Priority.medium),
+              value: Priority.medium,
+            },
+            {
+              name: getPriorityName(Priority.high),
+              value: Priority.high,
+            },
+          ]}
+          onSelection={val => {
+            updateTask({
+              id,
+              data: {
+                priority: val as Priority,
               },
-              {
-                name: getPriorityName(Priority.medium),
-                value: Priority.medium,
-              },
-              {
-                name: getPriorityName(Priority.high),
-                value: Priority.high,
-              },
-            ]}
-            onSelection={val => {
-              updateTask({
-                id,
-                data: {
-                  priority: val as Priority,
-                },
-              });
-            }}
-          />
-        )}
+            });
+          }}
+        />
       </td>
     </>
   );
