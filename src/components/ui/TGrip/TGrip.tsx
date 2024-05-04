@@ -83,7 +83,14 @@ const TGrip: FC<TGripProps> = ({
                 value: Priority.high,
               },
             ]}
-            onSelection={val => {}}
+            onSelection={val => {
+              updateTask({
+                id,
+                data: {
+                  priority: val as Priority,
+                },
+              });
+            }}
           />
         )}
       </td>
