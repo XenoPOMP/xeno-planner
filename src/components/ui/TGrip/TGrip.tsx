@@ -1,8 +1,9 @@
 import { Priority } from '@xeno-planner/backend-types';
 import cn from 'classnames';
-import { GripVertical } from 'lucide-react';
+import { GripVertical, Trash } from 'lucide-react';
 import { type FC } from 'react';
 
+import { useDeleteTask } from '@/app/(dashboard)/tasks/hooks/useDeleteTask.ts';
 import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
 import Checkbox from '@/src/components/ui/Checkbox';
 import DatePicker from '@/src/components/ui/DatePicker';
@@ -16,6 +17,7 @@ const TGrip: FC<TGripProps> = ({
   task: { id, name, priority, createdAt, isCompleted },
 }) => {
   const { updateTask } = useUpdateTask(id);
+  const { deleteTask } = useDeleteTask(id);
 
   return (
     <>
@@ -61,10 +63,11 @@ const TGrip: FC<TGripProps> = ({
       </td>
 
       <td
-        className={cn('select-none')}
+        className={cn('select-none flex justify-between items-center')}
         {...columnType('grip')}
       >
         <SelectField
+          outerClassName={cn('flex-grow')}
           type={'priority-badges'}
           currentItem={
             priority ? getPriorityName(priority) : 'Нажмите, чтобы выбрать'
@@ -92,6 +95,14 @@ const TGrip: FC<TGripProps> = ({
               },
             });
           }}
+        />
+
+        <Trash
+          size={'1em'}
+          className={cn(
+            'cursor-pointer opacity-30 hover:opacity-100 transition-opacity',
+          )}
+          onClick={() => deleteTask({ id })}
         />
       </td>
     </>
