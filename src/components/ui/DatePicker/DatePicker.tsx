@@ -17,6 +17,9 @@ const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
   const [isShown, setIsShown] = useState<boolean>(false);
   const ref = useOutside<HTMLDivElement>('click', () => setIsShown(false));
 
+  /** Displaying date value. */
+  const dayValue = value || selected;
+
   const handleDaySelect: SelectSingleEventHandler = date => {
     const ISOdate = date?.toISOString();
     setSelected(date);
@@ -35,9 +38,9 @@ const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
       ref={ref}
     >
       <button onClick={() => setIsShown(prev => !prev)}>
-        {value ? dayjs(value).format('LL') : 'Нажмите, чтобы выбрать'}
+        {dayValue ? dayjs(dayValue).format('LL') : 'Нажмите, чтобы выбрать'}
 
-        {value && (
+        {dayValue && (
           <button
             className={
               'absolute -top-[.5em] -right-[1em] opacity-30 hover:opacity-100 transition-opacity'
