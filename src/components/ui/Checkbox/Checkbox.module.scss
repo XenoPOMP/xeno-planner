@@ -1,0 +1,44 @@
+@import "src/styles/templates";
+
+label.checkboxHolder {
+  @apply flex items-center p16;
+
+  gap: var(--p-level-5);
+
+  // Animation curve for all anims
+  $anim: .08s ease;
+
+  transition: $anim color;
+
+  // Box size: 20px (1.25em)
+  input.box {
+    @apply appearance-none;
+  }
+
+  .boxDisplayed {
+    @apply size-[1.25em] rounded-[.3125em]
+           border-[2px] border-current
+           flex-center;
+
+    transition:
+            $anim background-color
+            $anim color;
+
+    svg.icon {
+      opacity: 0;
+    }
+  }
+
+  // Checked state
+  &:has(> input.box:checked) {
+    @apply line-through italic text-secondary-border-accent;
+
+    .boxDisplayed {
+      @apply bg-accent border-accent text-primary-font;
+
+      svg.icon {
+        opacity: 1;
+      }
+    }
+  }
+}
