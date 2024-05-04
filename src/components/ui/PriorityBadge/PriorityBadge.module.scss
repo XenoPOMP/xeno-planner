@@ -1,0 +1,20 @@
+@import "src/styles/templates";
+
+@mixin handlePriority($name) {
+  &[data-priority="#{$name}"] {
+    @apply bg-priority-#{$name}-bg text-priority-#{$name}-font;
+  }
+}
+
+.badge {
+  @apply rounded-[5px] w-fit cursor-pointer
+          bg-priority-select-bg text-priority-select-font;
+
+  @include paddingHorizontal(var(--p-level-5));
+  @include paddingVertical(calc(var(--p-level-5) * .5));
+
+  // Handle all priority types
+  @include handlePriority("low");
+  @include handlePriority("medium");
+  @include handlePriority("high");
+}
