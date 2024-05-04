@@ -17,6 +17,10 @@ const ListViewTasksPage: FC<{}> = () => {
         <tr>
           <TGroupName>Group name</TGroupName>
         </tr>
+
+        <tr>
+          <td {...columnType('add')}>Add task...</td>
+        </tr>
       </TaskTable>
     </>
   );

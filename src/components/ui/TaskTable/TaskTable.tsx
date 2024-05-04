@@ -9,19 +9,25 @@ import type { TaskTableProps } from './TaskTable.props';
  * inside TaskTable.
  * @param type
  */
-export const columnType = (type: 'grip' | 'group') => {
+export const columnType = (type: 'grip' | 'group' | 'add') => {
   const base = {
     'data-column-type': type,
+  };
+
+  const fullSpanBase = {
+    ...base,
+    colSpan: 3,
   };
 
   switch (type) {
     // If type is group (group title), column
     // should span to 3 columns.
     case 'group': {
-      return {
-        ...base,
-        colSpan: 3,
-      };
+      return fullSpanBase;
+    }
+
+    case 'add': {
+      return fullSpanBase;
     }
 
     default: {

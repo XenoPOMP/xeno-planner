@@ -1,6 +1,12 @@
 @import "src/styles/templates";
 
 table.tasks {
+  $firstColumn: 300px;
+  $secondColumn: 300px;
+  $thirdColumn: 450px;
+
+  // min-width: calc($firstColumn + $secondColumn + $thirdColumn);
+
   tr {
     // Row bottom border
     &:not(:last-of-type) > :is(td, th) {
@@ -9,14 +15,33 @@ table.tasks {
 
     // Cells
     & > :is(td, th) {
+      // Nullstyles
       font-size: inherit;
       font-weight: inherit;
       text-align: unset;
 
+      // Sizes
+      &:nth-child(1) {
+        // 
+      }
+      &:nth-child(2) {
+        // width: $secondColumn;
+      }
+      &:nth-child(3) {
+        // width: $thirdColumn;
+      }
+
       // Grip-like column
-      &[data-column-type="grip"] {
+      &[data-column-type="grip"],
+      &[data-column-type="add"] {
         @include paddingVertical(calc(var(--p-level-4) * .75)); // 12px
         @include paddingHorizontal(var(--p-level-4)); // 16px
+      }
+
+      // Add task row
+      &[data-column-type="add"] {
+        @apply p16 italic text-secondary-border-accent
+               select-none cursor-pointer;
       }
 
       // Group title column
