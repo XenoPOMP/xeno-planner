@@ -31,7 +31,9 @@ const BadgeText = ({
   return 'Нажмите, чтобы выбрать';
 };
 
-const TGrip: FC<TGripProps> = ({ task: { id, name, priority, createdAt } }) => {
+const TGrip: FC<TGripProps> = ({
+  task: { id, name, priority, createdAt, isCompleted },
+}) => {
   const { updateTask } = useUpdateTask(id);
 
   return (
@@ -43,7 +45,19 @@ const TGrip: FC<TGripProps> = ({ task: { id, name, priority, createdAt } }) => {
             className={cn('text-secondary-border-accent cursor-grab')}
           />
 
-          <Checkbox>{name}</Checkbox>
+          <Checkbox
+            checked={!!isCompleted}
+            onChange={ev => {
+              updateTask({
+                id,
+                data: {
+                  isCompleted: ev.target.checked,
+                },
+              });
+            }}
+          >
+            {name}
+          </Checkbox>
         </div>
       </td>
 
