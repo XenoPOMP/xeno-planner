@@ -47,6 +47,7 @@ const TaskTable: VariableFC<'table', TaskTableProps> = ({
     <table
       className={cn(
         'w-full border-collapse border-[1px] border-secondary-border border-x-0 border-t-0',
+        'select-none',
         styles.tasks,
         className,
       )}
