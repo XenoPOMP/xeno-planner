@@ -5,7 +5,8 @@ export class TaskService {
   private static BASE_URL = '/user/task';
 
   static async getTasks() {
-    return axiosWithAuth.get<ITaskResponse[]>(this.BASE_URL);
+    const response = await axiosWithAuth.get<ITaskResponse[]>(this.BASE_URL);
+    return response.data;
   }
 
   static async createTask(data: TaskFormStateType) {
