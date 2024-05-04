@@ -1,4 +1,3 @@
-import { useOutside } from '@pacote/react-use-outside';
 import cn from 'classnames';
 import { ru } from 'date-fns/locale';
 import dayjs from 'dayjs';
@@ -8,6 +7,8 @@ import { type FC, useState } from 'react';
 import { DayPicker, type SelectSingleEventHandler } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 
+import { useOutSide } from '@/src/hooks/useOutSide.ts';
+
 import type { DatePickerProps } from './DatePicker.props';
 import { formatCaption } from './DatePickerCaption.tsx';
 
@@ -15,8 +16,7 @@ dayjs.extend(LocalizedFormat);
 
 const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
   const [selected, setSelected] = useState<Date>();
-  const [isShown, setIsShown] = useState<boolean>(false);
-  const ref = useOutside<HTMLDivElement>('click', () => setIsShown(false));
+  const { ref, isShown, setIsShown } = useOutSide<HTMLDivElement>();
 
   /** Displaying date value. */
   const dayValue = value || selected;
