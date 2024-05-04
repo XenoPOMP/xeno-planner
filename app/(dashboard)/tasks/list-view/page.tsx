@@ -9,13 +9,13 @@ const ListViewTasksPage: FC<{}> = () => {
     <>
       <TaskTable>
         <tr>
-          <td {...columnType('grip')}>First column</td>
-          <td {...columnType('grip')}>Second column</td>
-          <td {...columnType('grip')}>Third column</td>
+          <td {...columnType('grip')}>Название задачи</td>
+          <td {...columnType('grip')}>Дата</td>
+          <td {...columnType('grip')}>Приоритет</td>
         </tr>
 
         <tr>
-          <TGroupName>Group name</TGroupName>
+          <TGroupName>Сегодня</TGroupName>
         </tr>
 
         <tr>
