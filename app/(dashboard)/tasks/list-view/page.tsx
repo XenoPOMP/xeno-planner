@@ -5,11 +5,9 @@ import TaskTable from '@/src/components/ui/TaskTable';
 
 const ListViewTasksPage: FC<{}> = () => {
   return (
-    <>
-      <TaskTable>
-        <TGroup />
-      </TaskTable>
-    </>
+    <TaskTable>
+      <TGroup />
+    </TaskTable>
   );
 };
 
