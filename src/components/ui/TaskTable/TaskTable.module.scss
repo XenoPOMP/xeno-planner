@@ -3,9 +3,9 @@
 table.tasks {
   $firstColumn: 300px;
   $secondColumn: 300px;
-  $thirdColumn: 450px;
+  $thirdColumn: 350px;
 
-  // min-width: calc($firstColumn + $secondColumn + $thirdColumn);
+  min-width: calc($firstColumn + $secondColumn + $thirdColumn);
 
   tr {
     // Row bottom border
@@ -22,13 +22,13 @@ table.tasks {
 
       // Sizes
       &:nth-child(1) {
-        // 
+        min-width: $firstColumn;
       }
       &:nth-child(2) {
-        // width: $secondColumn;
+        width: $secondColumn;
       }
       &:nth-child(3) {
-        // width: $thirdColumn;
+        width: $thirdColumn;
       }
 
       // Grip-like column
