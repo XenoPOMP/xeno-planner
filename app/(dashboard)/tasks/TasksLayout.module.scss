@@ -1,10 +1,10 @@
 @import "src/styles/templates";
 
 main.layout {
-  @apply overflow-x-hidden;
+  @apply overflow-x-hidden flex flex-col;
 
   section.content {
-    @apply overflow-x-auto;
+    @apply overflow-x-auto flex-grow;
 
     // padding: var(--p-level-2);
   }
