@@ -1,8 +1,8 @@
 import { type DropResult } from '@hello-pangea/dnd';
 
 import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
-import { EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
-import { type ColumnId, FILTERS } from '@/src/data/task-columns.data.ts';
+import { type ColumnId, EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
+import { FILTERS } from '@/src/data/task-columns.data.ts';
 
 export const useTaskDnd = () => {
   const { updateTask } = useUpdateTask();
