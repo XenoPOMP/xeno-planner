@@ -3,16 +3,10 @@ import 'dayjs/locale/ru';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 
+import { type ColumnId, EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
+
 dayjs.extend(weekOfYear);
 dayjs.extend(isoWeek);
-
-export type ColumnId =
-  | 'today'
-  | 'tomorrow'
-  | 'on-this-week'
-  | 'on-next-week'
-  | 'later'
-  | 'completed';
 
 export const FILTERS: Record<Exclude<ColumnId, 'completed'>, Dayjs> = {
   today: dayjs().startOf('day'),
@@ -25,26 +19,26 @@ export const FILTERS: Record<Exclude<ColumnId, 'completed'>, Dayjs> = {
 export const COLUMNS: Array<{ label: string; value: ColumnId }> = [
   {
     label: 'Сегодня',
-    value: 'today',
+    value: EnumDndDestId.TODAY,
   },
   {
     label: 'Завтра',
-    value: 'tomorrow',
+    value: EnumDndDestId.TOMORROW,
   },
   {
     label: 'На этой неделе',
-    value: 'on-this-week',
+    value: EnumDndDestId.ON_THIS_WEEK,
   },
   {
     label: 'На следующей неделе',
-    value: 'on-next-week',
+    value: EnumDndDestId.ON_NEXT_WEEK,
   },
   {
     label: 'Позже',
-    value: 'later',
+    value: EnumDndDestId.LATER,
   },
   {
     label: 'Выполнено',
-    value: 'completed',
+    value: EnumDndDestId.COMPLETED,
   },
 ];
