@@ -32,5 +32,23 @@ export const lightTheme = {
       bg: '#262626',
       placeholder: '#A8A8A8',
     },
+    priority: {
+      low: {
+        bg: '#208B25',
+        font: '#A2F1E3',
+      },
+      medium: {
+        bg: '#B2761D',
+        font: '#FFFFFF',
+      },
+      high: {
+        bg: '#9D4949',
+        font: '#FFD9DA',
+      },
+      select: {
+        bg: '#313139',
+        font: '#DCDDE4',
+      },
+    },
   },
 } satisfies Theme;
