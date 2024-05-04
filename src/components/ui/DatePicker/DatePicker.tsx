@@ -44,7 +44,7 @@ const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
         {dayValue && (
           <button
             className={
-              'absolute -top-[.5em] -right-[.5em] opacity-30 hover:opacity-100 transition-opacity'
+              'absolute -top-[.75em] -right-[.5em] opacity-30 hover:opacity-100 transition-opacity'
             }
             onClick={() => onChange?.('')}
           >
