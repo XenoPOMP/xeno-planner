@@ -1,5 +1,6 @@
 import { useOutside } from '@pacote/react-use-outside';
 import cn from 'classnames';
+import { ru } from 'date-fns/locale';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import { X } from 'lucide-react';
@@ -64,6 +65,7 @@ const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
             <DayPicker
               fromYear={2023}
               toYear={2054}
+              locale={ru}
               initialFocus={isShown}
               mode={'single'}
               defaultMonth={selected}
