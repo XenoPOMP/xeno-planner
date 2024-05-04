@@ -7,6 +7,10 @@ table.tasks {
 
   min-width: calc($firstColumn + $secondColumn + $thirdColumn);
 
+  thead {
+    @apply border-b-[1px] border-b-secondary-border;
+  }
+
   tr {
     // Row bottom border
     &:not(:last-of-type) > :is(td, th) {

@@ -1,6 +1,8 @@
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
+import THead from '@/src/components/ui/THead';
+
 import styles from './TaskTable.module.scss';
 import type { TaskTableProps } from './TaskTable.props';
 
@@ -50,6 +52,10 @@ const TaskTable: VariableFC<'table', TaskTableProps> = ({
       )}
       {...props}
     >
+      <thead>
+        <THead />
+      </thead>
+
       <tbody>{children}</tbody>
     </table>
   );
