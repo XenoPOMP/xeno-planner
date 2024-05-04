@@ -3,10 +3,10 @@
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
+import { useTasks } from '@/app/(dashboard)/tasks/hooks/useTasks.ts';
 import CircleLoader from '@/src/components/ui/CircleLoader';
 import TGroup from '@/src/components/ui/TGroup';
 import THead from '@/src/components/ui/THead';
-import { useTasks } from '@/src/hooks/useTasks.ts';
 
 import styles from './TaskTable.module.scss';
 import type { TaskTableProps } from './TaskTable.props';
