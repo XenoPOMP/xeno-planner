@@ -1,0 +1,41 @@
+@import "src/styles/templates";
+
+table.tasks {
+  tr {
+    // Row bottom border
+    &:not(:last-of-type) > :is(td, th) {
+      @apply border-b-[1px] border-b-secondary-border;
+    }
+
+    // Cells
+    & > :is(td, th) {
+      font-size: inherit;
+      font-weight: inherit;
+      text-align: unset;
+
+      // Grip-like column
+      &[data-column-type="grip"] {
+        @include paddingVertical(calc(var(--p-level-4) * .75)); // 12px
+        @include paddingHorizontal(var(--p-level-4)); // 16px
+      }
+
+      // Group title column
+      &[data-column-type="group"] {
+        @include paddingVertical(var(--p-level-4)); // 16px
+      }
+
+      &:first-of-type {
+        padding-left: var(--p-level-2);
+      }
+
+      &:last-of-type {
+        padding-right: var(--p-level-2);
+      }
+
+      // Right border
+      &:not(:last-of-type) {
+        @apply border-r-[1px] border-r-secondary-border;
+      }
+    }
+  }
+}
