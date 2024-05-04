@@ -1,16 +1,18 @@
 'use client';
 
-import { useOutside } from '@pacote/react-use-outside';
+import { type Priority } from '@xeno-planner/backend-types';
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { type ComponentProps, useEffect } from 'react';
 import useSmoothScroll from 'react-smooth-scroll-hook';
 
 import InputField from '@/src/components/ui/InputField';
+import PriorityBadge from '@/src/components/ui/PriorityBadge';
+import { useOutSide } from '@/src/hooks/useOutSide.ts';
 
 import styles from './SelectField.module.scss';
-import type { SelectFieldProps } from './SelectField.props';
+import type { SelectFieldProps, SelectFieldType } from './SelectField.props';
 
 const SelectField: VariableFC<
   typeof InputField,
@@ -20,20 +22,28 @@ const SelectField: VariableFC<
   className,
   outerOnClick,
   currentItem,
+  currentValue,
   items,
   onSelection,
+  type = 'default',
   ...props
 }) => {
-  const [expanded, setExpanded] = useState<boolean>(false);
-  const outerRef = useOutside<HTMLDivElement>('click', () => {
-    setExpanded(false);
-  });
+  const {
+    ref: outerRef,
+    isShown: expanded,
+    setIsShown: setExpanded,
+  } = useOutSide<HTMLDivElement>();
 
   const { scrollTo } = useSmoothScroll({
     ref: outerRef,
     speed: 100,
     direction: 'y',
   });
+
+  const classMap: Record<SelectFieldType, string | undefined> = {
+    default: '',
+    'priority-badges': styles.prioritySelect,
+  };
 
   useEffect(() => {
     if (expanded) {
@@ -50,6 +60,7 @@ const SelectField: VariableFC<
         {
           [`${styles.expanded}`]: expanded,
         },
+        classMap[type],
         className,
       )}
       outerOnClick={ev => {
@@ -60,35 +71,68 @@ const SelectField: VariableFC<
       focused
       {...props}
     >
-      <span
-        className={cn('flex-grow', styles.currentItem)}
-        aria-hidden={false}
-      >
-        {currentItem}
-      </span>
+      {type === 'default' && (
+        <span
+          className={cn('flex-grow', styles.currentItem)}
+          aria-hidden={false}
+        >
+          {currentItem}
+        </span>
+      )}
 
-      <button
-        aria-hidden
-        className={cn(styles.expandButton)}
-      >
-        {!expanded ? <ChevronDown /> : <ChevronUp />}
-      </button>
+      {type === 'priority-badges' && (
+        <span
+          className={cn('flex-grow', styles.currentItem)}
+          aria-hidden={false}
+        >
+          <PriorityBadge priority={currentValue as Priority}>
+            {currentItem}
+          </PriorityBadge>
+        </span>
+      )}
+
+      {type === 'default' && (
+        <button
+          aria-hidden
+          className={cn(styles.expandButton)}
+        >
+          {!expanded ? <ChevronDown /> : <ChevronUp />}
+        </button>
+      )}
 
       {items && expanded && (
         <div className={cn(styles.selectionGroup)}>
-          {items?.map(({ icon: Icon, name, value }, index) => (
-            <div
-              key={`[${index}] ${value}`}
-              onClick={() => {
+          {items?.map(({ icon: Icon, name, value }, index) => {
+            const sharedProps: ComponentProps<'div'> = {
+              key: `[${index}] ${value}`,
+              onClick: () => {
                 onSelection?.(value);
-              }}
-              className={cn('flex items-center', styles.item)}
-            >
-              {Icon && <Icon size={'1em'} />}
+              },
+              className: cn('flex items-center', styles.item),
+            };
 
-              {name || value}
-            </div>
-          ))}
+            switch (type) {
+              case 'priority-badges': {
+                return (
+                  <div {...sharedProps}>
+                    <PriorityBadge priority={value as Priority}>
+                      {name || value}
+                    </PriorityBadge>
+                  </div>
+                );
+              }
+
+              default: {
+                return (
+                  <div {...sharedProps}>
+                    {Icon && <Icon size={'1em'} />}
+
+                    {name || value}
+                  </div>
+                );
+              }
+            }
+          })}
         </div>
       )}
     </InputField>

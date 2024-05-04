@@ -46,4 +46,19 @@
       }
     }
   }
+
+  &.prioritySelect {
+    @apply bg-transparent p-0;
+
+    .selectionGroup {
+      @apply bg-secondary-bg-accent flex flex-col;
+
+      padding: var(--p-level-5);
+      gap: var(--p-level-5);
+
+      .item {
+        @apply bg-transparent p-0;
+      }
+    }
+  }
 }

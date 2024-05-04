@@ -1,3 +1,4 @@
+import { Priority } from '@xeno-planner/backend-types';
 import cn from 'classnames';
 import { GripVertical } from 'lucide-react';
 import { type FC } from 'react';
@@ -5,31 +6,11 @@ import { type FC } from 'react';
 import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
 import Checkbox from '@/src/components/ui/Checkbox';
 import DatePicker from '@/src/components/ui/DatePicker';
-import PriorityBadge from '@/src/components/ui/PriorityBadge';
+import SelectField from '@/src/components/ui/SelectField';
 import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
-import type { ITaskResponse } from '@/src/types';
+import { getPriorityName } from '@/src/data/PriorityName.ts';
 
 import type { TGripProps } from './TGrip.props';
-
-const BadgeText = ({
-  priority,
-}: Partial<Pick<ITaskResponse, 'priority'>>): string => {
-  switch (priority) {
-    case 'low': {
-      return 'Низкий';
-    }
-
-    case 'medium': {
-      return 'Средний';
-    }
-
-    case 'high': {
-      return 'Высокий';
-    }
-  }
-
-  return 'Нажмите, чтобы выбрать';
-};
 
 const TGrip: FC<TGripProps> = ({
   task: { id, name, priority, createdAt, isCompleted },
@@ -83,9 +64,28 @@ const TGrip: FC<TGripProps> = ({
         className={cn('select-none')}
         {...columnType('grip')}
       >
-        <PriorityBadge priority={priority || undefined}>
-          <BadgeText priority={priority} />
-        </PriorityBadge>
+        {priority && (
+          <SelectField
+            type={'priority-badges'}
+            currentItem={getPriorityName(priority)}
+            currentValue={priority}
+            items={[
+              {
+                name: getPriorityName(Priority.low),
+                value: Priority.low,
+              },
+              {
+                name: getPriorityName(Priority.medium),
+                value: Priority.medium,
+              },
+              {
+                name: getPriorityName(Priority.high),
+                value: Priority.high,
+              },
+            ]}
+            onSelection={val => {}}
+          />
+        )}
       </td>
     </>
   );
