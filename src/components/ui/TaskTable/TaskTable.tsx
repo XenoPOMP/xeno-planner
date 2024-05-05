@@ -7,6 +7,7 @@ import { useTasks } from '@/app/(dashboard)/tasks/hooks/useTasks.ts';
 import CircleLoader from '@/src/components/ui/CircleLoader';
 import TGroup from '@/src/components/ui/TGroup';
 import THead from '@/src/components/ui/THead';
+import { EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
 
 import styles from './TaskTable.module.scss';
 import type { TaskTableProps } from './TaskTable.props';
@@ -71,7 +72,10 @@ const TaskTable: VariableFC<'table', TaskTableProps, 'children'> = ({
             </td>
           </tr>
         ) : (
-          <TGroup tasks={tasks} />
+          <TGroup
+            destId={EnumDndDestId.TODAY}
+            tasks={tasks}
+          />
         )}
       </tbody>
     </table>
