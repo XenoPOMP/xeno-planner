@@ -8,7 +8,7 @@ import { filterTasks } from '@/src/utils/misc';
 
 import type { TGroupProps } from './TGroup.props';
 
-const TGroup: FC<TGroupProps> = ({ destId, tasks }) => {
+const TGroup: FC<TGroupProps> = ({ destId, tasks, groupName }) => {
   return (
     <Droppable droppableId={destId}>
       {provided => (
@@ -17,7 +17,7 @@ const TGroup: FC<TGroupProps> = ({ destId, tasks }) => {
           {...provided.droppableProps}
         >
           <tr>
-            <TGroupName>Сегодня</TGroupName>
+            <TGroupName>{groupName}</TGroupName>
           </tr>
 
           {filterTasks(tasks, destId)?.map((task, index) => (
