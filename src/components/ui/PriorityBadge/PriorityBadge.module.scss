@@ -8,10 +8,11 @@
 
 .badge {
   @apply rounded-[5px] w-fit cursor-pointer
-          bg-priority-select-bg text-priority-select-font text-[.9em];
+         bg-priority-select-bg text-priority-select-font text-[.9em]
+         max-h-full;
 
-  @include paddingHorizontal(var(--p-level-5));
-  @include paddingVertical(calc(var(--p-level-5) * .5));
+  @include paddingHorizontal(.4em);
+  @include paddingVertical(.2em);
 
   // Handle all priority types
   @include handlePriority("low");
