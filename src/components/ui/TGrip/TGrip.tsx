@@ -63,9 +63,15 @@ const TGrip: FC<TGripProps> = ({
         className={cn('select-none')}
         {...columnType('grip')}
       >
-        <DatePicker
-          position={'left'}
-          value={createdAt}
+        <Controller
+          control={control}
+          name={'createdAt'}
+          render={({ field }) => (
+            <DatePicker
+              position={'left'}
+              {...field}
+            />
+          )}
         />
       </td>
 
