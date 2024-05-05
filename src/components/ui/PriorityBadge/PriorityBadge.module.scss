@@ -8,7 +8,7 @@
 
 .badge {
   @apply rounded-[5px] w-fit cursor-pointer
-          bg-priority-select-bg text-priority-select-font;
+          bg-priority-select-bg text-priority-select-font text-[.9em];
 
   @include paddingHorizontal(var(--p-level-5));
   @include paddingVertical(calc(var(--p-level-5) * .5));

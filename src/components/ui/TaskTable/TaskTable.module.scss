@@ -4,16 +4,17 @@ table.tasks {
   $firstColumn: 300px;
   $secondColumn: 300px;
   $thirdColumn: 350px;
+  $borderColor: secondary-border-brutal;
 
   min-width: calc($firstColumn + $secondColumn + $thirdColumn);
 
   & > thead {
-    @apply border-b-[1px] border-b-secondary-border;
+    @apply border-y-[1px] border-y-#{$borderColor};
   }
 
   & > thead > tr,
-  & tbody > tr {
-    @apply border-b-[1px] border-b-secondary-border;
+  & > tbody > tr {
+    @apply border-b-[1px] border-b-#{$borderColor};
 
     // Cells
     & > :is(td, th) {
@@ -36,7 +37,7 @@ table.tasks {
       // Grip-like column
       &[data-column-type="grip"],
       &[data-column-type="add"] {
-        @include paddingVertical(calc(var(--p-level-4) * .75)); // 12px
+        @include paddingVertical(var(--p-level-5)); // 8px
         @include paddingHorizontal(var(--p-level-4)); // 16px
       }
 
@@ -48,28 +49,34 @@ table.tasks {
 
       // Group title column
       &[data-column-type="group"] {
-        @include paddingVertical(var(--p-level-4)); // 16px
+        @include paddingVertical(calc(var(--p-level-4) * .75)); // 16px
       }
 
       &:first-of-type {
-        padding-left: var(--p-level-2);
+        padding-left: var(--p-level-4);
       }
 
       &:last-of-type {
-        padding-right: var(--p-level-2);
+        padding-right: var(--p-level-4);
       }
 
       // Right border
       &:not(:last-of-type) {
-        @apply border-r-[1px] border-r-secondary-border;
+        @apply border-r-[1px] border-r-#{$borderColor};
       }
     }
   }
 
   // Fixes
+
+  // Border fix
   & > tbody:last-of-type > tr:last-of-type {
     border-bottom: none !important;
   }
-
   border-bottom: none;
+
+  // Layout fix
+  @include marginHorizontal(var(--p-level-2));
+  margin-top: var(--p-level-4);
+  max-width: calc(100% - 2 * var(--p-level-2));
 }
