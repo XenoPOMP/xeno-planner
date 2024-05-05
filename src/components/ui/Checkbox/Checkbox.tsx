@@ -11,7 +11,10 @@ const Checkbox: VariableFC<
   'type' | 'children'
 > = ({ className, children, editable, edit, ...props }) => {
   return (
-    <label className={cn('select-none cursor-pointer', styles.checkboxHolder)}>
+    <label
+      className={cn('select-none cursor-pointer', styles.checkboxHolder)}
+      data-is-editable={editable}
+    >
       <input
         type={'checkbox'}
         className={cn(styles.box, className)}

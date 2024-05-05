@@ -5,8 +5,15 @@ label.checkboxHolder {
 
   // Animation curve for all anims
   $anim: .08s ease;
-
   transition: $anim color;
+
+  &[data-is-editable="true"] {
+    @apply w-full;
+
+    input.editArea {
+      @apply w-full;
+    }
+  }
 
   // Box size: 20px (1.25em)
   input.box {
