@@ -23,7 +23,9 @@ export const Default: Story = {
 
 export const Editable: Story = {
   args: {
-    children: 'This task is editable',
     editable: true,
+    edit: {
+      placeholder: 'Enter task name...',
+    },
   },
 };

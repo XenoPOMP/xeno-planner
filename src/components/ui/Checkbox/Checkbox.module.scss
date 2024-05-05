@@ -28,6 +28,13 @@ label.checkboxHolder {
     }
   }
 
+  // If checkbox is editable
+  input.editArea {
+    &::placeholder {
+      @apply text-primary-font/50;
+    }
+  }
+
   // Checked state
   &:has(> input.box:checked) {
     @apply line-through italic text-secondary-border-accent;
@@ -37,6 +44,14 @@ label.checkboxHolder {
 
       svg.icon {
         opacity: 1;
+      }
+    }
+
+    input.editArea {
+      @apply italic;
+
+      &::placeholder {
+        @apply italic;
       }
     }
   }
