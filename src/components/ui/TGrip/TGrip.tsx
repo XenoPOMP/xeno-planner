@@ -4,6 +4,7 @@ import { GripVertical, Trash } from 'lucide-react';
 import { type FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
+import { useDeleteTask } from '@/app/(dashboard)/tasks/hooks/useDeleteTask.ts';
 import { useTaskDebounce } from '@/app/(dashboard)/tasks/hooks/useTaskDebounce.ts';
 import Checkbox from '@/src/components/ui/Checkbox';
 import DatePicker from '@/src/components/ui/DatePicker';
@@ -31,6 +32,8 @@ const TGrip: FC<TGripProps> = ({
 
   // Update information debounced.
   useTaskDebounce({ watch, itemId: id });
+
+  const { deleteTask } = useDeleteTask(id);
 
   return (
     <>
@@ -99,7 +102,7 @@ const TGrip: FC<TGripProps> = ({
           className={cn(
             'cursor-pointer opacity-30 hover:opacity-100 transition-opacity',
           )}
-          onClick={() => {}}
+          onClick={() => deleteTask({ id })}
         />
       </td>
     </>
