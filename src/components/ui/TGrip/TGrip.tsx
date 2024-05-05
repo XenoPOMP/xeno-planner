@@ -30,6 +30,9 @@ const TGrip: FC<TGripProps> = ({
   // Update information debounced.
   useTaskDebounce({ watch, itemId: id });
 
+  // Task deletion is not supposed to be
+  // invoked as often as update or create operations,
+  // so it can be not debounced.
   const { deleteTask } = useDeleteTask(id);
 
   return (
@@ -49,7 +52,10 @@ const TGrip: FC<TGripProps> = ({
                 checked={!!value}
                 onChange={onChange}
               >
-                {name}
+                <input
+                  className={cn('blank-input')}
+                  placeholder={'Enter something...'}
+                />
               </Checkbox>
             )}
           />
