@@ -28,6 +28,14 @@ export const CustomClassesPlugin = () => {
         alignItems: 'center',
       }),
 
+      '.blank-input': cssPropertiesToTw({
+        outline: 'none',
+        border: 'none',
+        background: 'transparent',
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
+      }),
+
       ...generateFontClasses(24, 20, 16, 14),
     });
   });
