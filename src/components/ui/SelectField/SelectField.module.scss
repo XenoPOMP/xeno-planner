@@ -3,6 +3,8 @@
 .selectField {
   @apply relative;
 
+  min-height: unset;
+
   &.expanded {
     // No empty!!!
 
