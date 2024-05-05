@@ -16,6 +16,9 @@ import type { TGripProps } from './TGrip.props';
 const TGrip: FC<TGripProps> = ({
   task: { id, name, priority, createdAt, isCompleted },
 }) => {
+  // TODO Debounced update
+  // TODO Debounced create
+
   const { updateTask } = useUpdateTask(id);
   const { deleteTask } = useDeleteTask(id);
 
