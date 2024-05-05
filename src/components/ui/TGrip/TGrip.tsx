@@ -18,9 +18,6 @@ import type { TGripProps } from './TGrip.props';
 const TGrip: FC<TGripProps> = ({
   task: { id, name, priority, createdAt, isCompleted },
 }) => {
-  // TODO Debounced update
-  // TODO Debounced create
-
   const { control, watch } = useForm<TaskFormStateType>({
     defaultValues: {
       name,
