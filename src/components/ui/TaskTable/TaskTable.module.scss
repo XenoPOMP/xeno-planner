@@ -12,7 +12,7 @@ table.tasks {
   }
 
   & > thead > tr,
-  & > tbody > tr {
+  & tbody > tr {
     @apply border-b-[1px] border-b-secondary-border;
 
     // Cells
