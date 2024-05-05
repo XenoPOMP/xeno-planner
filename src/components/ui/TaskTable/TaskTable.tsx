@@ -64,20 +64,22 @@ const TaskTable: VariableFC<'table', TaskTableProps, 'children'> = ({
         <THead />
       </thead>
 
-      <tbody>
+      <>
         {isLoading ? (
-          <tr>
-            <td {...columnType('group')}>
-              <CircleLoader />
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td {...columnType('group')}>
+                <CircleLoader />
+              </td>
+            </tr>
+          </tbody>
         ) : (
           <TGroup
             destId={EnumDndDestId.TODAY}
             tasks={tasks}
           />
         )}
-      </tbody>
+      </>
     </table>
   );
 };
