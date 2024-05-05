@@ -14,7 +14,7 @@ table.tasks {
   & > thead > tr,
   & > tbody > tr {
     // Row bottom border
-    &:not(:last-of-type) > :is(td, th) {
+    &:not(:last-of-type) {
       @apply border-b-[1px] border-b-secondary-border;
     }
 
