@@ -13,10 +13,7 @@ table.tasks {
 
   & > thead > tr,
   & > tbody > tr {
-    // Row bottom border
-    &:not(:last-of-type) {
-      @apply border-b-[1px] border-b-secondary-border;
-    }
+    @apply border-b-[1px] border-b-secondary-border;
 
     // Cells
     & > :is(td, th) {
@@ -68,4 +65,11 @@ table.tasks {
       }
     }
   }
+
+  // Fixes
+  & > tbody:last-of-type > tr:last-of-type {
+    border-bottom: none !important;
+  }
+
+  border-bottom: none;
 }
