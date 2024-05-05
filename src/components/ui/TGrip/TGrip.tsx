@@ -5,9 +5,9 @@ import { type FC } from 'react';
 
 import { useDeleteTask } from '@/app/(dashboard)/tasks/hooks/useDeleteTask.ts';
 import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
-import Checkbox from '@/src/components/ui/Checkbox';
 import DatePicker from '@/src/components/ui/DatePicker';
 import SelectField from '@/src/components/ui/SelectField';
+import TGripCheckbox from '@/src/components/ui/TGripCheckbox';
 import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 import { getPriorityName } from '@/src/data/PriorityName.ts';
 
@@ -28,19 +28,11 @@ const TGrip: FC<TGripProps> = ({
             className={cn('text-secondary-border-accent cursor-grab')}
           />
 
-          <Checkbox
-            checked={!!isCompleted}
-            onChange={ev => {
-              updateTask({
-                id,
-                data: {
-                  isCompleted: ev.target.checked,
-                },
-              });
-            }}
-          >
-            {name}
-          </Checkbox>
+          <TGripCheckbox
+            id={id}
+            isCompleted={isCompleted}
+            name={name}
+          />
         </div>
       </td>
 
