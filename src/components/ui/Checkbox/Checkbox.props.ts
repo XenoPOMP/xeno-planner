@@ -1,1 +1,3 @@
-export interface CheckboxProps {}
+export interface CheckboxProps {
+  editable?: boolean;
+}
