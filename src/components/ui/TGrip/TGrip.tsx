@@ -73,28 +73,36 @@ const TGrip: FC<TGripProps> = ({
         className={cn('select-none flex justify-between items-center')}
         {...columnType('grip')}
       >
-        <SelectField
-          outerClassName={cn('flex-grow')}
-          type={'priority-badges'}
-          currentItem={
-            priority ? getPriorityName(priority) : 'Нажмите, чтобы выбрать'
-          }
-          currentValue={priority || undefined}
-          items={[
-            {
-              name: getPriorityName(Priority.low),
-              value: Priority.low,
-            },
-            {
-              name: getPriorityName(Priority.medium),
-              value: Priority.medium,
-            },
-            {
-              name: getPriorityName(Priority.high),
-              value: Priority.high,
-            },
-          ]}
-          onSelection={val => {}}
+        <Controller
+          control={control}
+          name={'priority'}
+          render={({ field: { value, onChange } }) => (
+            <SelectField
+              outerClassName={cn('flex-grow')}
+              type={'priority-badges'}
+              currentItem={
+                value ? getPriorityName(value) : 'Нажмите, чтобы выбрать'
+              }
+              currentValue={value || undefined}
+              items={[
+                {
+                  name: getPriorityName(Priority.low),
+                  value: Priority.low,
+                },
+                {
+                  name: getPriorityName(Priority.medium),
+                  value: Priority.medium,
+                },
+                {
+                  name: getPriorityName(Priority.high),
+                  value: Priority.high,
+                },
+              ]}
+              onSelection={val => {
+                onChange(val as Priority);
+              }}
+            />
+          )}
         />
 
         <Trash
