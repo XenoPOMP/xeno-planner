@@ -2,21 +2,34 @@ import { Priority } from '@xeno-planner/backend-types';
 import cn from 'classnames';
 import { GripVertical, Trash } from 'lucide-react';
 import { type FC } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 
 import { useDeleteTask } from '@/app/(dashboard)/tasks/hooks/useDeleteTask.ts';
-import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
+import { useTaskDebounce } from '@/app/(dashboard)/tasks/hooks/useTaskDebounce.ts';
+import Checkbox from '@/src/components/ui/Checkbox';
 import DatePicker from '@/src/components/ui/DatePicker';
 import SelectField from '@/src/components/ui/SelectField';
-import TGripCheckbox from '@/src/components/ui/TGripCheckbox';
 import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 import { getPriorityName } from '@/src/data/PriorityName.ts';
+import type { TaskFormStateType } from '@/src/types';
 
 import type { TGripProps } from './TGrip.props';
 
 const TGrip: FC<TGripProps> = ({
   task: { id, name, priority, createdAt, isCompleted },
 }) => {
-  const { updateTask } = useUpdateTask(id);
+  const { control, watch } = useForm<TaskFormStateType>({
+    defaultValues: {
+      name,
+      isCompleted,
+      createdAt,
+      priority,
+    },
+  });
+
+  // Update information debounced.
+  useTaskDebounce({ watch, itemId: id });
+
   const { deleteTask } = useDeleteTask(id);
 
   return (
@@ -28,10 +41,17 @@ const TGrip: FC<TGripProps> = ({
             className={cn('text-secondary-border-accent cursor-grab')}
           />
 
-          <TGripCheckbox
-            id={id}
-            isCompleted={isCompleted}
-            name={name}
+          <Controller
+            control={control}
+            name={'isCompleted'}
+            render={({ field: { value, onChange } }) => (
+              <Checkbox
+                checked={!!value}
+                onChange={onChange}
+              >
+                {name}
+              </Checkbox>
+            )}
           />
         </div>
       </td>
@@ -40,17 +60,15 @@ const TGrip: FC<TGripProps> = ({
         className={cn('select-none')}
         {...columnType('grip')}
       >
-        <DatePicker
-          position={'left'}
-          value={createdAt}
-          onChange={date =>
-            updateTask({
-              id,
-              data: {
-                createdAt: new Date(date),
-              },
-            })
-          }
+        <Controller
+          control={control}
+          name={'createdAt'}
+          render={({ field }) => (
+            <DatePicker
+              position={'left'}
+              {...field}
+            />
+          )}
         />
       </td>
 
@@ -58,35 +76,36 @@ const TGrip: FC<TGripProps> = ({
         className={cn('select-none flex justify-between items-center')}
         {...columnType('grip')}
       >
-        <SelectField
-          outerClassName={cn('flex-grow')}
-          type={'priority-badges'}
-          currentItem={
-            priority ? getPriorityName(priority) : 'Нажмите, чтобы выбрать'
-          }
-          currentValue={priority || undefined}
-          items={[
-            {
-              name: getPriorityName(Priority.low),
-              value: Priority.low,
-            },
-            {
-              name: getPriorityName(Priority.medium),
-              value: Priority.medium,
-            },
-            {
-              name: getPriorityName(Priority.high),
-              value: Priority.high,
-            },
-          ]}
-          onSelection={val => {
-            updateTask({
-              id,
-              data: {
-                priority: val as Priority,
-              },
-            });
-          }}
+        <Controller
+          control={control}
+          name={'priority'}
+          render={({ field: { value, onChange } }) => (
+            <SelectField
+              outerClassName={cn('flex-grow')}
+              type={'priority-badges'}
+              currentItem={
+                value ? getPriorityName(value) : 'Нажмите, чтобы выбрать'
+              }
+              currentValue={value || undefined}
+              items={[
+                {
+                  name: getPriorityName(Priority.low),
+                  value: Priority.low,
+                },
+                {
+                  name: getPriorityName(Priority.medium),
+                  value: Priority.medium,
+                },
+                {
+                  name: getPriorityName(Priority.high),
+                  value: Priority.high,
+                },
+              ]}
+              onSelection={val => {
+                onChange(val as Priority);
+              }}
+            />
+          )}
         />
 
         <Trash
