@@ -51,7 +51,7 @@
     @apply bg-transparent p-0;
 
     .selectionGroup {
-      @apply bg-secondary-bg-accent flex flex-col;
+      @apply bg-secondary-bg-accent flex flex-col rounded-[8px];
 
       padding: var(--p-level-5);
       gap: var(--p-level-5);

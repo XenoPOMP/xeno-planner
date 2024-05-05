@@ -5,13 +5,16 @@ import { Check } from 'lucide-react';
 import styles from './Checkbox.module.scss';
 import type { CheckboxProps } from './Checkbox.props';
 
-const Checkbox: VariableFC<'input', CheckboxProps, 'type'> = ({
-  className,
-  children,
-  ...props
-}) => {
+const Checkbox: VariableFC<
+  'input',
+  CheckboxProps & { children?: string },
+  'type' | 'children'
+> = ({ className, children, editable, edit, ...props }) => {
   return (
-    <label className={cn('select-none cursor-pointer', styles.checkboxHolder)}>
+    <label
+      className={cn('select-none cursor-pointer', styles.checkboxHolder)}
+      data-is-editable={editable}
+    >
       <input
         type={'checkbox'}
         className={cn(styles.box, className)}
@@ -29,7 +32,18 @@ const Checkbox: VariableFC<'input', CheckboxProps, 'type'> = ({
         />
       </div>
 
-      {children}
+      {!editable ? (
+        children
+      ) : (
+        <input
+          {...edit}
+          type={'text'}
+          value={edit?.value}
+          placeholder={edit?.placeholder}
+          onChange={ev => edit?.onChange?.(ev)}
+          className={cn('blank-input', styles.editArea, edit?.className)}
+        />
+      )}
     </label>
   );
 };

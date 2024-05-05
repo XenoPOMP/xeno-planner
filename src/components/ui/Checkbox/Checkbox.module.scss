@@ -5,8 +5,15 @@ label.checkboxHolder {
 
   // Animation curve for all anims
   $anim: .08s ease;
-
   transition: $anim color;
+
+  &[data-is-editable="true"] {
+    @apply w-full;
+
+    input.editArea {
+      @apply w-full;
+    }
+  }
 
   // Box size: 20px (1.25em)
   input.box {
@@ -28,6 +35,13 @@ label.checkboxHolder {
     }
   }
 
+  // If checkbox is editable
+  input.editArea {
+    &::placeholder {
+      @apply text-primary-font/50;
+    }
+  }
+
   // Checked state
   &:has(> input.box:checked) {
     @apply line-through italic text-secondary-border-accent;
@@ -37,6 +51,14 @@ label.checkboxHolder {
 
       svg.icon {
         opacity: 1;
+      }
+    }
+
+    input.editArea {
+      @apply italic;
+
+      &::placeholder {
+        @apply italic;
       }
     }
   }

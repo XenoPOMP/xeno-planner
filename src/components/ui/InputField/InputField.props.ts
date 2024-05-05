@@ -1,11 +1,9 @@
 import type { LucideIcon } from 'lucide-react';
-import type { ComponentProps } from 'react';
-import type { CamelCasedProperties } from 'type-fest';
+
+import type { PrefixedComponentProps } from '@/src/interfaces/PrefixedComponentProps.ts';
 
 /** Field`s wrapper props. */
-type OuterProps = CamelCasedProperties<{
-  [Prop in keyof ComponentProps<'div'> as `outer ${Prop}`]: ComponentProps<'div'>[Prop];
-}>;
+type OuterProps = PrefixedComponentProps<'div', 'outer'>;
 
 export interface InputFieldProps
   extends Pick<OuterProps, 'outerRef' | 'outerOnClick' | 'outerClassName'> {

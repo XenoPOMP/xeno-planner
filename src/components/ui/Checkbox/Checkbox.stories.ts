@@ -15,8 +15,17 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     children: 'Task',
+  },
+};
+
+export const Editable: Story = {
+  args: {
+    editable: true,
+    edit: {
+      placeholder: 'Enter task name...',
+    },
   },
 };

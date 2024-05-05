@@ -141,3 +141,4 @@ app/**/test
 **/__snapshots__/*
 
 *storybook.log
+**/*.stories.ts~
