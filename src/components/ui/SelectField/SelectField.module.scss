@@ -3,8 +3,6 @@
 .selectField {
   @apply relative;
 
-  min-height: unset;
-
   &.expanded {
     // No empty!!!
 
@@ -51,6 +49,8 @@
 
   &.prioritySelect {
     @apply bg-transparent p-0;
+
+    min-height: unset;
 
     .selectionGroup {
       @apply bg-secondary-bg-accent flex flex-col rounded-[8px];
