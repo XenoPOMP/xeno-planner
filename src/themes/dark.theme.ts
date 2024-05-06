@@ -45,5 +45,8 @@ export const darkTheme: CustomTheme = {
         font: '#DCDDE4',
       },
     },
+    warning: {
+      font: '#E28203',
+    },
   },
 };

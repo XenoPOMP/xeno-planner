@@ -51,5 +51,8 @@ export const lightTheme = {
         font: '#DCDDE4',
       },
     },
+    warning: {
+      font: '#E28203',
+    },
   },
 } satisfies Theme;
