@@ -24,12 +24,12 @@ const Profile: FC<ProfileProps> = () => {
   const avatarUrl = `https://api.dicebear.com/8.x/identicon/png?${avatarParams.toString()}`;
 
   return isLoading ? (
-    <div
+    <section
       aria-hidden
-      className={cn('h-[2.8em] flex-center')}
+      className={cn(styles.avatar, 'flex-center')}
     >
       <CircleLoader />
-    </div>
+    </section>
   ) : data?.user ? (
     <Link href={`${DASHBOARD_PAGES.SETTINGS}#edit-account`}>
       <article className={cn(styles.profile)}>
