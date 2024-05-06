@@ -29,16 +29,16 @@ export const darkTheme: CustomTheme = {
     },
     priority: {
       low: {
-        bg: '#208B25',
-        font: '#A2F1E3',
+        bg: '#497AB6',
+        font: '#EEFDFF',
       },
       medium: {
-        bg: '#B2761D',
-        font: '#FFFFFF',
+        bg: '#B86C31',
+        font: '#FFFDF2',
       },
       high: {
-        bg: '#9D4949',
-        font: '#FFD9DA',
+        bg: '#9F4C4E',
+        font: '#FFE5E4',
       },
       select: {
         bg: '#313139',
