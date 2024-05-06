@@ -19,7 +19,7 @@ import type { TaskTableProps } from './TaskTable.props';
  * inside TaskTable.
  * @param type
  */
-export const columnType = (type: 'grip' | 'group' | 'add') => {
+export const columnType = (type: 'grip' | 'group' | 'add' | 'grip-row') => {
   const base = {
     'data-column-type': type,
   };
@@ -38,6 +38,12 @@ export const columnType = (type: 'grip' | 'group' | 'add') => {
 
     case 'add': {
       return fullSpanBase;
+    }
+
+    case 'grip-row': {
+      return {
+        'data-row-type': type,
+      };
     }
 
     default: {

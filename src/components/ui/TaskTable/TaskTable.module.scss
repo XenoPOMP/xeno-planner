@@ -74,8 +74,29 @@ table.tasks {
     }
   }
 
-  // Fixes
+  // Draggable row
+  & > tbody > tr[data-row-type="grip-row"] {
+    @apply border-x-[1px] border-x-transparent;
 
+    transition:
+      sameTransition(
+        .15s ease,
+        background, color
+      )
+    ;
+
+    &:hover {
+      $bgColor: secondary-bg-accent;
+
+      @apply bg-#{$bgColor} border-#{$bgColor};
+
+      & > :is(td, th) {
+        @apply border-#{$bgColor};
+      }
+    }
+  }
+
+  // Fixes
   // Border fix
   & > tbody:last-of-type > tr:last-of-type {
     border-bottom: none !important;
