@@ -26,7 +26,7 @@ const CAMEL_CASE = withSeverity(
  * @param value {Value}
  * @return {[Value,{severity: string}]}
  */
-const withError = value => withSeverity(value, 'warning');
+const withError = value => withSeverity(value, 'error');
 
 /**
  * Wraps rule with warning severity.
@@ -42,7 +42,7 @@ module.exports = {
     // Errors
     'block-no-empty': withError(true),
     'declaration-block-no-duplicate-properties': withError(true),
-    'comment-no-empty': withError(true),
+    'scss/comment-no-empty': withError(true),
 
     // Warnings
     'no-duplicate-selectors': withWarning(true),
