@@ -7,6 +7,7 @@ import { type FC } from 'react';
 import TextOverflow from 'react-text-overflow';
 
 import CircleLoader from '@/src/components/ui/CircleLoader';
+import WarningMessage from '@/src/components/ui/WarningMessage';
 import { useProfile } from '@/src/hooks/useProfile.ts';
 import { DASHBOARD_PAGES } from '@/src/types/routes.ts';
 
@@ -50,7 +51,9 @@ const Profile: FC<ProfileProps> = () => {
       </article>
     </Link>
   ) : (
-    <></>
+    <section className={cn(styles.avatar, 'flex-center')}>
+      <WarningMessage />
+    </section>
   );
 };
 

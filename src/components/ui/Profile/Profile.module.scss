@@ -21,17 +21,17 @@ article.profile {
       display: none;
     }
   }
+}
 
-  section.avatar {
-    @apply h-[2.8em] aspect-square rounded-[6px]
-           bg-secondary-bg-accent overflow-hidden
-           flex-shrink-0;
+section.avatar {
+  @apply h-[2.8em] aspect-square rounded-[6px]
+  bg-secondary-bg-accent overflow-hidden
+  flex-shrink-0;
 
-    & > img {
-      @apply size-full;
+  & > img {
+    @apply size-full;
 
-      object-fit: cover;
-      object-position: center;
-    }
+    object-fit: cover;
+    object-position: center;
   }
 }
