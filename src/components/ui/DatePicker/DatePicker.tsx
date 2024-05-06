@@ -2,7 +2,6 @@ import cn from 'classnames';
 import { ru } from 'date-fns/locale';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
-import { X } from 'lucide-react';
 import { type FC, useState } from 'react';
 import { DayPicker, type SelectSingleEventHandler } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
@@ -40,17 +39,6 @@ const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
     >
       <button onClick={() => setIsShown(prev => true)}>
         {dayValue ? dayjs(dayValue).format('LL') : 'Нажмите, чтобы выбрать'}
-
-        {dayValue && (
-          <button
-            className={
-              'absolute -top-[.75em] -right-[.5em] opacity-30 hover:opacity-100 transition-opacity'
-            }
-            onClick={() => onChange?.('')}
-          >
-            <X size={'.7em'} />
-          </button>
-        )}
 
         {isShown && (
           <div

@@ -4,6 +4,7 @@ import { type FC } from 'react';
 import AddTask from '@/app/(dashboard)/tasks/list-view/AddTask.tsx';
 import TGrip from '@/src/components/ui/TGrip';
 import TGroupName from '@/src/components/ui/TGroupName';
+import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 import { EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
 import { filterTasks } from '@/src/utils/misc';
 
@@ -33,6 +34,7 @@ const TGroup: FC<TGroupProps> = ({ destId, tasks, groupName }) => {
                   ref={provided.innerRef}
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
+                  {...columnType('grip-row')}
                 >
                   <TGrip task={task} />
                 </tr>

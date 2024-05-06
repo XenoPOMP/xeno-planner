@@ -6,6 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { useDeleteTask } from '@/app/(dashboard)/tasks/hooks/useDeleteTask.ts';
 import { useTaskDebounce } from '@/app/(dashboard)/tasks/hooks/useTaskDebounce.ts';
+import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
 import Checkbox from '@/src/components/ui/Checkbox';
 import DatePicker from '@/src/components/ui/DatePicker';
 import SelectField from '@/src/components/ui/SelectField';
@@ -35,6 +36,9 @@ const TGrip: FC<TGripProps> = ({
   // so it can be not debounced.
   const { deleteTask } = useDeleteTask(id);
 
+  // Checkbox value should not be updated debounced too
+  const { updateTask } = useUpdateTask(id);
+
   return (
     <>
       <td {...columnType('grip')}>
@@ -44,19 +48,20 @@ const TGrip: FC<TGripProps> = ({
             className={cn('text-secondary-border-accent cursor-grab')}
           />
 
-          <Controller
-            control={control}
-            name={'isCompleted'}
-            render={({ field: { value, onChange } }) => (
-              <Checkbox
-                checked={!!value}
-                onChange={onChange}
-                editable
-                edit={{
-                  ...register('name'),
-                }}
-              />
-            )}
+          <Checkbox
+            checked={!!isCompleted}
+            onChange={ev => {
+              updateTask({
+                id,
+                data: {
+                  isCompleted: ev.target.checked,
+                },
+              });
+            }}
+            editable
+            edit={{
+              ...register('name'),
+            }}
           />
         </div>
       </td>
