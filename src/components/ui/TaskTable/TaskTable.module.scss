@@ -85,7 +85,7 @@ table.tasks {
       )
     ;
 
-    &:hover {
+    &:hover, &[data-is-dragging="true"] {
       $bgColor: secondary-bg-accent;
 
       @apply bg-#{$bgColor};
