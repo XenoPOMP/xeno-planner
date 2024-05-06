@@ -18,7 +18,7 @@ import type { TGripProps } from './TGrip.props';
 const TGrip: FC<TGripProps> = ({
   task: { id, name, priority, createdAt, isCompleted },
 }) => {
-  const { control, watch } = useForm<TaskFormStateType>({
+  const { control, watch, register } = useForm<TaskFormStateType>({
     defaultValues: {
       name,
       isCompleted,
@@ -30,6 +30,9 @@ const TGrip: FC<TGripProps> = ({
   // Update information debounced.
   useTaskDebounce({ watch, itemId: id });
 
+  // Task deletion is not supposed to be
+  // invoked as often as update or create operations,
+  // so it can be not debounced.
   const { deleteTask } = useDeleteTask(id);
 
   return (
@@ -48,9 +51,11 @@ const TGrip: FC<TGripProps> = ({
               <Checkbox
                 checked={!!value}
                 onChange={onChange}
-              >
-                {name}
-              </Checkbox>
+                editable
+                edit={{
+                  ...register('name'),
+                }}
+              />
             )}
           />
         </div>

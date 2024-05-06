@@ -21,6 +21,7 @@ export const darkTheme: CustomTheme = {
       'bg-accent': '#1A1A1A',
       border: '#404142',
       'border-accent': '#636363',
+      'border-brutal': '#222324',
     },
     field: {
       bg: '#262626',

@@ -5,11 +5,13 @@ import { Check } from 'lucide-react';
 import styles from './Checkbox.module.scss';
 import type { CheckboxProps } from './Checkbox.props';
 
-const Checkbox: VariableFC<
-  'input',
-  CheckboxProps & { children?: string },
-  'type' | 'children'
-> = ({ className, children, editable, edit, ...props }) => {
+const Checkbox: VariableFC<'input', CheckboxProps, 'type'> = ({
+  className,
+  children,
+  editable,
+  edit,
+  ...props
+}) => {
   return (
     <label
       className={cn('select-none cursor-pointer', styles.checkboxHolder)}
