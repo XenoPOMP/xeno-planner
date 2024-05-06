@@ -97,7 +97,7 @@ table.tasks {
 
     // Dragging exclusive styles
     &[data-is-dragging="true"] {
-      @apply border-x-[1px] border-x-secondary-border-brutal;
+      @apply border-x-[1px] border-x-#{$borderColor};
     }
 
     // Handle cells inside dragging row
