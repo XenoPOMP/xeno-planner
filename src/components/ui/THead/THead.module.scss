@@ -1,0 +1,7 @@
+th.headCell {
+  $value: calc(var(--p-level-4) + .3em) !important;
+
+  &:first-of-type {
+    padding-left: $value;
+  }
+}
