@@ -38,7 +38,7 @@ const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
       className={cn('relative')}
       ref={ref}
     >
-      <button onClick={() => setIsShown(prev => !prev)}>
+      <button onClick={() => setIsShown(prev => true)}>
         {dayValue ? dayjs(dayValue).format('LL') : 'Нажмите, чтобы выбрать'}
 
         {dayValue && (
