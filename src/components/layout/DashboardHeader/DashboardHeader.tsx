@@ -11,7 +11,7 @@ const DashboardHeader: VariableFC<
   'header',
   DashboardHeaderProps,
   'children'
-> = ({ className, heading, sticky = false, ...props }) => {
+> = ({ className, heading, sticky = true, ...props }) => {
   return (
     <header
       className={cn(
