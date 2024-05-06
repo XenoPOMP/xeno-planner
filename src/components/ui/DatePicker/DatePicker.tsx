@@ -12,6 +12,7 @@ import type { DatePickerProps } from './DatePicker.props';
 import { formatCaption } from './DatePickerCaption.tsx';
 
 dayjs.extend(LocalizedFormat);
+dayjs.locale('ru');
 
 const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
   const [selected, setSelected] = useState<Date>();
