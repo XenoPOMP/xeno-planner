@@ -7,6 +7,7 @@ table.tasks {
   $borderColor: secondary-border-brutal;
 
   min-width: calc($firstColumn + $secondColumn + $thirdColumn);
+  margin-bottom: var(--p-level-2);
 
   & > thead {
     @apply border-y-[1px] border-y-#{$borderColor};
@@ -47,6 +48,12 @@ table.tasks {
                select-none cursor-pointer;
       }
 
+      // Match grip padding
+      &[data-column-type="group"],
+      &[data-column-type="add"] {
+        @include paddingHorizontal(calc(var(--p-level-4) + .3em) !important);
+      }
+
       // Group title column
       &[data-column-type="group"] {
         @include paddingVertical(calc(var(--p-level-4) * .75)); // 16px
@@ -77,6 +84,7 @@ table.tasks {
 
   // Layout fix
   @include marginHorizontal(var(--p-level-2));
-  margin-top: var(--p-level-4);
+  @include marginVertical(var(--p-level-4));
+
   max-width: calc(100% - 2 * var(--p-level-2));
 }
