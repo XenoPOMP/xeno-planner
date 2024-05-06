@@ -1,9 +1,10 @@
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { type FC } from 'react';
 
+import AddTask from '@/app/(dashboard)/tasks/list-view/AddTask.tsx';
 import TGrip from '@/src/components/ui/TGrip';
 import TGroupName from '@/src/components/ui/TGroupName';
-import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
+import { EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
 import { filterTasks } from '@/src/utils/misc';
 
 import type { TGroupProps } from './TGroup.props';
@@ -41,9 +42,7 @@ const TGroup: FC<TGroupProps> = ({ destId, tasks, groupName }) => {
 
           {provided.placeholder}
 
-          <tr>
-            <td {...columnType('add')}>Добавить задачу...</td>
-          </tr>
+          {destId !== EnumDndDestId.COMPLETED && <AddTask destId={destId} />}
         </tbody>
       )}
     </Droppable>
