@@ -37,7 +37,7 @@ const TGroup: FC<TGroupProps> = ({ destId, tasks, groupName }) => {
                   {...provided.dragHandleProps}
                   {...columnType('grip-row')}
                   style={{
-                    display: snapshot.isDragging ? 'table' : 'table-row',
+                    display: snapshot.isDragging ? 'table' : undefined,
                     ...provided.draggableProps.style,
                   }}
                 >
