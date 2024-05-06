@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { type FC } from 'react';
 
 import CircleLoader from '@/src/components/ui/CircleLoader';
+import WarningMessage from '@/src/components/ui/WarningMessage';
 import { useProfile } from '@/src/hooks/useProfile.ts';
 
 import styles from './Statistics.module.scss';
@@ -31,7 +32,7 @@ const Statistics: FC<StatisticsProps> = () => {
         ))
       ) : (
         <div className={cn('flex-center col-span-full')}>
-          Статистика не найдена!
+          <WarningMessage>Статистика не найдена!</WarningMessage>
         </div>
       )}
     </article>
