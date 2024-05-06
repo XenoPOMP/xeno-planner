@@ -88,10 +88,10 @@ table.tasks {
     &:hover {
       $bgColor: secondary-bg-accent;
 
-      @apply bg-#{$bgColor} border-#{$bgColor};
+      @apply bg-#{$bgColor};
 
       & > :is(td, th) {
-        @apply border-#{$bgColor};
+        // @apply border-#{$bgColor};
       }
     }
   }
