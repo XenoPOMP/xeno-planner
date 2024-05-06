@@ -2,8 +2,8 @@
 
 table.tasks {
   $firstColumn: 300px;
-  $secondColumn: 300px;
-  $thirdColumn: 350px;
+  $secondColumn: 225px;
+  $thirdColumn: 275px;
   $borderColor: secondary-border-brutal;
 
   min-width: calc($firstColumn + $secondColumn + $thirdColumn);
