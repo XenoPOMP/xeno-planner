@@ -95,6 +95,11 @@ table.tasks {
       }
     }
 
+    // Dragging exclusive styles
+    &[data-is-dragging="true"] {
+      @apply border-x-[1px] border-x-secondary-border-brutal;
+    }
+
     // Handle cells inside dragging row
     &[data-is-dragging="true"] > :is(td, th) {
       &:nth-child(1) {
