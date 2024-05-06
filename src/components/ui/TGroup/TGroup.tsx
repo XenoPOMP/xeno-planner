@@ -28,13 +28,18 @@ const TGroup: FC<TGroupProps> = ({ destId, tasks, groupName }) => {
               draggableId={task.id}
               index={index}
             >
-              {provided => (
+              {(provided, snapshot) => (
                 <tr
                   key={`${task.id}`}
                   ref={provided.innerRef}
+                  data-is-dragging={snapshot.isDragging}
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
                   {...columnType('grip-row')}
+                  style={{
+                    display: snapshot.isDragging ? 'table' : undefined,
+                    ...provided.draggableProps.style,
+                  }}
                 >
                   <TGrip task={task} />
                 </tr>
