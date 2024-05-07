@@ -2,16 +2,11 @@
 
 import cn from 'classnames';
 import { Clock9, SquarePen } from 'lucide-react';
-import { type FC } from 'react';
-import {
-  Controller,
-  FormProvider,
-  type SubmitHandler,
-  useForm,
-} from 'react-hook-form';
-import { toast } from 'sonner';
+import { type FC, useEffect, useState } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { COLORS } from '@/app/(dashboard)/time-blocking/form/colors.data.ts';
+import { useBlockForm } from '@/app/(dashboard)/time-blocking/hooks/useBlockForm.ts';
 import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlocks.ts';
 import Button from '@/src/components/ui/Button';
 import InputField from '@/src/components/ui/InputField';
@@ -20,46 +15,31 @@ import { MINUTES_IN_DAY } from '@/src/constants/time.constants.ts';
 import type { TimeBlockFormStateType } from '@/src/types';
 import { registerNestedField } from '@/src/utils/misc';
 
-import { useCreateTimeBlock } from '../../hooks/useCreateTimeBlock.ts';
-
 import styles from './NewBlockForm.module.scss';
 import type { NewBlockFormProps } from './NewBlockForm.props';
 
 const NewBlockForm: FC<NewBlockFormProps> = () => {
-  const { register, control, handleSubmit, ...methods } =
-    useForm<TimeBlockFormStateType>({
-      defaultValues: {
-        color: 'royalblue',
-      },
+  const { isLoading } = useTimeBlocks();
+
+  const { handleSubmit, control, watch } =
+    useFormContext<TimeBlockFormStateType>();
+
+  const { onSubmit } = useBlockForm();
+
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  useEffect(() => {
+    const { unsubscribe } = watch(({ id }) => {
+      setIsUpdate(id !== undefined);
     });
 
-  const { isLoading } = useTimeBlocks();
-  const createBlock = useCreateTimeBlock();
-
-  const onSubmit: SubmitHandler<TimeBlockFormStateType> = ({
-    duration,
-    ...data
-  }) => {
-    const formattedData = {
-      duration: +(duration || '0'),
-      ...data,
+    return () => {
+      unsubscribe();
     };
-
-    if (!formattedData.name) {
-      toast.error('Вы не ввели название блока!');
-      return;
-    }
-
-    createBlock(formattedData);
-  };
+  }, []);
 
   return (
-    <FormProvider
-      register={register}
-      control={control}
-      handleSubmit={handleSubmit}
-      {...methods}
-    >
+    <>
       <form
         className={cn(styles.addNewBlock)}
         onSubmit={handleSubmit(onSubmit)}
@@ -70,6 +50,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
             icon={SquarePen}
             register={registerNestedField<TimeBlockFormStateType>('name')}
             disabled={isLoading}
+            focused
           />
 
           <InputField
@@ -80,6 +61,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
             max={MINUTES_IN_DAY}
             register={registerNestedField<TimeBlockFormStateType>('duration')}
             disabled={isLoading}
+            focused
           />
         </section>
 
@@ -107,10 +89,10 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
           disabled={isLoading}
           type={'submit'}
         >
-          Создать
+          {!isUpdate ? 'Создать' : 'Обновить'}
         </Button>
       </form>
-    </FormProvider>
+    </>
   );
 };
 

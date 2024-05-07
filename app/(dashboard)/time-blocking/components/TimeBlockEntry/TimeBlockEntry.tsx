@@ -1,6 +1,9 @@
 import cn from 'classnames';
 import { GripVertical, SquarePen, Trash } from 'lucide-react';
 import { type FC } from 'react';
+import { useFormContext } from 'react-hook-form';
+
+import type { TimeBlockFormStateType } from '@/src/types';
 
 import { useDeleteTimeBlock } from '../../hooks/useDeleteTimeBlock.ts';
 import { useTimeBlockSortable } from '../../hooks/useTimeBlockSortable.ts';
@@ -14,6 +17,8 @@ const TimeBlockEntry: FC<TimeBlockEntryProps> = ({
   const { attributes, listeners, setNodeRef, style } = useTimeBlockSortable(id);
 
   const deleteBlock = useDeleteTimeBlock(id);
+
+  const { reset } = useFormContext<TimeBlockFormStateType>();
 
   return (
     <div
@@ -38,7 +43,17 @@ const TimeBlockEntry: FC<TimeBlockEntryProps> = ({
       </span>
 
       <section className={cn(styles.controls)}>
-        <SquarePen className={cn(styles.icon)} />
+        <SquarePen
+          className={cn(styles.icon)}
+          onClick={() => {
+            reset({
+              name,
+              duration,
+              color,
+              id,
+            });
+          }}
+        />
 
         <Trash
           className={cn(styles.icon)}
