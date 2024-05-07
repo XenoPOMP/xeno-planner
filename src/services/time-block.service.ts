@@ -16,7 +16,7 @@ export class TimeBlockService {
   }
 
   static async updateOrderTimeBlock(ids: string[]) {
-    return axiosWithAuth.put(`${this.BASE_URL}/update-order`, {
+    return axiosWithAuth.put(`${this.BASE_URL}/order/update`, {
       ids,
     });
   }
