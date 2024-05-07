@@ -8,7 +8,7 @@ export interface Selection
   value: string;
 }
 
-export type SelectFieldType = 'default' | 'priority-badges';
+export type SelectFieldType = 'default' | 'priority-badges' | 'colors';
 
 export interface SelectFieldProps {
   currentItem?: string;

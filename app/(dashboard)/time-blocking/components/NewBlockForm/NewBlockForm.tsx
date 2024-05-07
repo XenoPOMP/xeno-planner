@@ -29,7 +29,10 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
       <section>
         <p>Цвет:</p>
 
-        <SelectField />
+        <SelectField
+          currentItem={'#497AB6'}
+          type={'colors'}
+        />
       </section>
 
       <Button

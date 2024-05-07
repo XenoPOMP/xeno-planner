@@ -17,7 +17,7 @@ import type { SelectFieldProps, SelectFieldType } from './SelectField.props';
 const SelectField: VariableFC<
   typeof InputField,
   SelectFieldProps,
-  'children' | 'outerRef' | 'focused'
+  'children' | 'outerRef' | 'focused' | 'type'
 > = ({
   className,
   outerOnClick,
@@ -43,6 +43,7 @@ const SelectField: VariableFC<
   const classMap: Record<SelectFieldType, string | undefined> = {
     default: '',
     'priority-badges': styles.prioritySelect,
+    colors: cn(styles.prioritySelect),
   };
 
   useEffect(() => {
@@ -86,6 +87,21 @@ const SelectField: VariableFC<
           aria-hidden={false}
         >
           <PriorityBadge priority={currentValue as Priority}>
+            {currentItem}
+          </PriorityBadge>
+        </span>
+      )}
+
+      {type === 'colors' && (
+        <span
+          className={cn('flex-grow', styles.currentItem)}
+          aria-hidden={false}
+        >
+          <PriorityBadge
+            style={{
+              background: `${currentItem}`,
+            }}
+          >
             {currentItem}
           </PriorityBadge>
         </span>
