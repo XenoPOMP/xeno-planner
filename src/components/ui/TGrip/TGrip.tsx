@@ -45,7 +45,9 @@ const TGrip: FC<TGripProps> = ({
         <div className={cn('flex items-center gap-[.2em]')}>
           <GripVertical
             size={'1.2em'}
-            className={cn('text-secondary-border-accent cursor-grab')}
+            className={cn(
+              'text-secondary-border-accent cursor-grab hover:text-primary-font transition-colors',
+            )}
           />
 
           <Checkbox
