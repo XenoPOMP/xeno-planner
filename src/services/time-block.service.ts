@@ -5,7 +5,10 @@ export class TimeBlockService {
   private static BASE_URL = '/user/time-block';
 
   static async getTimeBlocks() {
-    return axiosWithAuth.get<ITimeBlockResponse[]>(this.BASE_URL);
+    const response = await axiosWithAuth.get<ITimeBlockResponse[]>(
+      this.BASE_URL,
+    );
+    return response.data;
   }
 
   static async createTimeBlock(data: TimeBlockFormStateType) {

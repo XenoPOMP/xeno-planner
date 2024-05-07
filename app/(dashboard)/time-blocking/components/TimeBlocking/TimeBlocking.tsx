@@ -1,6 +1,10 @@
+'use client';
+
 import cn from 'classnames';
 import { type FC } from 'react';
 
+import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlocks.ts';
+import CircleLoader from '@/src/components/ui/CircleLoader';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer.tsx';
 import { isDragging } from '@/src/utils/react/data-attributes';
 
@@ -12,6 +16,8 @@ import styles from './TimeBlocking.module.scss';
 import type { TimeBlockingProps } from './TimeBlocking.props';
 
 const TimeBlocking: FC<TimeBlockingProps> = () => {
+  const { data, isLoading } = useTimeBlocks();
+
   return (
     <UiContainer
       margin={'0px'}
@@ -20,23 +26,20 @@ const TimeBlocking: FC<TimeBlockingProps> = () => {
       className={cn(styles.timeBlocking)}
       {...isDragging(true)}
     >
-      <BlocksList>
-        <>
-          {Array(20).fill(
+      {isLoading ? (
+        <div aria-hidden>
+          <CircleLoader />
+        </div>
+      ) : (
+        <BlocksList>
+          {data?.map(block => (
             <TimeBlockEntry
-              block={{
-                id: 'amogus',
-                duration: 36,
-                color: 'coral',
-                createdAt: new Date(),
-                updatedAt: new Date(),
-                name: 'Block name',
-                order: 0,
-              }}
-            />,
-          )}
-        </>
-      </BlocksList>
+              key={block.id}
+              block={block}
+            />
+          ))}
+        </BlocksList>
+      )}
 
       <NewBlockForm />
     </UiContainer>
