@@ -15,4 +15,5 @@ export const COLORS: Color[] = [
   'orange',
   'royalblue',
   'lightslategray',
+  'darkgoldenrod',
 ];
