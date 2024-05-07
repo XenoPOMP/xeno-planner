@@ -1,0 +1,12 @@
+form.addNewBlock {
+  @apply flex flex-col;
+
+  gap: var(--p-level-3);
+  width: clamp(300px, 25vw, 471px);
+
+  section.inputGroup {
+    @apply flex flex-col;
+
+    gap: var(--p-level-4);
+  }
+}

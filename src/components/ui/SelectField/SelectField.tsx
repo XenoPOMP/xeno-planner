@@ -95,6 +95,7 @@ const SelectField: VariableFC<
         <button
           aria-hidden
           className={cn(styles.expandButton)}
+          type={'button'}
         >
           {!expanded ? <ChevronDown /> : <ChevronUp />}
         </button>

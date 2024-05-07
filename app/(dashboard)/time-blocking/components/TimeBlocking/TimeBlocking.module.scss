@@ -1,0 +1,12 @@
+@import "src/styles/templates";
+
+section.timeBlocking {
+  @apply mx-0;
+
+  @include paddingHorizontal(var(--p-level-2));
+  @include paddingVertical(var(--p-level-3));
+
+  display: grid;
+  gap: var(--p-level-1);
+  grid-template-columns: 1fr max-content;
+}

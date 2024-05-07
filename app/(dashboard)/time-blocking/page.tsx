@@ -4,6 +4,8 @@ import { type FC } from 'react';
 import DashboardHeader from '@/src/components/layout/DashboardHeader';
 import { generateOpenGraph } from '@/src/utils/seo';
 
+import TimeBlocking from './components/TimeBlocking';
+
 export async function generateMetadata(): Promise<Metadata> {
   const title = 'Распорядок дня';
   const description = undefined;
@@ -22,6 +24,8 @@ const TimeBlockingPage: FC<{}> = () => {
   return (
     <main>
       <DashboardHeader heading={'Распорядок дня'} />
+
+      <TimeBlocking />
     </main>
   );
 };
