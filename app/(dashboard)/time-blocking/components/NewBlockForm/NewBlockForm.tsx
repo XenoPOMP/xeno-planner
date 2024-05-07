@@ -30,7 +30,8 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
 
   useEffect(() => {
     const { unsubscribe } = watch(({ id }) => {
-      setIsUpdate(id !== undefined);
+      const idDefined = id !== undefined;
+      setIsUpdate(idDefined);
     });
 
     return () => {
