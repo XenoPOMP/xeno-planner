@@ -12,6 +12,11 @@
     @include isDragging {
       @apply opacity-70 hover:opacity-100 transition-opacity;
     }
+
+    &.grip {
+      outline: none !important;
+      border: none !important;
+    }
   }
 
   span.name {
