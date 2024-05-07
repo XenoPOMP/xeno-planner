@@ -10,17 +10,17 @@ const ColorBadge: VariableFC<
   typeof PriorityBadge,
   ColorBadgeProps & { children?: Color },
   'priority' | 'children'
-> = ({ className, style, children, ...props }) => {
+> = ({ className, style, children: color, ...props }) => {
   return (
     <PriorityBadge
       className={cn('capitalize', className)}
       style={{
-        background: `${children}`,
+        background: `${color}`,
         ...style,
       }}
       {...props}
     >
-      {children}
+      {color}
     </PriorityBadge>
   );
 };
