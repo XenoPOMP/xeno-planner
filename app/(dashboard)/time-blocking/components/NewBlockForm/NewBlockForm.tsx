@@ -12,6 +12,7 @@ import {
 import { toast } from 'sonner';
 
 import { COLORS } from '@/app/(dashboard)/time-blocking/form/colors.data.ts';
+import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlocks.ts';
 import Button from '@/src/components/ui/Button';
 import InputField from '@/src/components/ui/InputField';
 import SelectField from '@/src/components/ui/SelectField';
@@ -32,6 +33,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
       },
     });
 
+  const { isLoading } = useTimeBlocks();
   const createBlock = useCreateTimeBlock();
 
   const onSubmit: SubmitHandler<TimeBlockFormStateType> = ({
@@ -67,6 +69,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
             placeholder={'Название'}
             icon={SquarePen}
             register={registerNestedField<TimeBlockFormStateType>('name')}
+            disabled={isLoading}
           />
 
           <InputField
@@ -76,6 +79,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
             min={1}
             max={MINUTES_IN_DAY}
             register={registerNestedField<TimeBlockFormStateType>('duration')}
+            disabled={isLoading}
           />
         </section>
 
@@ -100,6 +104,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
           thin
           hollow
           className={'max-w-fit'}
+          disabled={isLoading}
           type={'submit'}
         >
           Создать
