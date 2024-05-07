@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { Clock9, SquarePen } from 'lucide-react';
 import { type FC } from 'react';
 
+import { COLORS } from '@/app/(dashboard)/time-blocking/form/colors.data.ts';
 import Button from '@/src/components/ui/Button';
 import InputField from '@/src/components/ui/InputField';
 import SelectField from '@/src/components/ui/SelectField';
@@ -30,7 +31,8 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
         <p>Цвет:</p>
 
         <SelectField
-          currentItem={'#497AB6'}
+          currentItem={'royalblue'}
+          items={COLORS.map(col => ({ name: col, value: col }))}
           type={'colors'}
         />
       </section>

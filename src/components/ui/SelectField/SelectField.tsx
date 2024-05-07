@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { type ComponentProps, useEffect } from 'react';
 import useSmoothScroll from 'react-smooth-scroll-hook';
 
+import ColorBadge from '@/src/components/ui/ColorBadge';
 import InputField from '@/src/components/ui/InputField';
 import PriorityBadge from '@/src/components/ui/PriorityBadge';
 import { useOutSide } from '@/src/hooks/useOutSide.ts';
@@ -97,13 +98,7 @@ const SelectField: VariableFC<
           className={cn('flex-grow', styles.currentItem)}
           aria-hidden={false}
         >
-          <PriorityBadge
-            style={{
-              background: `${currentItem}`,
-            }}
-          >
-            {currentItem}
-          </PriorityBadge>
+          <ColorBadge>{currentItem}</ColorBadge>
         </span>
       )}
 
@@ -135,6 +130,14 @@ const SelectField: VariableFC<
                     <PriorityBadge priority={value as Priority}>
                       {name || value}
                     </PriorityBadge>
+                  </div>
+                );
+              }
+
+              case 'colors': {
+                return (
+                  <div {...sharedProps}>
+                    <ColorBadge>{name}</ColorBadge>
                   </div>
                 );
               }
