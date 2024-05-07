@@ -1,1 +1,3 @@
-export interface ColorBadgeProps {}
+export interface ColorBadgeProps {
+  hex?: boolean;
+}
