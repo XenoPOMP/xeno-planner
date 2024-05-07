@@ -1,0 +1,7 @@
+tr[data-row-type="grip-row"][data-is-dragging="true"] {
+  & > td.gripIconHolder {
+    svg.icon {
+      @apply text-primary-font;
+    }
+  }
+}

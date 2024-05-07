@@ -14,6 +14,7 @@ import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 import { getPriorityName } from '@/src/data/PriorityName.ts';
 import type { TaskFormStateType } from '@/src/types';
 
+import styles from './TGrip.module.scss';
 import type { TGripProps } from './TGrip.props';
 
 const TGrip: FC<TGripProps> = ({
@@ -41,12 +42,16 @@ const TGrip: FC<TGripProps> = ({
 
   return (
     <>
-      <td {...columnType('grip')}>
+      <td
+        {...columnType('grip')}
+        className={cn(styles.gripIconHolder)}
+      >
         <div className={cn('flex items-center gap-[.2em]')}>
           <GripVertical
             size={'1.2em'}
             className={cn(
               'text-secondary-border-accent cursor-grab hover:text-primary-font transition-colors',
+              styles.icon,
             )}
           />
 
