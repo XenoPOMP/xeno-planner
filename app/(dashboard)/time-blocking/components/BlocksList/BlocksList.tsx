@@ -14,7 +14,9 @@ const BlocksList: VariableFC<'article', BlocksListProps> = ({
       className={cn(styles.list, className)}
       {...props}
     >
-      <section className={cn(styles.droppable)}>{children}</section>
+      {children && (
+        <section className={cn(styles.droppable)}>{children}</section>
+      )}
 
       <footer className={cn(styles.hoursCounter)}>
         Остается <strong>17ч.</strong> для сна
