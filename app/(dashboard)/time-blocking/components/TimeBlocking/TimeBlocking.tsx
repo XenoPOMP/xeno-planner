@@ -10,13 +10,12 @@ import { isDragging } from '@/src/utils/react/data-attributes';
 
 import BlocksList from '../BlocksList';
 import NewBlockForm from '../NewBlockForm';
-import TimeBlockEntry from '../TimeBlockEntry';
 
 import styles from './TimeBlocking.module.scss';
 import type { TimeBlockingProps } from './TimeBlocking.props';
 
 const TimeBlocking: FC<TimeBlockingProps> = () => {
-  const { data, isLoading } = useTimeBlocks();
+  const { isLoading } = useTimeBlocks();
 
   return (
     <UiContainer
@@ -31,15 +30,7 @@ const TimeBlocking: FC<TimeBlockingProps> = () => {
           <CircleLoader />
         </div>
       ) : (
-        <BlocksList>
-          {data?.length !== 0 &&
-            data?.map(block => (
-              <TimeBlockEntry
-                key={block.id}
-                block={block}
-              />
-            ))}
-        </BlocksList>
+        <BlocksList />
       )}
 
       <NewBlockForm />

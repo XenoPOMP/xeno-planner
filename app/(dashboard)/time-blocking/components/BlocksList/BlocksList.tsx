@@ -6,6 +6,7 @@ import {
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 
+import TimeBlockEntry from '@/app/(dashboard)/time-blocking/components/TimeBlockEntry';
 import { useTimeBlockDnd } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlockDnd.ts';
 import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlocks.ts';
 import WarningMessage from '@/src/components/ui/WarningMessage';
@@ -36,8 +37,14 @@ const BlocksList: VariableFC<'article', BlocksListProps> = ({
             items={data || []}
             strategy={verticalListSortingStrategy}
           >
-            {/* eslint-disable-next-line no-unneeded-ternary */}
-            {children ? children : <div>Нет блоков.</div>}
+            {data?.length !== 0
+              ? data?.map(block => (
+                  <TimeBlockEntry
+                    key={block.id}
+                    block={block}
+                  />
+                ))
+              : 'Нет блоков'}
           </SortableContext>
         </section>
       </DndContext>
