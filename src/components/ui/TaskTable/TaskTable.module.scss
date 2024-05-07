@@ -126,5 +126,6 @@ table.tasks {
   @include marginHorizontal(var(--p-level-2));
   @include marginVertical(var(--p-level-4));
 
-  max-width: calc(100% - 2 * var(--p-level-2));
+  // UiContainer analogy
+  max-width: min(calc(100% - 2 * var(--p-level-2)), 1598px);
 }
