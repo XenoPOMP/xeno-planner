@@ -9,13 +9,17 @@ import {
   type SubmitHandler,
   useForm,
 } from 'react-hook-form';
+import { toast } from 'sonner';
 
 import { COLORS } from '@/app/(dashboard)/time-blocking/form/colors.data.ts';
 import Button from '@/src/components/ui/Button';
 import InputField from '@/src/components/ui/InputField';
 import SelectField from '@/src/components/ui/SelectField';
+import { MINUTES_IN_DAY } from '@/src/constants/time.constants.ts';
 import type { TimeBlockFormStateType } from '@/src/types';
 import { registerNestedField } from '@/src/utils/misc';
+
+import { useCreateTimeBlock } from '../../hooks/useCreateTimeBlock.ts';
 
 import styles from './NewBlockForm.module.scss';
 import type { NewBlockFormProps } from './NewBlockForm.props';
@@ -28,15 +32,23 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
       },
     });
 
+  const createBlock = useCreateTimeBlock();
+
   const onSubmit: SubmitHandler<TimeBlockFormStateType> = ({
     duration,
     ...data
   }) => {
-    // eslint-disable-next-line no-unused-vars
     const formattedData = {
       duration: +(duration || '0'),
       ...data,
     };
+
+    if (!formattedData.name) {
+      toast.error('Вы не ввели имя блока!');
+      return;
+    }
+
+    createBlock(formattedData);
   };
 
   return (
@@ -61,6 +73,8 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
             placeholder={'Продолжительность (в мин.)'}
             icon={Clock9}
             type={'number'}
+            min={1}
+            max={MINUTES_IN_DAY}
             register={registerNestedField<TimeBlockFormStateType>('duration')}
           />
         </section>
@@ -86,6 +100,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
           thin
           hollow
           className={'max-w-fit'}
+          type={'submit'}
         >
           Создать
         </Button>
