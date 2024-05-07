@@ -1,12 +1,29 @@
 @import "src/styles/templates";
 
-table.tasks {
-  $firstColumn: 300px;
-  $secondColumn: 300px;
-  $thirdColumn: 350px;
-  $borderColor: secondary-border-brutal;
+$firstColumn: 300px;
+$secondColumn: 300px;
+$thirdColumn: 350px;
+$borderColor: secondary-border-brutal;
 
-  min-width: calc($firstColumn + $secondColumn + $thirdColumn);
+%cellSizes {
+  &:nth-child(1) {
+    min-width: $firstColumn;
+  }
+  &:nth-child(2) {
+    width: $secondColumn;
+  }
+  &:nth-child(3) {
+    width: $thirdColumn;
+
+    @include endAtFixed($tabletBreakpoint) {
+      width: unset;
+      min-width: calc($thirdColumn * .6);
+    }
+  }
+}
+
+table.tasks {
+  // min-width: calc($firstColumn + $secondColumn + $thirdColumn);
   margin-bottom: var(--p-level-2);
 
   & > thead {
@@ -25,15 +42,7 @@ table.tasks {
       text-align: unset;
 
       // Sizes
-      &:nth-child(1) {
-        min-width: $firstColumn;
-      }
-      &:nth-child(2) {
-        width: $secondColumn;
-      }
-      &:nth-child(3) {
-        width: $thirdColumn;
-      }
+      @extend %cellSizes;
 
       // Grip-like column
       &[data-column-type="grip"],
@@ -102,15 +111,7 @@ table.tasks {
 
     // Handle cells inside dragging row
     &[data-is-dragging="true"] > :is(td, th) {
-      &:nth-child(1) {
-        min-width: $firstColumn;
-      }
-      &:nth-child(2) {
-        width: $secondColumn;
-      }
-      &:nth-child(3) {
-        width: $thirdColumn;
-      }
+      @extend %cellSizes;
     }
   }
 

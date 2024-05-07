@@ -1,8 +1,9 @@
+import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { ru } from 'date-fns/locale';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
-import { type FC, useState } from 'react';
+import { useState } from 'react';
 import { DayPicker, type SelectSingleEventHandler } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 
@@ -14,7 +15,13 @@ import { formatCaption } from './DatePickerCaption.tsx';
 dayjs.extend(LocalizedFormat);
 dayjs.locale('ru');
 
-const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
+const DatePicker: VariableFC<'div', DatePickerProps, 'onChange' | 'ref'> = ({
+  onChange,
+  value,
+  position,
+  className,
+  ...props
+}) => {
   const [selected, setSelected] = useState<Date>();
   const { ref, isShown, setIsShown } = useOutSide<HTMLDivElement>();
 
@@ -35,8 +42,9 @@ const DatePicker: FC<DatePickerProps> = ({ onChange, value, position }) => {
 
   return (
     <div
-      className={cn('relative')}
+      className={cn('relative', className)}
       ref={ref}
+      {...props}
     >
       <button onClick={() => setIsShown(prev => true)}>
         {dayValue ? dayjs(dayValue).format('LL') : 'Нажмите, чтобы выбрать'}

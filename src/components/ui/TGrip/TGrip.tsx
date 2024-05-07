@@ -75,8 +75,9 @@ const TGrip: FC<TGripProps> = ({
           name={'createdAt'}
           render={({ field }) => (
             <DatePicker
-              position={'left'}
               {...field}
+              position={'left'}
+              className={cn('min-w-[19ch]')}
             />
           )}
         />
