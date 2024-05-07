@@ -27,7 +27,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
         />
       </section>
 
-      <section>
+      <section className={cn('flex flex-col gap-[.2em]')}>
         <p>Цвет:</p>
 
         <SelectField
