@@ -46,7 +46,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
     };
 
     if (!formattedData.name) {
-      toast.error('Вы не ввели имя блока!');
+      toast.error('Вы не ввели название блока!');
       return;
     }
 
