@@ -9,7 +9,13 @@ article.profile {
     @apply flex flex-col items-end justify-center;
 
     & > strong {
-      @apply p20 font-medium;
+      @apply font-medium;
+
+      font-size: calc(var(--p20) * .9);
+
+      &, & + p {
+        line-height: normal;
+      }
 
       & + p {
         @apply p16 text-secondary-border-accent
@@ -24,7 +30,7 @@ article.profile {
 }
 
 section.avatar {
-  @apply h-[2.8em] aspect-square rounded-[6px]
+  @apply h-[2.25em] aspect-square rounded-[.375em]
   bg-secondary-bg-accent overflow-hidden
   flex-shrink-0;
 
