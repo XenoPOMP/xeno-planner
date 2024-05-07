@@ -32,12 +32,13 @@ const TimeBlocking: FC<TimeBlockingProps> = () => {
         </div>
       ) : (
         <BlocksList>
-          {data?.map(block => (
-            <TimeBlockEntry
-              key={block.id}
-              block={block}
-            />
-          ))}
+          {data?.length !== 0 &&
+            data?.map(block => (
+              <TimeBlockEntry
+                key={block.id}
+                block={block}
+              />
+            ))}
         </BlocksList>
       )}
 
