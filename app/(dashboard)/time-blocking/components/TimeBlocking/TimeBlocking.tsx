@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { type FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
+import { RESET_DATA } from '@/app/(dashboard)/time-blocking/data/reset.data.ts';
 import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlocks.ts';
 import CircleLoader from '@/src/components/ui/CircleLoader';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer.tsx';
@@ -21,7 +22,7 @@ const TimeBlocking: FC<TimeBlockingProps> = () => {
 
   const { ...methods } = useForm<TimeBlockFormStateType>({
     defaultValues: {
-      color: 'royalblue',
+      ...RESET_DATA,
     },
   });
 
