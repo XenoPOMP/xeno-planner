@@ -15,6 +15,9 @@
 @import "mixins/automaticColumns";
 @import "mixins/buttonStyles";
 
+// Data attributes
+@import "data-attr/drag";
+
 // Import templates
 @import "templates/contentlessOverlay";
 @import "templates/flexCenter";

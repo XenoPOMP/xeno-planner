@@ -1,0 +1,7 @@
+// Insert styles only if element has
+// data-is-grabbing=true
+@mixin isDragging() {
+  &[data-is-dragging="true"] {
+    @content;
+  }
+}
