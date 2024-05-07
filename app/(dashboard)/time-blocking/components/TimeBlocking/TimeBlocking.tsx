@@ -21,9 +21,21 @@ const TimeBlocking: FC<TimeBlockingProps> = () => {
       {...isDragging(true)}
     >
       <BlocksList>
-        <TimeBlockEntry />
-        <TimeBlockEntry />
-        <TimeBlockEntry />
+        <>
+          {Array(20).fill(
+            <TimeBlockEntry
+              block={{
+                id: 'amogus',
+                duration: 36,
+                color: 'coral',
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                name: 'Block name',
+                order: 0,
+              }}
+            />,
+          )}
+        </>
       </BlocksList>
 
       <NewBlockForm />

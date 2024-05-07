@@ -1,3 +1,33 @@
+@import "src/styles/templates";
+
 .entry {
-  background: red;
+  @apply flex px-[.8em] py-[.3em] items-center
+         rounded-[.3em] gap-[.4em];
+
+  min-height: 36px;
+
+  .icon {
+    @apply opacity-70 hover:opacity-100 transition-opacity;
+
+    @include isDragging {
+      @apply opacity-70 hover:opacity-100 transition-opacity;
+    }
+  }
+
+  span.name {
+    @apply flex-grow;
+
+    & > i {
+      opacity: .7;
+    }
+  }
+
+  section.controls {
+    @apply flex gap-[.6em];
+
+    & > svg {
+      @apply size-[.9em];
+      cursor: pointer;
+    }
+  }
 }
