@@ -16,7 +16,7 @@ const BlocksList: VariableFC<'article', BlocksListProps> = ({
 }) => {
   const { data } = useTimeBlocks();
 
-  /** Calculated  */
+  /** Calculated time available for sleep. */
   const hoursLeft = useMemo(() => {
     if (!data) {
       return 0;
