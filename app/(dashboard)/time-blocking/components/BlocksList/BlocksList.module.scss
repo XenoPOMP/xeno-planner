@@ -1,0 +1,19 @@
+article.list {
+  &, section.droppable {
+    @apply flex flex-col;
+  }
+
+  gap: var(--p-level-4);
+
+  section.droppable {
+    gap: calc(var(--p-level-4) * .75em); // 12px
+  }
+
+  footer.hoursCounter {
+    @apply p16 italic;
+
+    & > strong {
+      @apply not-italic font-extrabold;
+    }
+  }
+}

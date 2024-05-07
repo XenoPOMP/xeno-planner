@@ -4,6 +4,7 @@ import { type FC } from 'react';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer.tsx';
 import { isDragging } from '@/src/utils/react/data-attributes';
 
+import BlocksList from '../BlocksList';
 import NewBlockForm from '../NewBlockForm';
 
 import styles from './TimeBlocking.module.scss';
@@ -18,7 +19,7 @@ const TimeBlocking: FC<TimeBlockingProps> = () => {
       className={cn(styles.timeBlocking)}
       {...isDragging(true)}
     >
-      <div></div>
+      <BlocksList />
 
       <NewBlockForm />
     </UiContainer>
