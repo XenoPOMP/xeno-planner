@@ -2,7 +2,7 @@
 
 .entry {
   @apply flex px-[.8em] py-[.3em] items-center
-         rounded-[.3em] gap-[.4em];
+         rounded-[.3em] gap-[.4em] text-timeblock-font-neutral;
 
   min-height: 36px;
 
