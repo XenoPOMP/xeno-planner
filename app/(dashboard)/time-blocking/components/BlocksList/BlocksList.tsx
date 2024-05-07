@@ -54,7 +54,7 @@ const BlocksList: VariableFC<'article', BlocksListProps, 'children'> = ({
             Остается <strong>{hoursLeft}ч.</strong> для сна
           </>
         ) : (
-          <WarningMessage>На сон не осталось часов</WarningMessage>
+          <WarningMessage>Не осталось часов на сон</WarningMessage>
         )}
       </footer>
     </article>
