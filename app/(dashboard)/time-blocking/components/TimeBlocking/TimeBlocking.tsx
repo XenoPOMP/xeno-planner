@@ -6,6 +6,7 @@ import { isDragging } from '@/src/utils/react/data-attributes';
 
 import BlocksList from '../BlocksList';
 import NewBlockForm from '../NewBlockForm';
+import TimeBlockEntry from '../TimeBlockEntry';
 
 import styles from './TimeBlocking.module.scss';
 import type { TimeBlockingProps } from './TimeBlocking.props';
@@ -19,7 +20,11 @@ const TimeBlocking: FC<TimeBlockingProps> = () => {
       className={cn(styles.timeBlocking)}
       {...isDragging(true)}
     >
-      <BlocksList />
+      <BlocksList>
+        <TimeBlockEntry />
+        <TimeBlockEntry />
+        <TimeBlockEntry />
+      </BlocksList>
 
       <NewBlockForm />
     </UiContainer>

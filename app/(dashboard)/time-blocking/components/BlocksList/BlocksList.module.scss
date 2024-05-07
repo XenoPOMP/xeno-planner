@@ -6,7 +6,7 @@ article.list {
   gap: var(--p-level-4);
 
   section.droppable {
-    gap: calc(var(--p-level-4) * .75em); // 12px
+    gap: calc(var(--p-level-4) * .75); // 12px
   }
 
   footer.hoursCounter {
