@@ -4,6 +4,7 @@ export const darkTheme: CustomTheme = {
   colors: {
     accent: '#6E51D7',
     'accent-bright': '#9982EB',
+    'accent-text': '#E5E6E5',
     primary: {
       bg: '#0C0D0E',
       font: '#E5E6E5',

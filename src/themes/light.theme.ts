@@ -9,10 +9,11 @@ type Theme = Defined<Defined<Config['theme']>['extend']>;
 export const lightTheme = {
   colors: {
     accent: '#6E51D7',
-    'accent-bright': '#9982EB',
+    'accent-bright': '#8373BD',
+    'accent-text': '#FFFFFF',
     primary: {
-      bg: '#0C0D0E',
-      font: '#E5E6E5',
+      bg: '#F1F2F3',
+      font: '#191A19',
       error: {
         soft: {
           font: '#F85149',
@@ -23,15 +24,15 @@ export const lightTheme = {
       },
     },
     secondary: {
-      bg: '#151315',
-      'bg-accent': '#1A1A1A',
-      border: '#404142',
-      'border-accent': '#636363',
-      'border-brutal': '#222324',
+      bg: '#DDDBFF',
+      'bg-accent': '#CDCAF2',
+      border: '#C9C9C9',
+      'border-accent': '#B7B7B7',
+      'border-brutal': '#E4E3E3',
     },
     field: {
-      bg: '#262626',
-      placeholder: '#A8A8A8',
+      bg: '#CAC8EB',
+      placeholder: '#7A7777',
     },
     priority: {
       low: {
