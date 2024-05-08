@@ -25,9 +25,17 @@ const tailwindConfig: Config = {
     CustomClassesPlugin(),
     tailwindThemer({
       defaultTheme: {
-        extend: lightTheme,
+        extend: {
+          colors: {
+            'timeblock-font-neutral': '#FFF',
+          },
+        },
       },
       themes: [
+        {
+          name: 'light',
+          extend: lightTheme,
+        },
         {
           name: 'dark',
           extend: darkTheme,

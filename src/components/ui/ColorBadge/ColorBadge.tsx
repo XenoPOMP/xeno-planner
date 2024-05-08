@@ -31,7 +31,7 @@ const ColorBadge: VariableFC<
 
   return (
     <PriorityBadge
-      className={cn('capitalize', className)}
+      className={cn('capitalize !text-timeblock-font-neutral', className)}
       style={{
         background: `${color}`,
         ...style,

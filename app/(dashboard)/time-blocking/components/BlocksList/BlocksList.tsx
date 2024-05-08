@@ -1,46 +1,61 @@
+import { DndContext, closestCenter } from '@dnd-kit/core';
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 import type { VariableFC } from '@xenopomp/advanced-types';
-import { roundNumber } from '@xenopomp/advanced-utils';
 import cn from 'classnames';
-import { useMemo } from 'react';
 
+import TimeBlockEntry from '@/app/(dashboard)/time-blocking/components/TimeBlockEntry';
+import { useTimeBlockDnd } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlockDnd.ts';
 import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlocks.ts';
-import { MINUTES_IN_DAY } from '@/src/constants/time.constants.ts';
+import WarningMessage from '@/src/components/ui/WarningMessage';
 
 import styles from './BlocksList.module.scss';
 import type { BlocksListProps } from './BlocksList.props';
 
-const BlocksList: VariableFC<'article', BlocksListProps> = ({
+const BlocksList: VariableFC<'article', BlocksListProps, 'children'> = ({
   className,
-  children,
   ...props
 }) => {
-  const { data } = useTimeBlocks();
-
-  /** Calculated time available for sleep. */
-  const hoursLeft = useMemo(() => {
-    if (!data) {
-      return 0;
-    }
-
-    const minutesBlocked = data!.reduce(
-      (reducer, next) => reducer + next.duration,
-      0,
-    );
-
-    return roundNumber((MINUTES_IN_DAY - minutesBlocked) / 60, 1);
-  }, [data]);
+  const { hoursLeft, data, setItems } = useTimeBlocks();
+  const { handleDragEnd, sensors } = useTimeBlockDnd(data, setItems);
 
   return (
     <article
       className={cn(styles.list, className)}
       {...props}
     >
-      {children && (
-        <section className={cn(styles.droppable)}>{children}</section>
-      )}
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <section className={cn(styles.droppable)}>
+          <SortableContext
+            items={data || []}
+            strategy={verticalListSortingStrategy}
+          >
+            {data?.length !== 0
+              ? data?.map(block => (
+                  <TimeBlockEntry
+                    key={block.id}
+                    block={block}
+                  />
+                ))
+              : 'Нет блоков'}
+          </SortableContext>
+        </section>
+      </DndContext>
 
       <footer className={cn(styles.hoursCounter)}>
-        Остается <strong>{hoursLeft}ч.</strong> для сна
+        {hoursLeft > 0 ? (
+          <>
+            Остается <strong>{hoursLeft}ч.</strong> для сна
+          </>
+        ) : (
+          <WarningMessage>Не осталось часов на сон</WarningMessage>
+        )}
       </footer>
     </article>
   );

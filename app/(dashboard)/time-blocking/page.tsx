@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import type { Metadata } from 'next';
 import { type FC } from 'react';
 
@@ -22,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const TimeBlockingPage: FC<{}> = () => {
   return (
-    <main>
+    <main className={cn('overflow-x-hidden')}>
       <DashboardHeader heading={'Распорядок дня'} />
 
       <TimeBlocking />

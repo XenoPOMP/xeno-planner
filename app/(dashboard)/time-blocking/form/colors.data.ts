@@ -12,6 +12,8 @@ export const COLORS: Color[] = [
   'orchid',
   'coral',
   'seagreen',
+  'orange',
   'royalblue',
   'lightslategray',
+  'darkgoldenrod',
 ];
