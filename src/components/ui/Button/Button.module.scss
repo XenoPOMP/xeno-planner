@@ -22,6 +22,11 @@ button.uiButton {
 
   &.themePrimary {
     @include buttonStyled(accent);
+
+    &:not(:is([data-hollow="true"])),
+    &:hover {
+      @apply text-accent-text;
+    }
   }
 
   &.themeDanger {
@@ -36,7 +41,7 @@ button.uiButton {
             $anim color;
 
     &:hover {
-      @apply bg-primary-error-soft-hover-bg text-primary-font;
+      @apply bg-primary-error-soft-hover-bg text-accent-text;
     }
   }
 }

@@ -36,6 +36,7 @@ const Button: VariableFC<
         },
         className,
       )}
+      data-hollow={hollow}
       {...props}
     >
       {children}
