@@ -32,7 +32,7 @@ export const lightTheme = {
     },
     field: {
       bg: '#CAC8EB',
-      placeholder: '#7A7777',
+      placeholder: '#424141',
     },
     priority: {
       low: {
