@@ -17,7 +17,7 @@ $borderColor: secondary-border-brutal;
 
     @include endAtFixed($tabletBreakpoint) {
       width: unset;
-      min-width: calc($thirdColumn * .6);
+      min-width: calc($thirdColumn * .7);
     }
   }
 }
