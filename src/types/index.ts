@@ -1,5 +1,6 @@
 export * from './InferBoundStoreType';
 export * from './providerType.ts';
+export * from './dicebear';
 
 // Backend
 export * from './backend/auth.types.ts';
