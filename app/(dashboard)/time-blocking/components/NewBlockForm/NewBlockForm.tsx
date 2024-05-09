@@ -11,6 +11,7 @@ import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBloc
 import Button from '@/src/components/ui/Button';
 import InputField from '@/src/components/ui/InputField';
 import SelectField from '@/src/components/ui/SelectField';
+import { NEW_BLOCK_FORM_ID } from '@/src/constants/ids.constants.ts';
 import { MINUTES_IN_DAY } from '@/src/constants/time.constants.ts';
 import type { TimeBlockFormStateType } from '@/src/types';
 import { registerNestedField } from '@/src/utils/misc';
@@ -44,6 +45,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
       <form
         className={cn(styles.addNewBlock)}
         onSubmit={handleSubmit(onSubmit)}
+        id={NEW_BLOCK_FORM_ID}
       >
         <section className={cn(styles.inputGroup)}>
           <InputField
