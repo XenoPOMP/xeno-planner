@@ -14,15 +14,17 @@
     }
 
     &.grip {
+      @apply flex-shrink-0;
       outline: none !important;
       border: none !important;
     }
   }
 
   span.name {
-    @apply flex-grow;
+    @apply flex-grow flex gap-[.25em];
 
     & > i {
+      @apply flex-shrink-0;
       opacity: .7;
     }
   }

@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { GripVertical, SquarePen, Trash } from 'lucide-react';
 import { type FC } from 'react';
 import { useFormContext } from 'react-hook-form';
+import TextOverflow from 'react-text-overflow';
 
 import type { TimeBlockFormStateType } from '@/src/types';
 
@@ -39,7 +40,7 @@ const TimeBlockEntry: FC<TimeBlockEntryProps> = ({
       />
 
       <span className={cn(styles.name)}>
-        {name} <i>({duration} мин.)</i>
+        <TextOverflow text={name} /> <i>({duration} мин.)</i>
       </span>
 
       <section className={cn(styles.controls)}>
