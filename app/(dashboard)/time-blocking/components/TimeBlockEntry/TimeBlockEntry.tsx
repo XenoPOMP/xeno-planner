@@ -1,9 +1,12 @@
+'use client';
+
 import cn from 'classnames';
 import { GripVertical, SquarePen, Trash } from 'lucide-react';
 import { type FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import TextOverflow from 'react-text-overflow';
 
+import { NEW_BLOCK_FORM_ID } from '@/src/constants/ids.constants.ts';
 import type { TimeBlockFormStateType } from '@/src/types';
 
 import { useDeleteTimeBlock } from '../../hooks/useDeleteTimeBlock.ts';
@@ -52,6 +55,12 @@ const TimeBlockEntry: FC<TimeBlockEntryProps> = ({
               duration,
               color,
               id,
+            });
+
+            document.getElementById(NEW_BLOCK_FORM_ID)?.scrollIntoView({
+              block: 'end',
+              inline: 'nearest',
+              behavior: 'smooth',
             });
           }}
         />
