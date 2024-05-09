@@ -20,6 +20,15 @@
 }
 
 /*
+  Media query for min-width generator. Uses fixed pixel value as argument.
+ */
+@mixin endAtFixed($value) {
+  @media (min-width: $value) {
+    @content;
+  }
+}
+
+/*
   Media query for max-width generator.
 */
 @mixin endAt($breakpoint-name) {

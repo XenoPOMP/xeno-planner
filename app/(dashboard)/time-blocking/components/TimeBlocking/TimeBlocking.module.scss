@@ -9,4 +9,8 @@ section.timeBlocking {
   display: grid;
   gap: var(--p-level-1);
   grid-template-columns: 1fr max-content;
+
+  @include endAtFixed(930px) {
+    grid-template-columns: 1fr;
+  }
 }

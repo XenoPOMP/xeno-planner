@@ -1,3 +1,5 @@
+@import "src/styles/templates";
+
 form.addNewBlock {
   @apply flex flex-col;
 
@@ -8,5 +10,9 @@ form.addNewBlock {
     @apply flex flex-col;
 
     gap: var(--p-level-4);
+  }
+
+  @include endAtFixed(930px) {
+    grid-row: 1;
   }
 }
