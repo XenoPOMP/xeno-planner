@@ -9,22 +9,18 @@ import TextOverflow from 'react-text-overflow';
 import CircleLoader from '@/src/components/ui/CircleLoader';
 import WarningMessage from '@/src/components/ui/WarningMessage';
 import { useProfile } from '@/src/hooks/useProfile.ts';
-import type { DicebearVariant } from '@/src/types';
 import { DASHBOARD_PAGES } from '@/src/types/routes.ts';
+import { createAvatarUrl } from '@/src/utils/misc';
 
 import styles from './Profile.module.scss';
 import type { ProfileProps } from './Profile.props';
 
-const AVATAR_VARIANT: DicebearVariant = 'identicon';
-
 const Profile: FC<ProfileProps> = () => {
   const { data, isLoading } = useProfile();
 
-  const avatarParams = new URLSearchParams({
+  const avatarUrl = createAvatarUrl('identicon', {
     seed: data?.user.name || '',
   });
-
-  const avatarUrl = `https://api.dicebear.com/8.x/${AVATAR_VARIANT}/png?${avatarParams.toString()}`;
 
   return isLoading ? (
     <section
