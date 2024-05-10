@@ -1,0 +1,12 @@
+.kanbanHolder {
+  --kanban-column-width: 25cqw;
+  --kanban-column-min-width: 15em;
+
+  @apply overflow-x-auto;
+
+  // max-width: 1800px;
+  display: flex;
+  gap: var(--p-level-2);
+  padding: var(--p-level-3) var(--p-level-2);
+  container-type: inline-size;
+}

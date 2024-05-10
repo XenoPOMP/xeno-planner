@@ -1,0 +1,17 @@
+article.column {
+  &, section.droppable {
+    @apply flex flex-col;
+  }
+
+  gap: var(--p-level-4);
+  width: 20%;
+  min-width: var(--kanban-column-min-width);
+
+  h2.groupName {
+    @apply p20 select-none;
+  }
+
+  section.droppable {
+    gap: calc(var(--p-level-4) * .75);
+  }
+}
