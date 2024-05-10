@@ -1,5 +1,12 @@
+'use client';
+
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
+
+import { useTimer } from '@/app/(dashboard)/pomodoro/hooks/useTimer.ts';
+import { useTimerActions } from '@/app/(dashboard)/pomodoro/hooks/useTimerActions.ts';
+import { useTodaySession } from '@/app/(dashboard)/pomodoro/hooks/useTodaySession.ts';
+import CircleLoader from '@/src/components/ui/CircleLoader';
 
 import ControlTimer from '../ControlTimer';
 import Countdown from '../Countdown';
@@ -7,13 +14,6 @@ import ResetTimer from '../ResetTimer';
 
 import styles from './Timer.module.scss';
 import type { TimerProps } from './Timer.props.ts';
-
-// TODO:
-// ✅ useLoadSettings()
-// ✅ useTodaySession()
-// ✅ useCreateSession()
-// ✅ useDeleteSession()
-// ❌ useTimer()
 
 /**
  * Contains all logic for pomodoro timer.
@@ -27,18 +27,41 @@ const Timer: VariableFC<'section', TimerProps, 'children'> = ({
   className,
   ...props
 }) => {
+  const timerState = useTimer();
+  const { isLoading, sessionResponse } = useTodaySession(timerState);
+
+  const rounds = sessionResponse?.rounds;
+  const actions = useTimerActions({
+    ...timerState,
+    rounds,
+  });
+
   return (
     <section
       className={cn('flex flex-col gap-[1em] w-fit', styles.timer, className)}
       {...props}
     >
-      <ResetTimer />
+      {isLoading ? (
+        <CircleLoader />
+      ) : (
+        <>
+          <ResetTimer
+            id={sessionResponse?.id}
+            setIsRunning={timerState.setIsRunning}
+            setSecondsLeft={timerState.setSecondsLeft}
+          />
 
-      <div className={cn(styles.body)}>
-        <Countdown />
-      </div>
+          <div className={cn(styles.body)}>
+            <Countdown secondsLeft={timerState.secondsLeft} />
+          </div>
 
-      <ControlTimer />
+          <ControlTimer
+            id={sessionResponse?.id}
+            isRunning={timerState.isRunning}
+            actions={actions}
+          />
+        </>
+      )}
     </section>
   );
 };

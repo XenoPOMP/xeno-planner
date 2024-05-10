@@ -2,8 +2,6 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { PomodoroService } from '@/src/services/pomodoro.service.ts';
 
-// setSecondsLeft(workInterval * 60)
-
 export const useDeleteSession = (onDeleteSuccess: () => void) => {
   const queryClient = useQueryClient();
 

@@ -6,15 +6,15 @@ import { useLoadSettings } from './useLoadSettings.ts';
 import { useUpdateRound } from './useUpdateRound.ts';
 
 type UseTimerActionsType = ITimerState & {
-  rounds?: IPomodoroRoundResponse[];
+  rounds: IPomodoroRoundResponse[] | undefined;
 };
 
 export const useTimerActions = ({
   activeRound,
   secondsLeft,
   setIsRunning,
-  setActiveRound,
-  setSecondsLeft,
+  // setActiveRound,
+  // setSecondsLeft,
   rounds,
 }: UseTimerActionsType) => {
   const { workInterval } = useLoadSettings();

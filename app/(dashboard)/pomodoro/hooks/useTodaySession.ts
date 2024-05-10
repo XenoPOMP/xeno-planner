@@ -1,21 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import type { SetState } from '@xenopomp/advanced-types';
 import { useEffect } from 'react';
 
+import { useLoadSettings } from '@/app/(dashboard)/pomodoro/hooks/useLoadSettings.ts';
+import type { ITimerState } from '@/app/(dashboard)/pomodoro/timer.types.ts';
 import { PomodoroService } from '@/src/services/pomodoro.service.ts';
-import type { IPomodoroRoundResponse } from '@/src/types';
-
-interface IUseTodaySession {
-  setActiveRound: SetState<IPomodoroRoundResponse | undefined>;
-  setSecondsLeft: SetState<number>;
-  workInterval: number;
-}
 
 export const useTodaySession = ({
   setActiveRound,
   setSecondsLeft,
-  workInterval,
-}: IUseTodaySession) => {
+}: ITimerState) => {
+  const { workInterval } = useLoadSettings();
+
   const {
     data: sessionResponse,
     isSuccess,
