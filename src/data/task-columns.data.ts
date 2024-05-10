@@ -12,8 +12,8 @@ export const FILTERS: Record<Exclude<ColumnId, 'completed'>, Dayjs> = {
   today: dayjs().startOf('day'),
   tomorrow: dayjs().add(1, 'day').startOf('day'),
   'on-this-week': dayjs().endOf('isoWeek'),
-  'on-next-week': dayjs().add(1, 'week').startOf('isoWeek'),
-  later: dayjs().add(2, 'week').startOf('isoWeek'),
+  'on-next-week': dayjs().add(1, 'week').endOf('isoWeek'),
+  later: dayjs().add(2, 'week').endOf('isoWeek'),
 };
 
 export const COLUMNS: Array<{ label: string; value: ColumnId }> = [
