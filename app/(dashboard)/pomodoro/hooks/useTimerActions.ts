@@ -41,7 +41,7 @@ export const useTimerActions = ({
   };
 
   const nextRoundHandler = () => {
-    if (!activeRound.id) {
+    if (!activeRound?.id) {
       return;
     }
 
