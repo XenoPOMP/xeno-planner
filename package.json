@@ -84,7 +84,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-istanbul": "^1.6.0",
     "@xeno-planner/backend-types": "^1.0.0",
-    "@xenopomp/advanced-types": "^1.x",
+    "@xenopomp/advanced-types": "*",
     "concurrently": "^8.2.2",
     "cypress": "^13.9.0",
     "eslint": "^8.57.0",
