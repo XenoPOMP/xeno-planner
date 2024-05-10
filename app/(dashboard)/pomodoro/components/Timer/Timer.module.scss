@@ -1,0 +1,11 @@
+@import "src/styles/templates";
+
+section.timer {
+  padding:  var(--p-level-3) var(--p-level-2);
+
+  .body {
+    @apply flex flex-col;
+
+    gap: var(--p-level-3);
+  }
+}

@@ -2,18 +2,18 @@
 
 article.roundsContainer {
   @apply flex gap-[.6em];
+}
 
-  button.withChevron {
-    @apply text-secondary-border-accent
-           hover:text-primary-font;
+.withChevron {
+  @apply text-secondary-border-accent cursor-pointer
+  hover:text-primary-font;
 
-    transition: sameTransition(
-      .15s ease,
-      color, opacity
-    );
+  transition: sameTransition(
+                  .15s ease,
+                  color, opacity
+  );
 
-    &:disabled {
-      @apply opacity-30 pointer-events-none;
-    }
+  &:disabled {
+    @apply opacity-30 pointer-events-none;
   }
 }

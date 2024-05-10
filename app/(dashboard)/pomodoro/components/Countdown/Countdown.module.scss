@@ -1,0 +1,8 @@
+@import "src/styles/templates";
+
+article.countdown {
+  @extend %tabularNumbers;
+  @apply text-[4em] font-semibold select-none;
+
+  line-height: 100%;
+}
