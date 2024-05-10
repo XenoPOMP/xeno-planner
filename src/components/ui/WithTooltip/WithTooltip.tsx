@@ -34,7 +34,7 @@ const WithTooltip = <Element extends ElementType>({
           borderRadius: '5px',
           zIndex: 5000,
         }}
-        className={cn('')}
+        className={cn('!bg-secondary-bg-accent !text-primary-font')}
       />
     </>
   );

@@ -12,6 +12,7 @@ import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBloc
 import Button from '@/src/components/ui/Button';
 import InputField from '@/src/components/ui/InputField';
 import SelectField from '@/src/components/ui/SelectField';
+import WithTooltip from '@/src/components/ui/WithTooltip';
 import { NEW_BLOCK_FORM_ID } from '@/src/constants/ids.constants.ts';
 import { MINUTES_IN_DAY } from '@/src/constants/time.constants.ts';
 import type { TimeBlockFormStateType } from '@/src/types';
@@ -98,7 +99,13 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
           </Button>
 
           {isUpdate && (
-            <Button
+            <WithTooltip
+              as={Button}
+              tooltip={{
+                id: 'new-block-form-back-action',
+                content: 'Назад',
+                placement: 'bottom',
+              }}
               type={'button'}
               thin
               hollow
@@ -110,7 +117,7 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
               }
             >
               <Undo2 size={'1em'} />
-            </Button>
+            </WithTooltip>
           )}
         </section>
       </form>
