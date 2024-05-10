@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { type FC } from 'react';
 
 import { useCreateTask } from '@/app/(dashboard)/tasks/hooks/useCreateTask.ts';
@@ -6,7 +7,10 @@ import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 import { EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
 import { FILTERS } from '@/src/data/task-columns.data.ts';
 
-const AddTask: FC<Pick<TGroupProps, 'destId'>> = ({ destId }) => {
+const AddTask: FC<Pick<TGroupProps, 'destId'> & { isKanban?: boolean }> = ({
+  destId,
+  isKanban,
+}) => {
   const { createTask } = useCreateTask();
 
   const handleCreation = () => {
@@ -20,18 +24,33 @@ const AddTask: FC<Pick<TGroupProps, 'destId'>> = ({ destId }) => {
     });
   };
 
-  return (
-    <>
+  const Child = () => 'Добавить задачу...';
+
+  const TableView = () => {
+    return (
       <tr>
         <td
           {...columnType('add')}
           onClick={handleCreation}
         >
-          Добавить задачу...
+          <Child />
         </td>
       </tr>
-    </>
-  );
+    );
+  };
+
+  const KanbanView = () => {
+    return (
+      <button
+        onClick={handleCreation}
+        className={cn('text-secondary-border-accent italic p16 text-left')}
+      >
+        <Child />
+      </button>
+    );
+  };
+
+  return <>{!isKanban ? <TableView /> : <KanbanView />}</>;
 };
 
 export default AddTask;
