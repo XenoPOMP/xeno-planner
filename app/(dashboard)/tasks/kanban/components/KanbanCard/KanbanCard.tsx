@@ -1,5 +1,5 @@
+import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
-import { type FC } from 'react';
 import { useForm } from 'react-hook-form';
 
 import TaskBadgeSelect from '@/app/(dashboard)/tasks/components/TaskBadgeSelect';
@@ -12,7 +12,11 @@ import type { TaskFormStateType } from '@/src/types';
 import styles from './KanbanCard.module.scss';
 import type { KanbanCardProps } from './KanbanCard.props';
 
-const KanbanCard: FC<KanbanCardProps> = ({ task }) => {
+const KanbanCard: VariableFC<'article', KanbanCardProps, 'children'> = ({
+  task,
+  className,
+  ...props
+}) => {
   const { control, watch, register } = useForm<TaskFormStateType>({
     defaultValues: {
       name: task.name,
@@ -34,7 +38,10 @@ const KanbanCard: FC<KanbanCardProps> = ({ task }) => {
   const { updateTask } = useUpdateTask(task.id);
 
   return (
-    <article className={cn(styles.card)}>
+    <article
+      className={cn(styles.card, className)}
+      {...props}
+    >
       <TaskCheckbox
         taskId={task.id}
         register={register}
