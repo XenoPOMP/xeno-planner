@@ -7,8 +7,12 @@ form.addNewBlock {
   width: clamp(300px, 25vw, 471px);
 
   section.inputGroup {
-    @apply flex flex-col;
+    @apply flex-col;
+  }
 
+  section.inputGroup,
+  section.controls {
+    @apply flex;
     gap: var(--p-level-4);
   }
 

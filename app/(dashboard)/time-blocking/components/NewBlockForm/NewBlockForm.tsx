@@ -1,10 +1,11 @@
 'use client';
 
 import cn from 'classnames';
-import { Clock9, SquarePen } from 'lucide-react';
+import { Clock9, SquarePen, Undo2 } from 'lucide-react';
 import { type FC, useEffect, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
+import { RESET_DATA } from '@/app/(dashboard)/time-blocking/data/reset.data.ts';
 import { COLORS } from '@/app/(dashboard)/time-blocking/form/colors.data.ts';
 import { useBlockForm } from '@/app/(dashboard)/time-blocking/hooks/useBlockForm.ts';
 import { useTimeBlocks } from '@/app/(dashboard)/time-blocking/hooks/useTimeBlocks.ts';
@@ -22,7 +23,7 @@ import type { NewBlockFormProps } from './NewBlockForm.props';
 const NewBlockForm: FC<NewBlockFormProps> = () => {
   const { isLoading } = useTimeBlocks();
 
-  const { handleSubmit, control, watch } =
+  const { handleSubmit, control, watch, reset } =
     useFormContext<TimeBlockFormStateType>();
 
   const { onSubmit } = useBlockForm();
@@ -85,15 +86,33 @@ const NewBlockForm: FC<NewBlockFormProps> = () => {
           />
         </section>
 
-        <Button
-          thin
-          hollow
-          className={'max-w-fit'}
-          disabled={isLoading}
-          type={'submit'}
-        >
-          {!isUpdate ? 'Создать' : 'Обновить'}
-        </Button>
+        <section className={cn(styles.controls)}>
+          <Button
+            thin
+            hollow
+            className={'max-w-fit'}
+            disabled={isLoading}
+            type={'submit'}
+          >
+            {!isUpdate ? 'Создать' : 'Обновить'}
+          </Button>
+
+          {isUpdate && (
+            <Button
+              type={'button'}
+              thin
+              hollow
+              disabled={isLoading}
+              onClick={() =>
+                reset({
+                  ...RESET_DATA,
+                })
+              }
+            >
+              <Undo2 size={'1em'} />
+            </Button>
+          )}
+        </section>
       </form>
     </>
   );
