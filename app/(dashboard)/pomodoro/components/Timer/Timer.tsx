@@ -55,11 +55,14 @@ const Timer: VariableFC<'section', TimerProps, 'children'> = ({
           <div className={cn(styles.body)}>
             <Countdown secondsLeft={timerState.secondsLeft} />
 
-            <PomodoroRounds
-              rounds={rounds}
-              nextRoundHandler={actions.nextRoundHandler}
-              prevRoundHandler={actions.prevRoundHandler}
-            />
+            {sessionResponse?.id && (
+              <PomodoroRounds
+                rounds={rounds}
+                activeRound={timerState.activeRound}
+                nextRoundHandler={actions.nextRoundHandler}
+                prevRoundHandler={actions.prevRoundHandler}
+              />
+            )}
           </div>
 
           <ControlTimer

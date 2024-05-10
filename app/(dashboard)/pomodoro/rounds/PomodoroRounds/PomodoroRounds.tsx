@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { type FC } from 'react';
+import { type CSSProperties, type FC } from 'react';
 
 import styles from './PomodoroRounds.module.scss';
 import type { PomodoroRoundsProps } from './PomodoroRounds.props';
@@ -36,6 +36,25 @@ const PomodoroRounds: FC<PomodoroRoundsProps> = ({
       >
         <ChevronLeft />
       </button>
+
+      <div className={cn(styles.rounds)}>
+        {rounds &&
+          rounds.map((round, index) => (
+            <div
+              key={index}
+              className={cn(styles.round)}
+              style={
+                {
+                  '--progress': round.isCompleted
+                    ? '100%'
+                    : round.id === activeRound?.id
+                      ? '40%'
+                      : '0%',
+                } as CSSProperties
+              }
+            ></div>
+          ))}
+      </div>
 
       <button
         className={cn(styles.withChevron)}

@@ -2,7 +2,7 @@
 
 article.countdown {
   @extend %tabularNumbers;
-  @apply text-[4em] font-semibold select-none;
+  @apply text-[4em] font-semibold select-none flex-center;
 
   line-height: 100%;
 }

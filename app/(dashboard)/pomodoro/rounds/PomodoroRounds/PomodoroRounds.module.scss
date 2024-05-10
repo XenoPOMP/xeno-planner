@@ -1,7 +1,23 @@
 @import "src/styles/templates";
 
 article.roundsContainer {
-  @apply flex gap-[.6em];
+  @apply flex gap-[.6em] justify-between;
+
+  .rounds {
+    @apply flex gap-[.4em];
+
+    .round {
+      @apply size-[25px] rounded-[.25em] border-[1px] border-secondary-border-brutal
+             relative overflow-hidden;
+
+      &::before {
+        @apply absolute top-0 left-0 h-full bg-accent;
+
+        content: "";
+        width: var(--progress);
+      }
+    }
+  }
 }
 
 .withChevron {
