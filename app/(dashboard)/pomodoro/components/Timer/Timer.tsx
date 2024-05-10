@@ -6,6 +6,7 @@ import cn from 'classnames';
 import { useTimer } from '@/app/(dashboard)/pomodoro/hooks/useTimer.ts';
 import { useTimerActions } from '@/app/(dashboard)/pomodoro/hooks/useTimerActions.ts';
 import { useTodaySession } from '@/app/(dashboard)/pomodoro/hooks/useTodaySession.ts';
+import PomodoroRounds from '@/app/(dashboard)/pomodoro/rounds/PomodoroRounds';
 import CircleLoader from '@/src/components/ui/CircleLoader';
 
 import ControlTimer from '../ControlTimer';
@@ -53,6 +54,12 @@ const Timer: VariableFC<'section', TimerProps, 'children'> = ({
 
           <div className={cn(styles.body)}>
             <Countdown secondsLeft={timerState.secondsLeft} />
+
+            <PomodoroRounds
+              rounds={rounds}
+              nextRoundHandler={actions.nextRoundHandler}
+              prevRoundHandler={actions.prevRoundHandler}
+            />
           </div>
 
           <ControlTimer
