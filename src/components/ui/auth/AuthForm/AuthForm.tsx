@@ -31,7 +31,6 @@ const AuthForm: VariableFC<'form', AuthFormProps> = ({
       className={cn(styles.auth, className)}
       style={{
         width: 'min(600px, 100%)',
-        // TODO Think about form sizes again maybe... ?
         // height: 'fit-content',
         ...style,
       }}

@@ -9,11 +9,11 @@ import styles from './Timer.module.scss';
 import type { TimerProps } from './Timer.props.ts';
 
 // TODO:
-// - useLoadSettings()
-// - useTodaySession()
-// - useCreateSession()
-// - useDeleteSession()
-// - useTimer()
+// ✅ useLoadSettings()
+// ✅ useTodaySession()
+// ✅ useCreateSession()
+// ✅ useDeleteSession()
+// ❌ useTimer()
 
 /**
  * Contains all logic for pomodoro timer.

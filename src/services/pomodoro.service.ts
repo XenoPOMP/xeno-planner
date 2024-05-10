@@ -9,9 +9,10 @@ export class PomodoroService {
   private static BASE_URL = '/user/timer';
 
   static async getTodaySession() {
-    return axiosWithAuth.get<IPomodoroSessionResponse>(
+    const response = await axiosWithAuth.get<IPomodoroSessionResponse>(
       `${this.BASE_URL}/today`,
     );
+    return response.data;
   }
 
   static async createSession() {
