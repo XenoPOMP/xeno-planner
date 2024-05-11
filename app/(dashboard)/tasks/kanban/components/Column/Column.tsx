@@ -28,9 +28,9 @@ const Column: FC<ColumnProps> = ({ groupName, destId, tasks }) => {
                 task={task}
               />
             ))}
-
-            {provided.placeholder}
           </section>
+
+          {provided.placeholder}
 
           <AddTask
             destId={destId}
