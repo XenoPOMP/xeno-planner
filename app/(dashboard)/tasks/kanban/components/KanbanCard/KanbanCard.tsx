@@ -43,32 +43,46 @@ const KanbanCard: VariableFC<
       draggableId={task.id}
       index={0}
     >
-      {provided => (
-        <article
-          ref={provided.innerRef}
-          className={cn(styles.card, className)}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          {...props}
-        >
-          <TaskCheckbox
-            taskId={task.id}
-            register={register}
-            isCompleted={task.isCompleted}
-            updateTask={updateTask}
-          />
+      {provided => {
+        if (
+          provided.draggableProps.style &&
+          'top' in provided.draggableProps.style
+        ) {
+          // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+          // @ts-ignore This number may be undefined.
+          provided.draggableProps.style.top = undefined;
+          // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+          // @ts-ignore This number may be undefined.
+          provided.draggableProps.style.left = undefined;
+        }
 
-          <TaskDatePicker
-            control={control}
-            smallText
-          />
+        return (
+          <article
+            ref={provided.innerRef}
+            className={cn(styles.card, className)}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            {...props}
+          >
+            <TaskCheckbox
+              taskId={task.id}
+              register={register}
+              isCompleted={task.isCompleted}
+              updateTask={updateTask}
+            />
 
-          <TaskBadgeSelect
-            control={control}
-            smallText
-          />
-        </article>
-      )}
+            <TaskDatePicker
+              control={control}
+              smallText
+            />
+
+            <TaskBadgeSelect
+              control={control}
+              smallText
+            />
+          </article>
+        );
+      }}
     </Draggable>
   );
 };
