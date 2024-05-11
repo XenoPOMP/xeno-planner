@@ -1,4 +1,4 @@
-import { Draggable, Droppable } from '@hello-pangea/dnd';
+import { Droppable } from '@hello-pangea/dnd';
 import cn from 'classnames';
 import { type FC } from 'react';
 
@@ -22,21 +22,11 @@ const Column: FC<ColumnProps> = ({ groupName, destId, tasks }) => {
 
           <section className={cn(styles.droppable)}>
             {filterTasks(tasks, destId)?.map((task, index) => (
-              <Draggable
-                key={task.id}
-                draggableId={task.id}
+              <KanbanCard
                 index={index}
-              >
-                {provided => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
-                    <KanbanCard task={task} />
-                  </div>
-                )}
-              </Draggable>
+                key={task.id}
+                task={task}
+              />
             ))}
 
             {provided.placeholder}

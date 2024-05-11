@@ -1,3 +1,4 @@
+import { Draggable } from '@hello-pangea/dnd';
 import type { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
@@ -12,11 +13,11 @@ import type { TaskFormStateType } from '@/src/types';
 import styles from './KanbanCard.module.scss';
 import type { KanbanCardProps } from './KanbanCard.props';
 
-const KanbanCard: VariableFC<'article', KanbanCardProps, 'children'> = ({
-  task,
-  className,
-  ...props
-}) => {
+const KanbanCard: VariableFC<
+  'article',
+  KanbanCardProps,
+  'children' | 'ref'
+> = ({ task, className, ...props }) => {
   const { control, watch, register } = useForm<TaskFormStateType>({
     defaultValues: {
       name: task.name,
@@ -38,27 +39,37 @@ const KanbanCard: VariableFC<'article', KanbanCardProps, 'children'> = ({
   const { updateTask } = useUpdateTask(task.id);
 
   return (
-    <article
-      className={cn(styles.card, className)}
-      {...props}
+    <Draggable
+      draggableId={task.id}
+      index={0}
     >
-      <TaskCheckbox
-        taskId={task.id}
-        register={register}
-        isCompleted={task.isCompleted}
-        updateTask={updateTask}
-      />
+      {provided => (
+        <article
+          ref={provided.innerRef}
+          className={cn(styles.card, className)}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          {...props}
+        >
+          <TaskCheckbox
+            taskId={task.id}
+            register={register}
+            isCompleted={task.isCompleted}
+            updateTask={updateTask}
+          />
 
-      <TaskDatePicker
-        control={control}
-        smallText
-      />
+          <TaskDatePicker
+            control={control}
+            smallText
+          />
 
-      <TaskBadgeSelect
-        control={control}
-        smallText
-      />
-    </article>
+          <TaskBadgeSelect
+            control={control}
+            smallText
+          />
+        </article>
+      )}
+    </Draggable>
   );
 };
 
