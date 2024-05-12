@@ -13,4 +13,7 @@ export interface InputFieldProps
 
   /** Use react-hook-form context. */
   register?: string;
+
+  /** Same as error message. */
+  warning?: string;
 }

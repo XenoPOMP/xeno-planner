@@ -32,6 +32,7 @@ export const Password: Story = {
     description: 'Поле ввода пароля',
     placeholder: 'Пароль',
     type: 'password',
+    warning: '',
   },
 };
 
