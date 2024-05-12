@@ -11,6 +11,7 @@ import { useUniqueId } from '@/src/hooks/useUniqueId';
 
 import styles from './InputField.module.scss';
 import type { InputFieldProps } from './InputField.props';
+import InputWrapper from './InputWrapper.tsx';
 
 const InputField: VariableFC<'input', InputFieldProps> = ({
   className,
@@ -26,6 +27,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   outerOnClick,
   outerClassName,
   register: registerName,
+  warning,
   ...props
 }) => {
   const formContext = useFormContext();
@@ -59,84 +61,93 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   }, [focused]);
 
   return (
-    <div
-      className={cn(styles.holder, outerClassName, {
-        [className || '']: children !== undefined,
-      })}
-      aria-hidden={children === undefined}
-      ref={outerRef}
-      data-is-error={false}
-      onClick={ev => {
-        outerOnClick?.(ev);
-      }}
-    >
-      {Icon && (
-        <Icon
-          size={'1em'}
-          className={cn(styles.placeholderText, 'flex-shrink-0')}
-          aria-hidden={false}
-        />
-      )}
-
-      <label
-        htmlFor={inputId}
-        className={cn(styles.inline)}
-        aria-hidden={false}
-      >
-        {description && <div className={cn('sr-only')}>{description}</div>}
-
-        {placeholder && (
-          <div
-            className={cn(styles.hint)}
-            aria-hidden={children === undefined}
-          >
-            <TextOverflow text={placeholder} />
-          </div>
+    <InputWrapper warning={warning}>
+      <div
+        className={cn(
+          styles.holder,
+          {
+            '!outline-[2px] !outline-warning-font': !!warning,
+          },
+          outerClassName,
+          {
+            [className || '']: children !== undefined,
+          },
         )}
-
-        <div
-          aria-hidden
-          className={cn(styles.focusTracker, 'hidden')}
-          data-focused={isFocused}
-        ></div>
-
-        {children || (
-          <input
-            id={inputId}
-            className={cn(className)}
-            data-password-shown={isPasswordShown}
-            type={processType(type || 'text')}
-            onChange={ev => {
-              setIsFocused(ev.target.value.length > 0);
-              getRegisterObject().onChange?.(ev);
-              onChange?.(ev);
-            }}
-            {...getRegisterObject().methods}
-            {...props}
+        aria-hidden={children === undefined}
+        ref={outerRef}
+        data-is-error={false}
+        onClick={ev => {
+          outerOnClick?.(ev);
+        }}
+      >
+        {Icon && (
+          <Icon
+            size={'1em'}
+            className={cn(styles.placeholderText, 'flex-shrink-0')}
+            aria-hidden={false}
           />
         )}
-      </label>
 
-      {type === 'password' && (
-        <button
-          className={cn(styles.placeholderText)}
-          onClick={() => {
-            setIsPasswordShown(prev => !prev);
-          }}
-          type={'button'}
+        <label
+          htmlFor={inputId}
+          className={cn(styles.inline)}
+          aria-hidden={false}
         >
-          <div className={cn('sr-only')}>
-            {isPasswordShown ? 'Скрыть пароль' : 'Открыть пароль'}
-          </div>
+          {description && <div className={cn('sr-only')}>{description}</div>}
 
-          {isPasswordShown ? (
-            <Eye size={'1.33em'} />
-          ) : (
-            <EyeOff size={'1.33em'} />
+          {placeholder && (
+            <div
+              className={cn(styles.hint)}
+              aria-hidden={children === undefined}
+            >
+              <TextOverflow text={placeholder} />
+            </div>
           )}
-        </button>
-      )}
-    </div>
+
+          <div
+            aria-hidden
+            className={cn(styles.focusTracker, 'hidden')}
+            data-focused={isFocused}
+          ></div>
+
+          {children || (
+            <input
+              id={inputId}
+              className={cn(className)}
+              data-password-shown={isPasswordShown}
+              type={processType(type || 'text')}
+              onChange={ev => {
+                setIsFocused(ev.target.value.length > 0);
+                getRegisterObject().onChange?.(ev);
+                onChange?.(ev);
+              }}
+              {...getRegisterObject().methods}
+              {...props}
+            />
+          )}
+        </label>
+
+        {type === 'password' && (
+          <button
+            className={cn(styles.placeholderText)}
+            onClick={() => {
+              setIsPasswordShown(prev => !prev);
+            }}
+            type={'button'}
+          >
+            <div className={cn('sr-only')}>
+              {isPasswordShown ? 'Скрыть пароль' : 'Открыть пароль'}
+            </div>
+
+            {isPasswordShown ? (
+              <Eye size={'1.33em'} />
+            ) : (
+              <EyeOff size={'1.33em'} />
+            )}
+          </button>
+        )}
+      </div>
+    </InputWrapper>
   );
 };
 
