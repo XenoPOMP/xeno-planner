@@ -49,6 +49,7 @@ export const filterTasks = (
         item =>
           dayjs(item.createdAt).isAfter(FILTERS['on-this-week']) &&
           dayjs(item.createdAt).isSameOrBefore(FILTERS['on-next-week']) &&
+          dayjs(item.createdAt).isAfter(FILTERS.tomorrow) &&
           !item.isCompleted,
       );
 
