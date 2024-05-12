@@ -20,12 +20,16 @@ const CommonFields: FC<ICommonFields> = ({ control }) => {
       <Controller
         control={control}
         name={'email'}
-        render={({ field }) => (
+        rules={{
+          required: 'Это поле обязательно!',
+        }}
+        render={({ field, fieldState: { error } }) => (
           <InputField
             icon={Mail}
             description={'Поле ввода электронной почты'}
             placeholder={'Email'}
             type={'email'}
+            warning={error?.message}
             {...field}
           />
         )}
@@ -34,12 +38,16 @@ const CommonFields: FC<ICommonFields> = ({ control }) => {
       <Controller
         control={control}
         name={'password'}
-        render={({ field }) => (
+        rules={{
+          required: 'Это поле обязательно!',
+        }}
+        render={({ field, fieldState: { error } }) => (
           <InputField
             icon={KeyRound}
             description={'Поле ввода пароля'}
             placeholder={'Пароль'}
             type={'password'}
+            warning={error?.message}
             {...field}
           />
         )}
