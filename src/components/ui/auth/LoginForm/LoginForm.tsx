@@ -30,7 +30,11 @@ const LoginForm: FC<LoginFormProps> = () => {
         noValidate
       >
         <FieldList>
-          <CommonFields control={methods.control} />
+          <CommonFields
+            control={methods.control}
+            extendedValidation={false}
+          />
+
           <Button type={'submit'}>Войти</Button>
         </FieldList>
 

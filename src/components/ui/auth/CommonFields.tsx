@@ -7,6 +7,13 @@ import { type AuthType } from '@/src/hooks/useAuthForm.ts';
 
 interface ICommonFields {
   control: Control<AuthType>;
+
+  /**
+   * If true, fields will be checked with
+   * additional validation rules.
+   * @default true
+   */
+  extendedValidation?: boolean;
 }
 
 /**
@@ -14,7 +21,10 @@ interface ICommonFields {
  * @param control
  * @constructor
  */
-const CommonFields: FC<ICommonFields> = ({ control }) => {
+const CommonFields: FC<ICommonFields> = ({
+  control,
+  extendedValidation = true,
+}) => {
   return (
     <>
       <Controller
