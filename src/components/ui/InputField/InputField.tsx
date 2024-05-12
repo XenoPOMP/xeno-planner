@@ -63,9 +63,16 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   return (
     <InputWrapper warning={warning}>
       <div
-        className={cn(styles.holder, outerClassName, {
-          [className || '']: children !== undefined,
-        })}
+        className={cn(
+          styles.holder,
+          {
+            '!outline-[2px] !outline-warning-font': !!warning,
+          },
+          outerClassName,
+          {
+            [className || '']: children !== undefined,
+          },
+        )}
         aria-hidden={children === undefined}
         ref={outerRef}
         data-is-error={false}
