@@ -3,6 +3,7 @@ import { type FC } from 'react';
 import { type Control, Controller } from 'react-hook-form';
 
 import InputField from '@/src/components/ui/InputField';
+import { FIELD_IS_REQUIRED } from '@/src/constants/validation.constants.ts';
 import { type AuthType } from '@/src/hooks/useAuthForm.ts';
 
 interface ICommonFields {
@@ -31,7 +32,7 @@ const CommonFields: FC<ICommonFields> = ({
         control={control}
         name={'email'}
         rules={{
-          required: 'Это поле обязательно!',
+          ...FIELD_IS_REQUIRED,
         }}
         render={({ field, fieldState: { error } }) => (
           <InputField
@@ -49,7 +50,7 @@ const CommonFields: FC<ICommonFields> = ({
         control={control}
         name={'password'}
         rules={{
-          required: 'Это поле обязательно!',
+          ...FIELD_IS_REQUIRED,
         }}
         render={({ field, fieldState: { error } }) => (
           <InputField
