@@ -12,6 +12,7 @@ import FieldList from '@/src/components/ui/auth/FieldList';
 import { FIELD_IS_REQUIRED } from '@/src/constants/validation.constants.ts';
 import { useAuthForm } from '@/src/hooks/useAuthForm.ts';
 import type { IRegisterForm } from '@/src/types';
+import { validatePasswordsMatch } from '@/src/utils/validation/auth-validation.ts';
 
 import CommonFields from '../CommonFields';
 
@@ -42,6 +43,8 @@ const RegisterForm: FC<RegisterFormProps> = () => {
             name={'repeatPassword'}
             rules={{
               ...FIELD_IS_REQUIRED,
+              validate: (value, { password }) =>
+                validatePasswordsMatch(value, password, { ...methods }),
             }}
             render={({ field, fieldState: { error } }) => (
               <InputField
