@@ -43,7 +43,6 @@ export const filterTasks = (
           !item.isCompleted,
       );
 
-    // TODO Fix collision with "tomorrow" filter
     case EnumDndDestId.ON_NEXT_WEEK:
       return tasks?.filter(
         item =>
