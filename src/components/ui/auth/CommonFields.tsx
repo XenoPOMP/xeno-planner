@@ -3,10 +3,10 @@ import { type FC } from 'react';
 import { type Control, Controller } from 'react-hook-form';
 
 import InputField from '@/src/components/ui/InputField';
-import type { IAuthForm, IRegisterForm } from '@/src/types';
+import { type AuthType } from '@/src/hooks/useAuthForm.ts';
 
 interface ICommonFields {
-  control: Control<IAuthForm | IRegisterForm>;
+  control: Control<AuthType>;
 }
 
 const CommonFields: FC<ICommonFields> = ({ control }) => {
