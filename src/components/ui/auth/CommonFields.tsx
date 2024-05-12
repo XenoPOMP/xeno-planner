@@ -9,6 +9,11 @@ interface ICommonFields {
   control: Control<AuthType>;
 }
 
+/**
+ * Contains fields that are presented both in login and register forms.
+ * @param control
+ * @constructor
+ */
 const CommonFields: FC<ICommonFields> = ({ control }) => {
   return (
     <>
