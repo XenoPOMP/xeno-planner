@@ -35,7 +35,40 @@ export const useTaskDnd = () => {
     }
 
     /** New date for dragged item. */
-    const newCreatedAt = FILTERS[destColumnId].toDate();
+    let newCreatedAt;
+
+    /** Prevent potential filter collisions. */
+    switch (destColumnId) {
+      // Next week must point to first day in
+      // week, however this day may be the next day (tomorrow).
+      case 'on-next-week': {
+        /** This date is taken from filter directly. */
+        const dateApplicant = FILTERS[destColumnId]
+          .subtract(7, 'day')
+          .add(1, 'day')
+          .startOf('day');
+
+        /** This date equals to tomorrow. */
+        const nextDayDate = FILTERS.tomorrow.startOf('day');
+
+        /** Collision detected */
+        if (dateApplicant.isSame(nextDayDate)) {
+          newCreatedAt = dateApplicant.add(1, 'day').toDate();
+          break;
+        }
+
+        /** No collision */
+        newCreatedAt = dateApplicant.toDate();
+        break;
+      }
+
+      // By default, newCreatedAt is assigned
+      // to exact date from filter.
+      default: {
+        newCreatedAt = FILTERS[destColumnId].toDate();
+        break;
+      }
+    }
 
     updateTask({
       id: result.draggableId,
