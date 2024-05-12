@@ -9,7 +9,7 @@ import { useTasks } from '@/app/(dashboard)/tasks/hooks/useTasks.ts';
 import CircleLoader from '@/src/components/ui/CircleLoader';
 import TGroup from '@/src/components/ui/TGroup';
 import THead from '@/src/components/ui/THead';
-import { EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
+import { COLUMNS } from '@/src/data/task-columns.data.ts';
 
 import styles from './TaskTable.module.scss';
 import type { TaskTableProps } from './TaskTable.props';
@@ -85,41 +85,14 @@ const TaskTable: VariableFC<'table', TaskTableProps, 'children'> = ({
             </tbody>
           ) : (
             <>
-              <TGroup
-                destId={EnumDndDestId.TODAY}
-                groupName={'Сегодня'}
-                tasks={tasks}
-              />
-
-              <TGroup
-                destId={EnumDndDestId.TOMORROW}
-                groupName={'Завтра'}
-                tasks={tasks}
-              />
-
-              <TGroup
-                destId={EnumDndDestId.ON_THIS_WEEK}
-                groupName={'На этой неделе'}
-                tasks={tasks}
-              />
-
-              <TGroup
-                destId={EnumDndDestId.ON_NEXT_WEEK}
-                groupName={'На следующей неделе'}
-                tasks={tasks}
-              />
-
-              <TGroup
-                destId={EnumDndDestId.LATER}
-                groupName={'Позже'}
-                tasks={tasks}
-              />
-
-              <TGroup
-                destId={EnumDndDestId.COMPLETED}
-                groupName={'Выполнено'}
-                tasks={tasks}
-              />
+              {COLUMNS.map(({ label, value }, index) => (
+                <TGroup
+                  key={index}
+                  destId={value}
+                  groupName={label}
+                  tasks={tasks}
+                />
+              ))}
             </>
           )}
         </>
