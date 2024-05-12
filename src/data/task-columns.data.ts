@@ -25,7 +25,7 @@ export const FILTERS: Record<Exclude<ColumnId, 'completed'>, Dayjs> = {
  * List of columns in tasks page with filter.
  * @todo Start using columns instead manual addition
  */
-export const COLUMNS: Array<{ label: string; value: ColumnId }> = [
+export const COLUMNS: Array<{ label: string; value: EnumDndDestId }> = [
   {
     label: 'Сегодня',
     value: EnumDndDestId.TODAY,
