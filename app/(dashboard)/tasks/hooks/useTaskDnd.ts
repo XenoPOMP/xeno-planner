@@ -39,6 +39,20 @@ export const useTaskDnd = () => {
 
     /** Prevent potential filter collisions. */
     switch (destColumnId) {
+      case 'on-this-week': {
+        const tomorrow = FILTERS.tomorrow.startOf('day');
+        const endOfWeek = FILTERS[destColumnId].startOf('day');
+        const applicant = tomorrow.add(1, 'day').startOf('day');
+
+        /** Collision detected */
+        if (applicant.isSameOrBefore(endOfWeek)) {
+          applicant.add(1, 'day');
+        }
+
+        newCreatedAt = applicant.startOf('day').toDate();
+        break;
+      }
+
       // Next week must point to first day in
       // week, however this day may be the next day (tomorrow).
       case 'on-next-week': {
