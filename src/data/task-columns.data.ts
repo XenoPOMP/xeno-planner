@@ -18,7 +18,7 @@ export const FILTERS: Record<Exclude<ColumnId, 'completed'>, Dayjs> = {
   tomorrow: dayjs().add(1, 'day').startOf('day'),
   'on-this-week': dayjs().endOf('isoWeek'),
   'on-next-week': dayjs().add(1, 'week').endOf('isoWeek'),
-  later: dayjs().add(2, 'week').endOf('isoWeek'),
+  later: dayjs().add(2, 'week').startOf('isoWeek'),
 };
 
 /**

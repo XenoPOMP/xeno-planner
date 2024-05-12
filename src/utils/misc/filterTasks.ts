@@ -43,11 +43,13 @@ export const filterTasks = (
           !item.isCompleted,
       );
 
+    // TODO Fix collision with "tomorrow" filter
     case EnumDndDestId.ON_NEXT_WEEK:
       return tasks?.filter(
         item =>
           dayjs(item.createdAt).isAfter(FILTERS['on-this-week']) &&
           dayjs(item.createdAt).isSameOrBefore(FILTERS['on-next-week']) &&
+          dayjs(item.createdAt).isAfter(FILTERS.tomorrow) &&
           !item.isCompleted,
       );
 
