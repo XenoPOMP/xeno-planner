@@ -32,6 +32,8 @@ const RegisterForm: FC<RegisterFormProps> = () => {
         noValidate
       >
         <FieldList>
+          {/* eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error */}
+          {/* @ts-ignore I will not use reset func, so IRegisterForm is suitable. */}
           <CommonFields control={methods.control} />
 
           <InputField
