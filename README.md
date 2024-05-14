@@ -1,6 +1,6 @@
-<img src=".dev/img/logo-square.png" width="200" align="left" />
+<img src=".dev/img/logo-square.png" width="150" align="left" />
 
-## XENO Planner
+### XENO Planner
 
 <p>
 <img alt="CI Status" src="https://img.shields.io/github/actions/workflow/status/XenoPOMP/xeno-planner/ci.yml?logo=github&logoColor=%23fff&label=CI&style=flat-square" />
