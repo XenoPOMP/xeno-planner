@@ -41,7 +41,7 @@ const ResetTimer: FC<ResetTimerProps> = ({
             as={TreePalm}
             tooltip={{
               id: 'break-time-status-icon',
-              content: 'Сейчас идет перерыв.',
+              content: 'Сейчас идет перерыв',
               placement: 'right',
             }}
           />
