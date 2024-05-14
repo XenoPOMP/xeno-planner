@@ -1,57 +1,17 @@
-<p align="center">
-<a href="https://github.com/XenoPOMP/next-template">
-<img src="https://github.com/XenoPOMP/next-template/assets/101574433/4f668b51-381f-4f1f-8803-f0b6370fd1b5" alt="Repo logo" width="80" height="80" />
-</a>
+<img src=".dev/img/logo-square.png" width="200" align="left" />
 
+## XENO Planner
 
-
-<h2 align="center">
-XENO Planner
-
-</h2>
-
-<p align="center">
-XENO Planner is application for planning your working time. Includes canban board, pomodoro and other amazing features.
-</p>
-</p>
-
-
-<p align="center">
-
+<p>
 <img alt="CI Status" src="https://img.shields.io/github/actions/workflow/status/XenoPOMP/xeno-planner/ci.yml?logo=github&logoColor=%23fff&label=CI&style=flat-square" />
-
 <a href="#contributors">
 <img alt="All Contributors" src="https://img.shields.io/github/all-contributors/XenoPOMP/xeno-planner?color=ee8449&style=flat-square">
 </a>
-
 </p>
 
+XENO Planner is application for planning your working time. Includes canban board, pomodoro and other amazing features.
+
 <br />
-
-## How to clone this template
-You can clone this repo as regular git repo, or [just use this template](https://github.com/XenoPOMP/next-template/generate).
-But you can also use Next.js CLI:
-```shell
-yarn create next-app -e https://github.com/XenoPOMP/next-template .
-```
-
-## Installation
-
-```powershell
-# if you don`t use NVM, skip these commands
-nvm install 20.11.1
-nvm use 20.11.1
-
-# Install deps (yarn is highly recommended)
-yarn
-```
-
-## Run dev server
-```powershell
-yarn dev
-```
-
-You will see your site at address: http://localhost:3000/
 
 ## Features
 
@@ -61,6 +21,9 @@ You will see your site at address: http://localhost:3000/
 - 🐻 Zustand as state manager
 - 🐶 Husky hooks
 - 🌿 `.github` folder with ready-to-use **actions** and **dependabot**
+
+## Documentation
+- [Installation & usage](./.dev/docs/usage.md)
 
 ## Contributors
 
