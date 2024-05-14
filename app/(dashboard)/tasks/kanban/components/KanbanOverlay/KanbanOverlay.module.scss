@@ -1,0 +1,18 @@
+$basePadding: var(--p-level-5);
+
+.overlayButton {
+  @apply absolute z-[150];
+
+  &.deleteButton {
+    @apply bottom-[#{$basePadding}] right-[#{$basePadding}];
+  }
+
+  &.grip {
+    @apply top-[#{$basePadding}] right-[#{$basePadding}];
+  }
+
+  svg.icon {
+    @apply text-secondary-border-accent hover:text-primary-font
+           transition-colors opacity-100;
+  }
+}

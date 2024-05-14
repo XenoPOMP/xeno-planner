@@ -10,6 +10,8 @@ import { useTaskDebounce } from '@/app/(dashboard)/tasks/hooks/useTaskDebounce.t
 import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
 import type { TaskFormStateType } from '@/src/types';
 
+import KanbanOverlay from '../KanbanOverlay';
+
 import styles from './KanbanCard.module.scss';
 import type { KanbanCardProps } from './KanbanCard.props';
 
@@ -54,11 +56,13 @@ const KanbanCard: VariableFC<
         return (
           <article
             ref={provided.innerRef}
-            className={cn(styles.card, className)}
+            className={cn('relative', styles.card, className)}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             {...props}
           >
+            <KanbanOverlay taskId={task.id} />
+
             <TaskCheckbox
               taskId={task.id}
               register={register}
