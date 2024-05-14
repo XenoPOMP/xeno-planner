@@ -15,7 +15,7 @@ const KanbanOverlay: FC<KanbanOverlayProps> = ({ taskId }) => {
       >
         <TaskDeleteButton
           taskId={taskId}
-          size={'.85em'}
+          size={'max(15px, .85em)'}
           className={cn(styles.icon)}
         />
       </div>
