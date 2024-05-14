@@ -50,6 +50,7 @@ export const useTimer = (): ITimerState => {
     secondsLeft,
     setActiveRound,
     isRunning,
+    isBreakTime,
     setIsRunning,
     setSecondsLeft,
   };

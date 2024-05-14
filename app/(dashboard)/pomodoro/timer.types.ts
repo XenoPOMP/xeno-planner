@@ -6,6 +6,7 @@ export interface ITimerState {
   secondsLeft: number;
   activeRound?: IPomodoroRoundResponse;
   isRunning: boolean;
+  isBreakTime: boolean;
   setIsRunning: SetState<boolean>;
   setActiveRound: SetState<IPomodoroRoundResponse | undefined>;
   setSecondsLeft: SetState<number>;
