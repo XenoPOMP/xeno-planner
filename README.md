@@ -1,4 +1,4 @@
-<img src=".dev/img/logo-square.png" width="150" align="left" />
+<img src=".dev/img/logo-square.png" width="200" align="left" />
 
 ### XENO Planner
 
@@ -11,7 +11,6 @@
 
 XENO Planner is application for planning your working time. Includes canban board, pomodoro and other amazing features.
 
-<br />
 
 ## Features
 
