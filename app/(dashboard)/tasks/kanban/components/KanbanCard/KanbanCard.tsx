@@ -30,11 +30,6 @@ const KanbanCard: VariableFC<
   // Update information debounced.
   useTaskDebounce({ watch, itemId: task.id });
 
-  // Task deletion is not supposed to be
-  // invoked as often as update or create operations,
-  // so it can be not debounced.
-  // const { deleteTask } = useDeleteTask(task.id);
-
   // Checkbox value should not be updated debounced too
   const { updateTask } = useUpdateTask(task.id);
 
