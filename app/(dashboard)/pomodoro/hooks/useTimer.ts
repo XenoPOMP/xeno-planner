@@ -12,6 +12,11 @@ export const useTimer = (): ITimerState => {
   const [secondsLeft, setSecondsLeft] = useState(workInterval * 60);
   const [activeRound, setActiveRound] = useState<IPomodoroRoundResponse>();
 
+  /** Update initial work interval. */
+  useEffect(() => {
+    setSecondsLeft(workInterval * 60);
+  }, [workInterval]);
+
   // Timer cycle logic
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
