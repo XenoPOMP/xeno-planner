@@ -50,6 +50,7 @@ const Timer: VariableFC<'section', TimerProps, 'children'> = ({
             id={sessionResponse?.id}
             setIsRunning={timerState.setIsRunning}
             setSecondsLeft={timerState.setSecondsLeft}
+            isBreakTime={timerState.isBreakTime}
           />
 
           <div className={cn(styles.body)}>
