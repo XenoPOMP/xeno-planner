@@ -68,7 +68,7 @@ const AccountSettings: FC<AccountSettingsProps> = () => {
               <InputField
                 icon={BookUser}
                 placeholder={'Имя'}
-                outerClassName={cn('col-span-full')}
+                wrpClassName={cn('col-span-full')}
                 register={registerNestedField<UserFormType>('name')}
                 focused
               />

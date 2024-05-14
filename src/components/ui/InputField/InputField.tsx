@@ -28,6 +28,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   outerClassName,
   register: registerName,
   warning,
+  wrpClassName,
   ...props
 }) => {
   const formContext = useFormContext();
@@ -61,7 +62,10 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   }, [focused]);
 
   return (
-    <InputWrapper warning={warning}>
+    <InputWrapper
+      warning={warning}
+      className={cn(wrpClassName)}
+    >
       <div
         className={cn(
           styles.holder,
