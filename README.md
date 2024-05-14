@@ -6,22 +6,22 @@
 
 
 <h2 align="center">
-Next 14 Template
+XENO Planner
 
 </h2>
 
 <p align="center">
-Next is modern React-based framework that provides major features, like SSR, Turbopack, SEO-friendly.
+XENO Planner is application for planning your working time. Includes canban board, pomodoro and other amazing features.
 </p>
 </p>
 
 
 <p align="center">
 
-<img alt="CI Status" src="https://img.shields.io/github/actions/workflow/status/XenoPOMP/next-template/ci.yml?logo=github&logoColor=%23fff&label=CI&style=flat-square" />
+<img alt="CI Status" src="https://img.shields.io/github/actions/workflow/status/XenoPOMP/xeno-planner/ci.yml?logo=github&logoColor=%23fff&label=CI&style=flat-square" />
 
 <a href="#contributors">
-<img alt="All Contributors" src="https://img.shields.io/github/all-contributors/XenoPOMP/next-template?color=ee8449&style=flat-square">
+<img alt="All Contributors" src="https://img.shields.io/github/all-contributors/XenoPOMP/xeno-planner?color=ee8449&style=flat-square">
 </a>
 
 </p>
