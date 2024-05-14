@@ -4,6 +4,7 @@ import { type FC } from 'react';
 
 import KanbanCard from '@/app/(dashboard)/tasks/kanban/components/KanbanCard';
 import AddTask from '@/app/(dashboard)/tasks/list-view/AddTask.tsx';
+import { EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
 import { filterTasks } from '@/src/utils/misc';
 
 import styles from './Column.module.scss';
@@ -35,7 +36,9 @@ const Column: FC<ColumnProps> = ({ groupName, destId, tasks }) => {
           <AddTask
             destId={destId}
             isKanban
-          />
+          >
+            {destId === EnumDndDestId.COMPLETED ? '...' : undefined}
+          </AddTask>
         </article>
       )}
     </Droppable>

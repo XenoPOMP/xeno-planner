@@ -7,10 +7,9 @@ import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
 import { EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
 import { TaskService } from '@/src/services/task.service.ts';
 
-const AddTask: FC<Pick<TGroupProps, 'destId'> & { isKanban?: boolean }> = ({
-  destId,
-  isKanban,
-}) => {
+const AddTask: FC<
+  Pick<TGroupProps, 'destId'> & { isKanban?: boolean; children?: string }
+> = ({ destId, isKanban, children }) => {
   const { createTask } = useCreateTask();
 
   const handleCreation = () => {
@@ -24,7 +23,7 @@ const AddTask: FC<Pick<TGroupProps, 'destId'> & { isKanban?: boolean }> = ({
     });
   };
 
-  const Child = () => 'Добавить задачу...';
+  const Child = () => children ?? 'Добавить задачу...';
 
   const TableView = () => {
     return (
