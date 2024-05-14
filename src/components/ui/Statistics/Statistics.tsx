@@ -16,7 +16,7 @@ const Statistics: FC<StatisticsProps> = () => {
   return (
     <article className={cn(styles.grid)}>
       {isLoading ? (
-        <div className={cn('flex-center col-span-full')}>
+        <div className={cn('col-span-full')}>
           <CircleLoader />
         </div>
       ) : data?.statistics.length ? (

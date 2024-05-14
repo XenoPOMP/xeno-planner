@@ -12,9 +12,9 @@ type FormHookProps<TForm extends FieldValues> = Parameters<
   typeof useForm<TForm>
 >;
 
-export const useAuthForm = <
-  TForm extends IAuthForm | IRegisterForm = IAuthForm,
->(
+export type AuthType = IAuthForm | IRegisterForm;
+
+export const useAuthForm = <TForm extends AuthType = IAuthForm>(
   type: Parameters<typeof AuthService.main>[0],
   ...[options = { mode: 'onChange' }, ...rest]: FormHookProps<TForm>
 ) => {
