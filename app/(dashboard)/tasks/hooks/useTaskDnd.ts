@@ -2,7 +2,7 @@ import { type DropResult } from '@hello-pangea/dnd';
 
 import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
 import { type ColumnId, EnumDndDestId } from '@/src/data/EnumDndDestId.ts';
-import { FILTERS } from '@/src/data/task-columns.data.ts';
+import { TaskService } from '@/src/services/task.service.ts';
 
 export const useTaskDnd = () => {
   const { updateTask } = useUpdateTask();
@@ -35,54 +35,7 @@ export const useTaskDnd = () => {
     }
 
     /** New date for dragged item. */
-    let newCreatedAt;
-
-    /** Prevent potential filter collisions. */
-    switch (destColumnId) {
-      case 'on-this-week': {
-        const tomorrow = FILTERS.tomorrow.startOf('day');
-        const endOfWeek = FILTERS[destColumnId].startOf('day');
-        const applicant = tomorrow.add(1, 'day').startOf('day');
-
-        /** Collision detected */
-        if (applicant.isSameOrBefore(endOfWeek)) {
-          applicant.add(1, 'day');
-        }
-
-        newCreatedAt = applicant.startOf('day').toDate();
-        break;
-      }
-
-      // Next week must point to first day in
-      // week, however this day may be the next day (tomorrow).
-      case 'on-next-week': {
-        /** This date is taken from filter directly. */
-        const dateApplicant = FILTERS[destColumnId]
-          .subtract(7, 'day')
-          .add(1, 'day')
-          .startOf('day');
-
-        /** This date equals to tomorrow. */
-        const nextDayDate = FILTERS.tomorrow.startOf('day');
-
-        /** Collision detected */
-        if (dateApplicant.isSame(nextDayDate)) {
-          newCreatedAt = dateApplicant.add(1, 'day').toDate();
-          break;
-        }
-
-        /** No collision */
-        newCreatedAt = dateApplicant.toDate();
-        break;
-      }
-
-      // By default, newCreatedAt is assigned
-      // to exact date from filter.
-      default: {
-        newCreatedAt = FILTERS[destColumnId].toDate();
-        break;
-      }
-    }
+    const newCreatedAt: Date = TaskService.issueDate(destColumnId);
 
     updateTask({
       id: result.draggableId,
