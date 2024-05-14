@@ -1,12 +1,12 @@
 import cn from 'classnames';
-import { GripVertical, Trash } from 'lucide-react';
+import { GripVertical } from 'lucide-react';
 import { type FC } from 'react';
 import { useForm } from 'react-hook-form';
 
 import TaskBadgeSelect from '@/app/(dashboard)/tasks/components/TaskBadgeSelect';
 import TaskCheckbox from '@/app/(dashboard)/tasks/components/TaskCheckbox';
 import TaskDatePicker from '@/app/(dashboard)/tasks/components/TaskDatePicker';
-import { useDeleteTask } from '@/app/(dashboard)/tasks/hooks/useDeleteTask.ts';
+import TaskDeleteButton from '@/app/(dashboard)/tasks/components/TaskDeleteButton';
 import { useTaskDebounce } from '@/app/(dashboard)/tasks/hooks/useTaskDebounce.ts';
 import { useUpdateTask } from '@/app/(dashboard)/tasks/hooks/useUpdateTask.ts';
 import { columnType } from '@/src/components/ui/TaskTable/TaskTable.tsx';
@@ -29,11 +29,6 @@ const TGrip: FC<TGripProps> = ({
 
   // Update information debounced.
   useTaskDebounce({ watch, itemId: id });
-
-  // Task deletion is not supposed to be
-  // invoked as often as update or create operations,
-  // so it can be not debounced.
-  const { deleteTask } = useDeleteTask(id);
 
   // Checkbox value should not be updated debounced too
   const { updateTask } = useUpdateTask(id);
@@ -75,13 +70,7 @@ const TGrip: FC<TGripProps> = ({
       >
         <TaskBadgeSelect control={control} />
 
-        <Trash
-          size={'1em'}
-          className={cn(
-            'cursor-pointer opacity-30 hover:opacity-100 transition-opacity',
-          )}
-          onClick={() => deleteTask({ id })}
-        />
+        <TaskDeleteButton taskId={id} />
       </td>
     </>
   );
