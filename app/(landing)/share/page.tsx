@@ -6,6 +6,8 @@ import { type FC, useCallback } from 'react';
 import { AppConstants } from '@/app/app.constants.ts';
 import LandingLayout from '@/src/components/layout/landing/LandingLayout';
 
+export const revalidate = 0;
+
 const SharePage: FC<WithSearchParams<{}, 'route'>> = ({ searchParams }) => {
   const CANONICAL = process.env.CANONICAL_URL;
 
@@ -28,14 +30,13 @@ const SharePage: FC<WithSearchParams<{}, 'route'>> = ({ searchParams }) => {
         className: 'flex-center',
       }}
     >
-      <article
-        className={cn('text-red-500 bg-red-500 p-[24px] rounded-[20px]')}
-      >
+      <article className={cn('bg-qr-bg p-[24px] rounded-[20px]')}>
         <QRCodeSVG
           size={298 - 2 * 24}
           value={getQrUrl()}
-          bgColor={'green'}
-          fgColor={'currentColor'}
+          className={cn(
+            '[&>path:first-of-type]:fill-qr-bg [&>path:last-of-type]:fill-qr-fg',
+          )}
         />
       </article>
     </LandingLayout>
