@@ -9,6 +9,13 @@ import type { TypografedTextProps } from './TypografedText.props';
  *
  * @param children
  * @constructor
+ *
+ * @example
+ * <TypografedText>
+ *   "This text should be formatted" - XenoPOMP
+ * </TypografedText>
+ *
+ * // «This text should be formatted» — XenoPOMP
  */
 const TypografedText: FC<TypografedTextProps & { children?: string }> = ({
   children,
