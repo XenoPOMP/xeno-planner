@@ -8,5 +8,5 @@ import { useTypografStore } from '@/src/zustand/stores/useTypografStore.ts';
 export const useTypograf = () => {
   const { formatter } = useTypografStore(DEFAULT_SELECTOR);
 
-  return formatter.execute;
+  return (text: string) => formatter.execute(text);
 };
