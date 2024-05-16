@@ -1,4 +1,4 @@
 export interface LogoProps {
-  variant?: 'sidebar';
+  variant?: 'sidebar' | 'landing';
   preid?: boolean;
 }
