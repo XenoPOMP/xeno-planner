@@ -50,5 +50,9 @@ export const darkTheme: CustomTheme = {
     warning: {
       font: '#E28203',
     },
+    qr: {
+      bg: '#FFFFFF',
+      fg: '#000000',
+    },
   },
 };

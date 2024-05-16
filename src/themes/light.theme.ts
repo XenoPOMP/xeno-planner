@@ -56,5 +56,9 @@ export const lightTheme = {
     warning: {
       font: '#E28203',
     },
+    qr: {
+      bg: '#FFFFFF',
+      fg: '#000000',
+    },
   },
 } satisfies Theme;
