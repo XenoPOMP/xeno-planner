@@ -16,7 +16,7 @@ export const darkTheme: CustomTheme = {
           },
         },
       },
-      'font-darker': '#C6C9C6',
+      'font-darker': '#C9C9C9',
     },
     secondary: {
       bg: '#151315',
