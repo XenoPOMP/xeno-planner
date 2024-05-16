@@ -22,6 +22,7 @@ export const lightTheme = {
           },
         },
       },
+      'font-darker': '#100f0f',
     },
     secondary: {
       bg: '#DDDBFF',
@@ -54,6 +55,10 @@ export const lightTheme = {
     },
     warning: {
       font: '#E28203',
+    },
+    qr: {
+      bg: '#FFFFFF',
+      fg: '#000000',
     },
   },
 } satisfies Theme;

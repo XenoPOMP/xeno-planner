@@ -1,0 +1,15 @@
+article.slogan {
+  @apply flex flex-col justify-center;
+
+  gap: var(--p-level-1);
+
+  h1.sloganText {
+    @apply text-[2.7em] font-bold;
+
+    & > strong {
+      @apply text-accent-bright;
+
+      font-weight: inherit;
+    }
+  }
+}

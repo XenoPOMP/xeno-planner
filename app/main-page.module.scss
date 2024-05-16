@@ -1,1 +1,20 @@
 @import "src/styles/templates";
+
+main.mainPage {
+  @apply flex flex-col min-h-dvh overflow-y-auto;
+
+  section.body {
+    @apply flex-grow;
+
+    &.main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: var(--p-level-3);
+      gap: var(--p-level-1);
+
+      article.column {
+        @apply min-h-[500px];
+      }
+    }
+  }
+}

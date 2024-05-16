@@ -4,18 +4,21 @@ a.logo {
   position: relative;
   overflow: hidden;
 
-  &.sidebar {
+  // Shared styles between styles
+  &:is(.sidebar, .landing) {
     @apply flex items-center justify-start;
 
     padding: var(--p-level-3);
     gap: var(--p-level-5);
     font-size: var(--p24);
+    line-height: normal;
+  }
 
+  &.sidebar {
     // Border
     border-color: inherit;
     border-bottom-style: solid;
     border-bottom-width: 1px;
-    line-height: normal;
 
     @include endAtFixed($tabletBreakpoint) {
       & > strong {

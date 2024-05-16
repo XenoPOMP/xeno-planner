@@ -24,6 +24,9 @@ const Logo: VariableFC<typeof Link, LogoProps, 'children' | 'href'> = ({
     sidebar: {
       className: styles.sidebar,
     },
+    landing: {
+      className: styles.landing,
+    },
   };
 
   const { preid: parsedPreid } = parseVersion(packageJson.version);
