@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { type Metadata } from 'next';
 
 import LandingHeader from '@/src/components/layout/landing/LandingHeader';
+import Slogan from '@/src/components/ui/Slogan';
 import UiContainer from '@/src/components/ui/UiContainer/UiContainer.tsx';
 import { generateOpenGraph } from '@/src/utils/seo';
 
@@ -32,7 +33,8 @@ export default function Home() {
         margin={'0px'}
         className={cn(styles.body)}
       >
-        <article className={cn(styles.column)}></article>
+        <Slogan />
+
         <article className={cn(styles.column)}></article>
       </UiContainer>
     </main>

@@ -5,8 +5,8 @@ button.uiButton {
 
   font-size: var(--p16);
 
-  @include paddingVertical(var(--p-level-4));
-  @include paddingHorizontal(var(--p-level-3));
+  @include paddingVertical(1em);
+  @include paddingHorizontal(1.5em);
 
   &:disabled {
     @extend %notSelectable;
