@@ -22,6 +22,7 @@ export const lightTheme = {
           },
         },
       },
+      'font-darker': '#100f0f',
     },
     secondary: {
       bg: '#DDDBFF',
