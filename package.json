@@ -58,6 +58,7 @@
     "str.scss": "^1.2.0",
     "tailwind-variants": "^0.2.1",
     "typescript": "^5",
+    "typograf": "^7.4.0",
     "zustand": "^4.4.4"
   },
   "devDependencies": {
