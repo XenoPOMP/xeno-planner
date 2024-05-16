@@ -1,1 +1,16 @@
 @import "src/styles/templates";
+
+main.mainPage {
+  @apply flex flex-col min-h-dvh overflow-y-auto;
+
+  section.body {
+    @apply flex-grow flex;
+
+    padding: var(--p-level-3);
+    gap: var(--p-level-1);
+
+    article.column {
+      @apply flex-grow min-h-[500px];
+    }
+  }
+}
