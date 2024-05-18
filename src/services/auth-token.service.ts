@@ -10,9 +10,7 @@ export const getAccessToken = () => {
 export const saveTokenStorage = (accessToken: string) => {
   Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
     domain: process.env.NEXT_PUBLIC_TRUSTED_DOMAIN,
-    // Make sameSite strict if use SSL
-    // sameSite: 'strict',
-    sameSite: 'none',
+    sameSite: 'strict',
     expires: 1,
   });
 };
