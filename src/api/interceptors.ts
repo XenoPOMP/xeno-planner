@@ -12,6 +12,7 @@ const options: CreateAxiosDefaults = {
   baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
   headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
   },
   withCredentials: true,
 };
