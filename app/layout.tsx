@@ -46,6 +46,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='ru'>
+      <meta
+        httpEquiv={'Content-Security-Policy'}
+        content='upgrade-insecure-requests'
+      />
+
       <body className={MainFont.className}>
         <Providers>
           <>
