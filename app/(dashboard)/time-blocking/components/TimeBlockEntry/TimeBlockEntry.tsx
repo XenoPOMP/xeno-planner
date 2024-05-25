@@ -1,11 +1,12 @@
 'use client';
 
 import cn from 'classnames';
-import { GripVertical, SquarePen, Trash } from 'lucide-react';
+import { Copy, GripVertical, SquarePen, Trash } from 'lucide-react';
 import { type FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import TextOverflow from 'react-text-overflow';
 
+import { useCreateTimeBlock } from '@/app/(dashboard)/time-blocking/hooks/useCreateTimeBlock.ts';
 import { NEW_BLOCK_FORM_ID } from '@/src/constants/ids.constants.ts';
 import type { TimeBlockFormStateType } from '@/src/types';
 
@@ -20,6 +21,7 @@ const TimeBlockEntry: FC<TimeBlockEntryProps> = ({
 }) => {
   const { attributes, listeners, setNodeRef, style } = useTimeBlockSortable(id);
 
+  const createBlock = useCreateTimeBlock();
   const deleteBlock = useDeleteTimeBlock(id);
 
   const { reset } = useFormContext<TimeBlockFormStateType>();
@@ -47,6 +49,17 @@ const TimeBlockEntry: FC<TimeBlockEntryProps> = ({
       </span>
 
       <section className={cn(styles.controls)}>
+        <Copy
+          className={cn(styles.icon)}
+          onClick={() => {
+            createBlock({
+              color,
+              duration,
+              name,
+            });
+          }}
+        />
+
         <SquarePen
           className={cn(styles.icon)}
           onClick={() => {
