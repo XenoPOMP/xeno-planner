@@ -36,7 +36,7 @@ const VersionInSettings: FC<VersionInSettingsProps> = () => {
   return (
     <SettingGroup>
       <div className={cn('col-span-full p14')}>
-        <span className={cn('italic')}>Версия приложения:</span> {version}{' '}
+        v.{version}{' '}
         <PreidText
           preid={preid}
           prerelease={prerelease}
