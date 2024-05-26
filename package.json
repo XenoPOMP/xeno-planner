@@ -1,6 +1,6 @@
 {
   "name": "next-template",
-  "version": "0.3.2-beta.0",
+  "version": "0.3.2-beta.1",
   "private": true,
   "author": "XenoPOMP",
   "engines": {
@@ -44,6 +44,7 @@
     "@xenopomp/advanced-utils": "^1.2.2",
     "autoprefixer": "10.4.16",
     "axios": "1.6.8",
+    "change-case": "^5.4.4",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.11",
     "framer-motion": "^11.2.2",
