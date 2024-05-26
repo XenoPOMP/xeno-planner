@@ -1,6 +1,7 @@
 import { type FC, type PropsWithChildren } from 'react';
 
 import LandingLayout from '@/src/components/layout/landing/LandingLayout';
+import MdxStyle from '@/src/components/ui/MdxStyle';
 
 const ChangelogLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -11,7 +12,7 @@ const ChangelogLayout: FC<PropsWithChildren> = ({ children }) => {
         },
       }}
     >
-      {children}
+      <MdxStyle>{children}</MdxStyle>
     </LandingLayout>
   );
 };

@@ -48,7 +48,7 @@ const VersionInSettings: FC<VersionInSettingsProps> = () => {
 
       <div className={cn('col-span-full p14')}>
         <InlineLink
-          href={`/changelog#v${kebabCase(`${version} ${preid} ${prerelease}`)}`}
+          href={`/changelog#v${kebabCase(`${version}`)}`}
           icon={FileClock}
         >
           Что нового?
