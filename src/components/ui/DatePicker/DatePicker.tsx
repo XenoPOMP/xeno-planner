@@ -52,7 +52,7 @@ const DatePicker: VariableFC<'div', DatePickerProps, 'onChange' | 'ref'> = ({
         {isShown && (
           <div
             className={cn(
-              'absolute p-[.625em] slide bg-secondary-bg-accent shadow rounded-lg',
+              'absolute p-[.625em] slide bg-secondary-bg-accent shadow rounded-lg z-[500]',
               position === 'left' ? '-left-[1em]' : '-right-[1em]',
             )}
             style={{
@@ -72,6 +72,7 @@ const DatePicker: VariableFC<'div', DatePickerProps, 'onChange' | 'ref'> = ({
               formatters={{
                 formatCaption,
               }}
+              // className={cn('bg-red-600')}
             />
           </div>
         )}
