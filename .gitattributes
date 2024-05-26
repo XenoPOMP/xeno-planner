@@ -2,6 +2,7 @@
 * text eol=lf
 
 .nvmrc text
+*.mdx text
 
 # Binary files should be encoded as binary
 *.png binary
