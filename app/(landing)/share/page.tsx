@@ -37,6 +37,7 @@ const SharePage: FC<WithSearchParams<{}, 'route'>> = ({ searchParams }) => {
           className={cn(
             '[&>path:first-of-type]:fill-qr-bg [&>path:last-of-type]:fill-qr-fg',
           )}
+          aria-label={`QR-код для обмена этой страницей: ${getQrUrl()}`}
         />
       </article>
     </LandingLayout>
