@@ -8,7 +8,9 @@ lerna-debug.log*
 .pnpm-debug.log*
 
 # IDE
-.idea
+.idea/*
+# Add custom project icon to repo
+!.idea/icon.svg
 
 .vscode/*
 
