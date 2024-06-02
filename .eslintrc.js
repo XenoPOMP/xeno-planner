@@ -1,6 +1,7 @@
 module.exports = {
-  extends: ["xeno", "plugin:storybook/recommended"],
+  extends: ['xeno', 'plugin:storybook/recommended'],
   globals: {
-    "NodeJS": true
-  }
+    NodeJS: true,
+    Console: true,
+  },
 };
