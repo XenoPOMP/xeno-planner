@@ -1,4 +1,4 @@
-<img src=".dev/img/logo-square.png" style="max-width: 200px" align="left" />
+<img src=".dev/img/logo-square.png" width="200" align="left" />
 
 ### XENO Planner
 
