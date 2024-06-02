@@ -1,0 +1,17 @@
+@import "src/styles/templates";
+
+.mdxStyles {
+  &.changelog {
+    blockquote {
+      @apply bg-secondary-bg-accent rounded-[8px];
+
+      padding: var(--p-level-3);
+
+      & > blockquote {
+        @apply bg-secondary-bg;
+
+        margin-top: var(--p-level-4);
+      }
+    }
+  }
+}

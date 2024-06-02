@@ -1,0 +1,40 @@
+import {
+  type DefaultError,
+  type QueryKey,
+  type UseMutationOptions,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
+
+/**
+ * This hook is extended useMutation hook.
+ * You have to specify query key to invalidate
+ * after successful mutation.
+ */
+export const useLinkedMutation = <
+  TReturn = unknown,
+  TError = DefaultError,
+  TVariables = void,
+  TContext = unknown,
+>(
+  queryKey: QueryKey,
+  {
+    onSuccess,
+    ...mutRest
+  }: UseMutationOptions<TReturn, TError, TVariables, TContext>,
+) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    onSuccess(...args) {
+      // Run onSuccess func from options.
+      onSuccess?.(...args);
+
+      // Invalidate query key.
+      queryClient.invalidateQueries({
+        queryKey,
+      });
+    },
+    ...mutRest,
+  });
+};

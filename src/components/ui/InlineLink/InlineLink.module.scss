@@ -1,0 +1,15 @@
+@import "src/styles/templates";
+
+a.inlineLink {
+  @apply inline-flex items-center;
+
+  gap: var(--p-level-5);
+  transition: sameTransition(
+    .15s ease,
+    color
+  );
+
+  &:hover {
+    @apply text-accent-bright;
+  }
+}
