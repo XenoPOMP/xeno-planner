@@ -1,7 +1,10 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
+import Metrika from 'next-metrika';
 import { type ReactNode } from 'react';
 
 import CustomToaster from '@/src/components/layout/CustomToaster';
+import ProdPortal from '@/src/components/layout/ProdPortal';
 import Providers from '@/src/components/layout/Providers/Providers';
 import { MainFont } from '@/src/fonts';
 import { useEnv } from '@/src/hooks/use-env';
@@ -51,6 +54,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             {children}
 
             <CustomToaster />
+
+            <ProdPortal target={'prod'}>
+              <SpeedInsights />
+
+              {process.env.METRIKA_ID !== undefined && (
+                <Metrika id={+process.env.METRIKA_ID} />
+              )}
+            </ProdPortal>
           </>
         </Providers>
       </body>
