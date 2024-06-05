@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { type Metadata } from 'next';
 
+import { AppConstants } from '@/app/app.constants.ts';
 import LandingLayout from '@/src/components/layout/landing/LandingLayout';
 import Slogan from '@/src/components/ui/Slogan';
 import { generateOpenGraph } from '@/src/utils/seo';
@@ -8,11 +9,11 @@ import { generateOpenGraph } from '@/src/utils/seo';
 import styles from './main-page.module.scss';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = `Главная страница`;
+  const title = `Главная | ${AppConstants.appName}`;
   const description = undefined;
 
   return {
-    // title,
+    title,
     description,
     openGraph: generateOpenGraph({
       title,
