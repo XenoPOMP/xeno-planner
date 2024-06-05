@@ -4,7 +4,7 @@ import { type Metadata } from 'next';
 import { QRCodeSVG } from 'qrcode.react';
 import { type FC, useCallback } from 'react';
 
-import { AppConstants } from '@/app/app.constants.ts';
+import { generateQrCodeUrl } from '@/app/(landing)/share/generateQrCodeUrl.ts';
 import LandingLayout from '@/src/components/layout/landing/LandingLayout';
 import { NO_INDEX_PAGE } from '@/src/constants/seo.constants.ts';
 import { generateOpenGraph } from '@/src/utils/seo';
@@ -29,18 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
 const SharePage: FC<WithSearchParams<{}, 'route'>> = ({ searchParams }) => {
   const CANONICAL = process.env.CANONICAL_URL;
 
-  const getQrUrl = useCallback((): string => {
-    /** Route is not provided. */
-    if (!searchParams.route) {
-      return CANONICAL ?? AppConstants.defaultCanonical;
-    }
-
-    /** Concat safe URL for sharing. */
-    return new URL(
-      searchParams.route,
-      CANONICAL ?? AppConstants.defaultCanonical,
-    ).toString();
-  }, [CANONICAL, searchParams.route]);
+  const getQrUrl = useCallback(
+    () => generateQrCodeUrl(CANONICAL, searchParams.route),
+    [CANONICAL, searchParams.route],
+  );
 
   return (
     <LandingLayout
