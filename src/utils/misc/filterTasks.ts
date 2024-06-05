@@ -7,11 +7,12 @@ import type { ITaskResponse } from '@/src/types';
 
 import { FILTERS } from '../../data/task-columns.data.ts';
 
+// Расширяем функционал dayjs с помощью плагинов
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 
 /**
- * Applies date filter to tasks.
+ * Фильтрует задачи в зависимости от временного фильтра.
  * @param tasks
  * @param value
  */
@@ -19,6 +20,7 @@ export const filterTasks = (
   tasks: ITaskResponse[] | undefined,
   value: EnumDndDestId,
 ) => {
+  // value в данном контесте - тип колонки (сегодня, завтра и т.п.)
   switch (value) {
     case EnumDndDestId.TODAY:
       return tasks?.filter(
