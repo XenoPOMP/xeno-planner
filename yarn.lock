@@ -13855,10 +13855,10 @@ typescript@^5:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.5.tgz#42ccef2c571fdbd0f6718b1d1f5e6e5ef006f611"
   integrity sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==
 
-typograf@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/typograf/-/typograf-7.4.0.tgz#dd4b7363011a29855575b50623927411ef0c800e"
-  integrity sha512-0t+kGN6RE1P0y24o98riNaC3jQo0QDsgEBB4zaNthUUykpdD7oS07lfo++/evOQcC57TlNB4QGuT83Uuost1GQ==
+typograf@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/typograf/-/typograf-7.4.1.tgz#fa274b9dc39ab0f107e00af366e0d2e88bb65b08"
+  integrity sha512-V+1jqkv574pzPTW/JcqkhXQzmA7U3B2xVKc6QMzNxmN+1eecVn164Z8Wm8xM6ArKSk/sUjKvOPoT0U3G6zOMjQ==
 
 ufo@^1.3.2:
   version "1.3.2"
