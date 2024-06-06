@@ -1,7 +1,7 @@
 import { afterAll, afterEach, beforeAll, describe, test, vi } from 'vitest';
 import MatchMediaMock from 'vitest-matchmedia-mock';
 
-import { clearMocks, mockFonts } from '@/__tests__/assets/mocks';
+import { clearMocks, mockFonts, mockMetrika } from '@/__tests__/assets/mocks';
 import { mockEnv } from '@/__tests__/assets/mocks/mockEnv';
 import { expectToRender, testObject } from '@/__tests__/assets/utilities';
 import RootLayout, { generateMetadata } from '@/app/layout';
@@ -12,6 +12,7 @@ describe('Root layout test', () => {
   beforeAll(() => {
     mockFonts();
     mockEnv();
+    mockMetrika();
 
     // Mock window.matchMedia.
     matchMediaMock.useMediaQuery('(prefers-color-scheme: dark)');
