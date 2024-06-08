@@ -1,7 +1,11 @@
 import { describe, test } from 'vitest';
 
 import { mockRouter } from '@/__tests__/assets/mocks';
-import { expectToRender, injectMocks } from '@/__tests__/assets/utilities';
+import {
+  expectToRender,
+  injectMocks,
+  testObject,
+} from '@/__tests__/assets/utilities';
 import DashboardPage, {
   generateMetadata,
 } from '@/app/(dashboard)/dashboard/page.tsx';
@@ -21,7 +25,6 @@ describe('Dashboard page in routing', () => {
   });
 
   test('Dashboard metadata is correct', async () => {
-    const meta = await generateMetadata();
-    console.log(meta);
+    testObject(await generateMetadata());
   });
 });
