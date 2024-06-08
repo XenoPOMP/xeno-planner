@@ -9,6 +9,12 @@ interface InjectMocksOptions {
    */
   mockingFn: () => void;
 
+  /**
+   * This function will be executed after
+   * all tests (in afterAll).
+   */
+  afterFn?: () => void;
+
   /** Select when mocks should be injected. */
   strategy?: 'beforeAll';
 }
@@ -27,6 +33,7 @@ interface InjectMocksOptions {
 export const injectMocks = ({
   mockingFn,
   strategy = 'beforeAll',
+  afterFn,
 }: InjectMocksOptions) => {
   if (strategy === 'beforeAll')
     beforeAll(() => {
@@ -35,5 +42,6 @@ export const injectMocks = ({
 
   afterAll(() => {
     clearMocks();
+    afterFn?.();
   });
 };
