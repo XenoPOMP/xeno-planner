@@ -1,0 +1,27 @@
+import { describe, test } from 'vitest';
+
+import { mockRouter } from '@/__tests__/assets/mocks';
+import { expectToRender, injectMocks } from '@/__tests__/assets/utilities';
+import DashboardPage, {
+  generateMetadata,
+} from '@/app/(dashboard)/dashboard/page.tsx';
+import RQProvider from '@/src/components/providers/RQProvider/RQProvider.tsx';
+
+describe('Dashboard page in routing', () => {
+  injectMocks({
+    mockingFn: () => {
+      mockRouter();
+    },
+  });
+
+  test('It renders', () => {
+    expectToRender(<DashboardPage />, {
+      wrapper: RQProvider,
+    });
+  });
+
+  test('Dashboard metadata is correct', async () => {
+    const meta = await generateMetadata();
+    console.log(meta);
+  });
+});
