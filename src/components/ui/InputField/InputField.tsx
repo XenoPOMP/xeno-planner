@@ -26,6 +26,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
   outerRef,
   outerOnClick,
   outerClassName,
+  outerDataTestId,
   register: registerName,
   warning,
   wrpClassName,
@@ -79,6 +80,7 @@ const InputField: VariableFC<'input', InputFieldProps> = ({
         )}
         aria-hidden={children === undefined}
         ref={outerRef}
+        data-testid={outerDataTestId}
         data-is-error={false}
         onClick={ev => {
           outerOnClick?.(ev);
