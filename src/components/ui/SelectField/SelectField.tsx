@@ -115,8 +115,11 @@ const SelectField: VariableFC<
       {items && expanded && (
         <div className={cn(styles.selectionGroup)}>
           {items?.map(({ icon: Icon, name, value }, index) => {
-            const sharedProps: ComponentProps<'div'> = {
+            const sharedProps: ComponentProps<'div'> & {
+              'data-testid'?: string;
+            } = {
               key: `[${index}] ${value}`,
+              'data-testid': `select-option-${index}`,
               onClick: () => {
                 onSelection?.(value);
               },

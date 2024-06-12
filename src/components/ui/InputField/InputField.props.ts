@@ -8,10 +8,15 @@ interface ExternalWrapperProps {
 }
 
 /** Field`s inner props. */
-type OuterProps = PrefixedComponentProps<'div', 'outer'>;
+type OuterProps = PrefixedComponentProps<'div', 'outer'> & {
+  outerDataTestId?: string;
+};
 
 export interface InputFieldProps
-  extends Pick<OuterProps, 'outerRef' | 'outerOnClick' | 'outerClassName'>,
+  extends Pick<
+      OuterProps,
+      'outerRef' | 'outerOnClick' | 'outerClassName' | 'outerDataTestId'
+    >,
     Pick<ExternalWrapperProps, 'wrpClassName'> {
   icon?: LucideIcon;
   description?: string;
