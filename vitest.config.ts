@@ -12,6 +12,7 @@ const testingExclusion: string[] = [
   // Storybook
   '.storybook',
   '**/*.stories.{ts,tsx}',
+  '**/SonnerPreview.tsx',
 
   // Testing artifacts
   'coverage/*',
