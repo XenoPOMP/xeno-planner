@@ -46,7 +46,10 @@ const DatePicker: VariableFC<'div', DatePickerProps, 'onChange' | 'ref'> = ({
       ref={ref}
       {...props}
     >
-      <button onClick={() => setIsShown(prev => true)}>
+      <button
+        data-testid={'toggle-button'}
+        onClick={() => setIsShown(prev => true)}
+      >
         {dayValue ? dayjs(dayValue).format('LL') : 'Нажмите, чтобы выбрать'}
 
         {isShown && (
