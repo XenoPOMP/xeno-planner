@@ -37,12 +37,12 @@ export const testNextPage = (
     });
   });
 
-  test('Metadata is correct', async () => {
+  test('Metadata is correct', () => {
     // Test metadata only if it is provided
     if (!options?.generateMetadata) {
       return;
     }
 
-    testObject(await options.generateMetadata());
+    options.generateMetadata().then(meta => testObject(meta));
   });
 };
