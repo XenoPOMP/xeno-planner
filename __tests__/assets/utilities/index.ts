@@ -6,3 +6,4 @@ export * from './expectToDeepEqual';
 export * from './stubGlobal';
 export * from './injectMocks.ts';
 export * from './testNextPage.ts';
+export * from './test-component.tsx';
