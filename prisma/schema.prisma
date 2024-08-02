@@ -32,7 +32,14 @@ model User {
   pomodoroSessions PomodoroSession[]
   // userVerification UserVerification?
 
+  authProvider AuthenticationProvider @default(self) @map("auth_provider")
+
   @@map("user")
+}
+
+enum AuthenticationProvider {
+  self
+  google
 }
 
 // model UserVerification {
