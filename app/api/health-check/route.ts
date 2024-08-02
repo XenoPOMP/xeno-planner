@@ -1,7 +1,8 @@
 // api/health-check
+import { NextResponse } from 'next/server';
 
 export const revalidate = 30;
 
 export async function GET() {
-  return Response.json({ status: 'running' });
+  return NextResponse.json({ status: 'running' });
 }
