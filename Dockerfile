@@ -1,5 +1,6 @@
-FROM node:20.11.1-slim
+FROM node:alpine
 
+COPY package.json package.json
 RUN npm i -g yarn
 
 COPY . .
