@@ -3,13 +3,13 @@ import { type MiddlewareConfig, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import { AUTH_PAGES, DASHBOARD_PAGES } from '@/src/types/routes.ts';
 
-export const middleware = auth(request => {
-  const { url } = request;
+export const middleware = auth(req => {
+  const { url } = req;
 
   // True if current page is auth page.
   const isAuthPage = url.includes('/auth');
   // True if user is authenticated
-  const isAuthenticated = !!request.auth;
+  const isAuthenticated = !!req.auth;
 
   // Redirect logged user to dashboard, if auth page is opened
   if (isAuthPage && isAuthenticated) {
@@ -26,7 +26,7 @@ export const middleware = auth(request => {
   // any other page, like dashboard pages,
   // redirect him to auth page.
   if (!isAuthPage) {
-    return NextResponse.redirect(new URL(AUTH_PAGES.LOGIN, request.url));
+    return NextResponse.redirect(new URL(AUTH_PAGES.LOGIN, req.url));
   }
 
   return NextResponse.next();
