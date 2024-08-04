@@ -19,10 +19,9 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  username      String  @unique
-  nick          String?
-  password      String
-  password_hash String
+  email    String  @unique
+  name     String?
+  password String
 
   workInterval   Int? @default(50) @map("work_interval")
   breakInterval  Int? @default(10) @map("break_interval")
@@ -33,8 +32,6 @@ model User {
   pomodoroSessions PomodoroSession[]
   // userVerification UserVerification?
 
-  sessions Session[]
-
   authProvider AuthenticationProvider @default(self) @map("auth_provider")
 
   @@map("user")
@@ -43,14 +40,6 @@ model User {
 enum AuthenticationProvider {
   self
   google
-}
-
-model Session {
-  id        String   @id
-  userId    String
-  expiresAt DateTime
-
-  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
 
 // model UserVerification {
