@@ -38,6 +38,13 @@
     preact "10.11.3"
     preact-render-to-string "5.2.3"
 
+"@auth/prisma-adapter@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@auth/prisma-adapter/-/prisma-adapter-2.4.2.tgz#e1a30de0a3df2fbc6eda348b83b9338672a33b08"
+  integrity sha512-QQwnGYfDiyTcAxMVhTrim+lLFFA3TKq3nIrbPtGZXlkiuNQ5t0rUg//Km7Wv21pD5bxhy4aRPlfq7TdFKk3XIw==
+  dependencies:
+    "@auth/core" "0.34.2"
+
 "@aw-web-design/x-default-browser@1.4.126":
   version "1.4.126"
   resolved "https://registry.yarnpkg.com/@aw-web-design/x-default-browser/-/x-default-browser-1.4.126.tgz#43e4bd8f0314ed907a8718d7e862a203af79bc16"
