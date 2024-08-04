@@ -30,7 +30,6 @@ model User {
   tasks            Task[]
   timeBlocks       TimeBlock[]
   pomodoroSessions PomodoroSession[]
-  // userVerification UserVerification?
 
   authProvider AuthenticationProvider @default(self) @map("auth_provider")
 
@@ -41,27 +40,6 @@ enum AuthenticationProvider {
   self
   google
 }
-
-// model UserVerification {
-//   id String @id @default(cuid())
-//
-//   createdAt DateTime @default(now()) @map("created_at")
-//   updatedAt DateTime @updatedAt @map("updated_at")
-//
-//   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   userId String @unique @map("user_id")
-//
-//   secret String
-//   status VerificationStatus? @default(requested)
-//
-//   @@map("user_verification")
-// }
-//
-// enum VerificationStatus {
-//   requested
-//   accepted
-//   denied
-// }
 
 model Task {
   id        String   @id @default(cuid())
