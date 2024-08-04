@@ -31,14 +31,7 @@ model User {
   timeBlocks       TimeBlock[]
   pomodoroSessions PomodoroSession[]
 
-  authProvider AuthenticationProvider @default(self) @map("auth_provider")
-
   @@map("user")
-}
-
-enum AuthenticationProvider {
-  self
-  google
 }
 
 model Task {
