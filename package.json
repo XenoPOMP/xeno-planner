@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8080",
     "preview": "yarn && yarn build && yarn start",
     "lint": "next lint",
     "unit:test": "vitest",

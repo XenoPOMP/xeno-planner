@@ -18,5 +18,5 @@ COPY --from=builder /xeno-planner/package.json ./package.json
 COPY --from=builder /xeno-planner/.next ./.next
 COPY --from=builder /xeno-planner/node_modules ./node_modules
 
-EXPOSE 3000
+EXPOSE 8080
 CMD ["yarn", "start"]
